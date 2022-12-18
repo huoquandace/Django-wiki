@@ -131,3 +131,5 @@ INSTALLED_APPS += [
     'core',
     'authentication',
 ]
+
+AUTH_USER_MODEL = 'authentication.User'
