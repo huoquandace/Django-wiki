@@ -13,6 +13,9 @@
         "**/__pycache__",
         "**/__init__.py"
     ],
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none"
+    }
     // "python.analysis.extraPaths": [
     //     "./demo/apps"
     // ]
