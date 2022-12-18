@@ -1,0 +1,19 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/__pycache__": true,
+        "**/__init__.py": true
+    },
+    "hide-files.files": [
+        "**/__pycache__",
+        "**/__init__.py"
+    ],
+    // "python.analysis.extraPaths": [
+    //     "./demo/apps"
+    // ]
+}
