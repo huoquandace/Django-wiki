@@ -20,4 +20,10 @@ startapp polls apps/app_name
 # Change Project root
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 ```
-
+###### VsCode
+```
+// Turn off missing module report
+"python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingModuleSource": "none"
+}
+```
