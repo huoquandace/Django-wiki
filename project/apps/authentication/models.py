@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from common.choices import *
+from common.models import BaseModel
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -35,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             pass
         return identifier
 
-class Profile(models.Model):
+class Profile(BaseModel):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     first_name = models.CharField(_("first name"), max_length=100, blank=True)
