@@ -15,8 +15,17 @@
     ],
     "python.analysis.diagnosticSeverityOverrides": {
         "reportMissingModuleSource": "none"
-    }
+    },
     // "python.analysis.extraPaths": [
     //     "./demo/apps"
-    // ]
+    // ],
+
+    "[ruby][html]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[csharp][typescript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
 }
