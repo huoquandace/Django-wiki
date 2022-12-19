@@ -7,5 +7,8 @@ from django.views.generic import TemplateView
 class Login(LoginView):
     template_name = 'login.html'
 
+class Register():
+    pass
+
 class Profile(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
