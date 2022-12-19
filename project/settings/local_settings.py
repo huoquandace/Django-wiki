@@ -17,3 +17,5 @@ INSTALLED_APPS += [
 ]
 
 AUTH_USER_MODEL = 'authentication.User'
+
+AUTH_PASSWORD_VALIDATORS =[]
