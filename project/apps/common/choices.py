@@ -1,8 +1,8 @@
 
 GENDER_CHOICES = [
-    ('Male', 'Male'),
-    ('Female', 'Female'),
-    ('Unknown', 'Unknown'),
+    (0, 'Female'),
+    (1, 'Male'),
+    (2, 'Unknown'),
 ]
 
 MARITAL_STATUS_CHOICES = [
