@@ -7,6 +7,8 @@
   <title>Document</title>
 </head>
 <body>
-  Profile
+  <h3>Profile</h3>
+  <div>Username: {{ user.username }}</div>
+  <div>Date Joined: {{ user.date_joined | date:'d-m-Y' }}</div>
 </body>
 </html>
