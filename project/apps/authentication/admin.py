@@ -27,7 +27,7 @@ class UserAdmin(UserAdmin):
 
 # admin.site.register(User, UserAdmin)
 # admin.site.register(Profile)
-# admin.site.unregister(Group)
+admin.site.unregister(Group)
 
 models = apps.get_app_config('authentication').get_models()
 for model in models:
