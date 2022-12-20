@@ -10,7 +10,7 @@ from authentication.forms import RegisterForm, AuthForm
 
 class Login(LoginView):
     authentication_form = AuthForm
-    template_name = 'login.html'
+    template_name = 'login.html' # Default: registration/login.html
     login_url = '/auth/login/' # Defaults to LOGIN_URL
     next_page = '/auth/profile/' # Defaults to LOGIN_REDIRECT_URL
     redirect_authenticated_user = True # If it is false, authenticated_user is still access to login
@@ -18,9 +18,9 @@ class Login(LoginView):
 
 class Logout(LoginRequiredMixin, LogoutView):
     next_page = '/auth/login/' # if not default render to template
-    # template_name = 'logout.html' # Default: 'registration/logged_out.html'
+    # template_name = 'logout.html' # Default: registration/logged_out.html
 
-    
+
 class Register(FormView):
     template_name = 'register.html'
     form_class = RegisterForm
