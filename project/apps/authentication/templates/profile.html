@@ -10,6 +10,6 @@
   <h3>Profile</h3>
   <div>Username: {{ user.username }}</div>
   <div>Date Joined: {{ user.date_joined | date:'d-m-Y' }}</div>
-  <button><a href="">Logout</a></button>
+  <button><a href="{% url 'logout' %}">Logout</a></button>
 </body>
 </html>

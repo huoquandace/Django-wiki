@@ -39,3 +39,6 @@ class RegisterDone(TemplateView):
 
 class Profile(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
+
+class Logout(LoginRequiredMixin, LogoutView):
+    template_name = 'logout.html'
