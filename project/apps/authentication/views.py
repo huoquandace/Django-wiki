@@ -15,6 +15,12 @@ class Login(LoginView):
     next_page = '/auth/profile/' # Defaults to LOGIN_REDIRECT_URL
     redirect_authenticated_user = True # If it is false, authenticated_user is still access to login
 
+
+class Logout(LoginRequiredMixin, LogoutView):
+    next_page = '/auth/login/' # if not default render to template
+    # template_name = 'logout.html' # Default: 'registration/logged_out.html'
+
+    
 class Register(FormView):
     template_name = 'register.html'
     form_class = RegisterForm
@@ -41,7 +47,3 @@ class RegisterDone(TemplateView):
 
 class Profile(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
-
-class Logout(LoginRequiredMixin, LogoutView):
-    next_page = '/auth/login/' # if not default render to template
-    # template_name = 'logout.html'
