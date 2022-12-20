@@ -9,7 +9,7 @@ from authentication.forms import RegisterForm, AuthForm
 
 
 class Login(LoginView):
-    authentication_form = AuthForm
+    authentication_form = AuthForm # Defauts to AuthenticationForm (django.contrib.auth.forms)
     template_name = 'login.html' # Default: registration/login.html
     login_url = '/auth/login/' # Defaults to LOGIN_URL
     next_page = '/auth/profile/' # Defaults to LOGIN_REDIRECT_URL
