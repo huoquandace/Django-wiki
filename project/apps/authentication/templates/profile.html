@@ -11,5 +11,6 @@
   <div>Username: {{ user.username }}</div>
   <div>Date Joined: {{ user.date_joined | date:'d-m-Y' }}</div>
   <button><a href="{% url 'logout' %}">Logout</a></button>
+  <button><a href="{% url 'password_change' %}">password_change</a></button>
 </body>
 </html>
