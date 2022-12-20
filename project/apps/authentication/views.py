@@ -13,5 +13,11 @@ class Register(FormView):
     template_name = 'register.html'
     form_class = RegisterForm
 
+    def form_valid(self, form):
+        data = form.cleaned_data
+        from pprint import pprint
+        pprint(data)
+        pass
+
 class Profile(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
