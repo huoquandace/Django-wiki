@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, FormView
+
+from authentication.forms import *
 
 
 class Login(LoginView):
@@ -10,7 +11,7 @@ class Login(LoginView):
 
 class Register(FormView):
     template_name = 'register.html'
-    form_class = UserCreationForm
+    form_class = RegisterForm
 
 class Profile(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
