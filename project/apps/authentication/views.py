@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth import get_user_model
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, FormView
 
@@ -17,8 +17,13 @@ class Login(LoginView):
 
 
 class Logout(LoginRequiredMixin, LogoutView):
-    next_page = '/auth/login/' # if not default render to template
-    # template_name = 'logout.html' # Default: registration/logged_out.html
+    # next_page = '/auth/login/' # if not default render to template
+    template_name = 'logged_out.html' # Default: registration/logged_out.html
+
+
+class PasswordChange(PasswordChangeView):
+    template_name = 'login.html' # password_change_form: registration/password_change_form.html
+    pass
 
 
 class Register(FormView):
