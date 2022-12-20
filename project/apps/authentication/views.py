@@ -3,7 +3,7 @@ from pprint import pprint
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth import get_user_model
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, FormView
 
