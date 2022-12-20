@@ -1,5 +1,3 @@
-from pprint import pprint
-
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth import get_user_model
@@ -19,14 +17,14 @@ class Register(FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
-        pprint(data) # DEBUG
+        from pprint import pprint; pprint(data) # DEBUG
         new_user = get_user_model().objects.create_user(
             username = data['username'],
             password = data['password1'],
             email = data['email'],
         )
         url = f"{reverse('register_done')}?username={new_user.username}"
-        pprint(url) # DEBUG
+        from pprint import pprint; pprint(url) # DEBUG
         return redirect(url)
 
 class RegisterDone(TemplateView):
