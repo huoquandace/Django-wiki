@@ -10,6 +10,8 @@ from authentication.forms import *
 
 class Login(LoginView):
     template_name = 'login.html'
+    login_url = '/auth/login/' # Defaults to LOGIN_URL
+    next_page = '/auth/profile/' # Defaults to LOGIN_REDIRECT_URL
 
 class Register(FormView):
     template_name = 'register.html'
