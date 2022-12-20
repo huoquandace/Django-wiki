@@ -17,12 +17,12 @@ class Login(LoginView):
 
 
 class Logout(LoginRequiredMixin, LogoutView):
-    # next_page = '/auth/login/' # if not default render to template
-    template_name = 'logged_out.html' # Default: registration/logged_out.html
+    next_page = '/auth/login/' # if not default render to template
+    # template_name = 'logged_out.html' # Default: registration/logged_out.html
 
 
 class PasswordChange(PasswordChangeView):
-    template_name = 'login.html' # password_change_form: registration/password_change_form.html
+    template_name = 'password_change_form.html' # password_change_form: registration/password_change_form.html
     pass
 
 
