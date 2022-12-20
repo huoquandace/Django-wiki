@@ -5,10 +5,11 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, FormView
 
-from authentication.forms import *
+from authentication.forms import RegisterForm, AuthForm
 
 
 class Login(LoginView):
+    authentication_form = AuthForm
     template_name = 'login.html'
     login_url = '/auth/login/' # Defaults to LOGIN_URL
     next_page = '/auth/profile/' # Defaults to LOGIN_REDIRECT_URL

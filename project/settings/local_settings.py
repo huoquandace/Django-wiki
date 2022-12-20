@@ -29,3 +29,8 @@ STATIC_URL = 'static/'
 
 LOGIN_URL = '/auth/login/'
 LOGIN_REDIRECT_URL = '/auth/profile/'
+
+# Fixes django generic view LoginView authentication error when user is_active = False
+AUTHENTICATION_BACKENDS = [
+    'authentication.backend.CustomModelBackend',
+]
