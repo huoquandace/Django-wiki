@@ -10,5 +10,5 @@ class RegisterForm(UserCreationForm):
         fields = ('username', 'email')
         field_classes = {'username': UsernameField}
         widgets = {
-            'email': forms.EmailField(label='email', required=False)
+            'email': forms.EmailInput()
         }
