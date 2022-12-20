@@ -13,6 +13,7 @@ class Login(LoginView):
     template_name = 'login.html'
     login_url = '/auth/login/' # Defaults to LOGIN_URL
     next_page = '/auth/profile/' # Defaults to LOGIN_REDIRECT_URL
+    redirect_authenticated_user = True
 
 class Register(FormView):
     template_name = 'register.html'
