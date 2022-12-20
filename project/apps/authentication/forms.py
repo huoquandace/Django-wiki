@@ -29,7 +29,7 @@ class AuthForm(AuthenticationForm):
     }
 
     def confirm_login_allowed(self, user):
-        return
+        # return
         if not user.is_active:
             raise ValidationError(
                 _("This account is inactive."),
