@@ -45,6 +45,9 @@ class PasswordReset(PasswordResetView):
     template_name = 'password_reset_form.html' # Default: registration/password_reset_form.html
     success_url = reverse_lazy('password_reset_done')
     title = _('Password reset')
+    from_email = 'system@sys.com'
+    email_template_name = 'password_reset_email.html' # Default: registration/password_reset_email.html
+    subject_template_name = 'password_reset_subject.txt' # Default: registration/password_reset_subject.txt
 
 
 class PasswordResetDone(PasswordResetDoneView):
@@ -56,8 +59,6 @@ class PasswordResetConfirm(PasswordResetConfirmView):
     template_name = 'password_reset_confirm.html' # Default: registration/password_reset_confirm.html
     title = _('Enter new password')
     success_url = reverse_lazy('password_reset_complete')
-    from_email = 'system@sys.com'
-    email_template_name = 'password_reset_email.html' # Default: registration/password_reset_email.html
 
 
 class Register(FormView):
