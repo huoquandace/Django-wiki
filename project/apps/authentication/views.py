@@ -1,9 +1,10 @@
 from django.shortcuts import redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth import get_user_model
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, FormView
+from django.utils.translation import gettext_lazy as _
 
 from authentication.forms import RegisterForm, AuthForm
 
@@ -23,7 +24,13 @@ class Logout(LoginRequiredMixin, LogoutView):
 
 class PasswordChange(PasswordChangeView):
     template_name = 'password_change_form.html' # password_change_form: registration/password_change_form.html
-    pass
+    success_url = reverse_lazy('password_change_done')
+    title = _('Password change')
+
+
+class PasswordChangeDone(PasswordChangeDoneView):
+    template_name = 'password_change_done.html' # password_change_form: registration/password_change_done.html
+    title = _('Password change successful')
 
 
 class Register(FormView):
