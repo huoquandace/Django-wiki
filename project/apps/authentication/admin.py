@@ -1,10 +1,11 @@
 from django.apps import apps
 from django.contrib import admin
+# from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.admin.sites import AlreadyRegistered
 
-# from authentication.models import User, Profile
+from authentication.models import User, Profile
 
 
 class UserAdmin(UserAdmin):
@@ -25,13 +26,15 @@ class UserAdmin(UserAdmin):
     class Meta:
         ordering = ('date_joined', )
 
-# admin.site.register(User, UserAdmin)
-# admin.site.register(Profile)
-admin.site.unregister(Group)
 
-models = apps.get_app_config('authentication').get_models()
-for model in models:
-    try:
-        admin.site.register(model)
-    except AlreadyRegistered:
-        pass
+# models = apps.get_app_config('authentication').get_models()
+# for model in models:
+#     try:
+#         admin.site.register(model)
+#     except AlreadyRegistered:
+#         pass
+
+
+admin.site.register(User, UserAdmin)
+admin.site.register(Profile)
+admin.site.unregister(Group)
