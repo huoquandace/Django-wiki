@@ -9,6 +9,7 @@ urlpatterns = [
 
 urlpatterns += [
     path('', include('core.urls')),
+    path('ts/', include('ts.urls')),
     path('auth/', include('authentication.urls')),
 ]
 
