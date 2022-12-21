@@ -34,3 +34,6 @@ LOGIN_REDIRECT_URL = '/auth/profile/'
 AUTHENTICATION_BACKENDS = [
     'authentication.backend.CustomModelBackend',
 ]
+
+# Send email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
