@@ -40,7 +40,7 @@ class PasswordChangeDone(PasswordChangeDoneView):
 
 
 class PasswordReset(PasswordResetView):
-    template_name = 'password_change_done.html' # password_change_form: registration/password_reset_form.html
+    template_name = 'password_reset_form.html' # password_change_form: registration/password_reset_form.html
     success_url = reverse_lazy('password_reset_done')
     title = _('Password reset')
 
