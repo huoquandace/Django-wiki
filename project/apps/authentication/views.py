@@ -30,24 +30,26 @@ class Logout(LoginRequiredMixin, LogoutView):
 
 
 class PasswordChange(PasswordChangeView):
-    template_name = 'password_change_form.html' # password_change_form: registration/password_change_form.html
+    template_name = 'password_change_form.html' # Default: registration/password_change_form.html
     success_url = reverse_lazy('password_change_done')
     title = _('Password change')
 
 
 class PasswordChangeDone(PasswordChangeDoneView):
-    template_name = 'password_change_done.html' # password_change_form: registration/password_change_done.html
+    template_name = 'password_change_done.html' # Default: registration/password_change_done.html
     title = _('Password change successful')
 
 
 class PasswordReset(PasswordResetView):
-    template_name = 'password_reset_form.html' # password_change_form: registration/password_reset_form.html
+    template_name = 'password_reset_form.html' # Default: registration/password_reset_form.html
     success_url = reverse_lazy('password_reset_done')
     title = _('Password reset')
 
 
 class PasswordResetDone(PasswordResetDoneView):
-    template_name = 'password_reset_done.html' # password_change_form: registration/password_reset_done.html
+    template_name = 'password_reset_done.html' # Default: registration/password_reset_done.html
+    # email_template_name = 'password_reset_email.html' # Default: registration/password_reset_email.html
+    html_email_template_name = 'password_reset_email.html' # Default: registration/password_reset_email.html
     title = _('Password reset sent')
 
 

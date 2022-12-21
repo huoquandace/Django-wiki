@@ -9,7 +9,7 @@ ROOT_URLCONF = 'urls'
 
 WSGI_APPLICATION = 'wsgi.application'
 
-sys.path.insert(0, os.path.join(Path(__file__).resolve().parent.parent, 'apps')) # Change Project root
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps')) # Change Project root
 
 INSTALLED_APPS += [
     'core.apps.CoreConfig',
@@ -37,3 +37,5 @@ AUTHENTICATION_BACKENDS = [
 
 # Send email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = BASE_DIR / 'emails'
