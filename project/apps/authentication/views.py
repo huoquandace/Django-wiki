@@ -48,10 +48,9 @@ class PasswordReset(PasswordResetView):
 
 class PasswordResetDone(PasswordResetDoneView):
     template_name = 'password_reset_done.html' # Default: registration/password_reset_done.html
-    from_email = 'system@sys.com'
     title = _('Password reset sent')
-    email_template_name = 'password_reset_email.txt' # Default: registration/password_reset_email.txt
-    html_email_template_name = 'password_reset_email.html' # Default: registration/password_reset_email.html
+    # from_email = 'system@sys.com'
+    # email_template_name = 'password_reset_email.html' # Default: registration/password_reset_email.html
 
 
 class Register(FormView):
