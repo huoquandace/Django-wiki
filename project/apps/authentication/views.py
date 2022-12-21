@@ -9,6 +9,7 @@ from django.contrib.auth.views import (
     PasswordResetView,
     PasswordResetDoneView,
     PasswordResetConfirmView,
+    PasswordResetCompleteView,
 )
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, FormView
@@ -59,6 +60,10 @@ class PasswordResetConfirm(PasswordResetConfirmView):
     template_name = 'password_reset_confirm.html' # Default: registration/password_reset_confirm.html
     title = _('Enter new password')
     success_url = reverse_lazy('password_reset_complete')
+
+class PasswordResetComplete(PasswordResetCompleteView):
+    template_name = 'password_reset_complete.html' # Default: registration/password_reset_complete.html
+    title = _('Password reset complete')
 
 
 class Register(FormView):
