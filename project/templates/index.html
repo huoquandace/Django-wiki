@@ -47,16 +47,15 @@
 
     /* The button used to open the sidebar */
     .openbtn {
-      font-size: 20px;
       cursor: pointer;
-      background-color: #111;
-      color: white;
+      background-color: white;
+      color: black;
       padding: 10px 15px;
       border: none;
     }
 
     .openbtn:hover {
-      background-color: #444;
+      opacity: 0.8;
     }
 
     /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -83,15 +82,21 @@
   
   <div id="main">
     <button class="openbtn" onclick="openNav()">&#9776; Open Sidebar</button>
-    <h2>Collapsed Sidebar</h2>
     <p>Content...</p>
   </div>
 
   <script>
+    var nav_status = 0;
     /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
     function openNav() {
-      document.getElementById("mySidebar").style.width = "250px";
-      document.getElementById("main").style.marginLeft = "250px";
+      if (nav_status == 0) {
+        nav_status = 1;
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      } else {
+        nav_status = 0;
+        closeNav()
+      }
     }
 
     /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
