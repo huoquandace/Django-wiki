@@ -16,6 +16,7 @@
     "python.analysis.diagnosticSeverityOverrides": {
         "reportMissingModuleSource": "none"
     },
+    "html.validate.scripts": false,
     // "python.analysis.extraPaths": [
     //     "./demo/apps"
     // ],
