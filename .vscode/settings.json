@@ -14,7 +14,8 @@
         "**/__init__.py"
     ],
     "python.analysis.diagnosticSeverityOverrides": {
-        "reportMissingModuleSource": "none"
+        "reportMissingModuleSource": "none",
+        // "reportMissingImports": "none",
     },
     "html.validate.scripts": false,
     // "python.analysis.extraPaths": [
