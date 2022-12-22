@@ -39,4 +39,4 @@ class ImportUser(LoginRequiredMixin, FormView):
             csv_file.close()
         except Exception as e:
             print(e)
-        return JsonResponse('user csv is now working', safe=False)
+        return JsonResponse('Successful', safe=False)
