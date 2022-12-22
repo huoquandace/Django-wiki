@@ -20,7 +20,7 @@ from authentication.forms import RegisterForm, AuthForm
 
 class Login(LoginView):
     authentication_form = AuthForm # Defauts to AuthenticationForm (django.contrib.auth.forms)
-    template_name = 'login.html' # Default: registration/login.html
+    template_name = 'auth/login.html' # Default: registration/login.html
     login_url = '/auth/login/' # Defaults to LOGIN_URL
     next_page = '/auth/profile/' # Defaults to LOGIN_REDIRECT_URL
     redirect_authenticated_user = True # If it is false, authenticated_user is still access to login
@@ -28,41 +28,41 @@ class Login(LoginView):
 
 class Logout(LoginRequiredMixin, LogoutView):
     next_page = '/auth/login/' # if not default render to template
-    # template_name = 'logged_out.html' # Default: registration/logged_out.html
+    # template_name = 'auth/logged_out.html' # Default: registration/logged_out.html
 
 
 class PasswordChange(PasswordChangeView):
-    template_name = 'password_change_form.html' # Default: registration/password_change_form.html
+    template_name = 'auth/password_change_form.html' # Default: registration/password_change_form.html
     success_url = reverse_lazy('password_change_done')
     title = _('Password change')
 
 
 class PasswordChangeDone(PasswordChangeDoneView):
-    template_name = 'password_change_done.html' # Default: registration/password_change_done.html
+    template_name = 'auth/password_change_done.html' # Default: registration/password_change_done.html
     title = _('Password change successful')
 
 
 class PasswordReset(PasswordResetView):
-    template_name = 'password_reset_form.html' # Default: registration/password_reset_form.html
+    template_name = 'auth/password_reset_form.html' # Default: registration/password_reset_form.html
     success_url = reverse_lazy('password_reset_done')
     title = _('Password reset')
     from_email = 'system@sys.com'
-    email_template_name = 'password_reset_email.html' # Default: registration/password_reset_email.html
-    subject_template_name = 'password_reset_subject.txt' # Default: registration/password_reset_subject.txt
+    email_template_name = 'auth/password_reset_email.html' # Default: registration/password_reset_email.html
+    subject_template_name = 'auth/password_reset_subject.txt' # Default: registration/password_reset_subject.txt
 
 
 class PasswordResetDone(PasswordResetDoneView):
-    template_name = 'password_reset_done.html' # Default: registration/password_reset_done.html
+    template_name = 'auth/password_reset_done.html' # Default: registration/password_reset_done.html
     title = _('Password reset sent')
 
 
 class PasswordResetConfirm(PasswordResetConfirmView):
-    template_name = 'password_reset_confirm.html' # Default: registration/password_reset_confirm.html
+    template_name = 'auth/password_reset_confirm.html' # Default: registration/password_reset_confirm.html
     title = _('Enter new password')
     success_url = reverse_lazy('password_reset_complete')
 
 class PasswordResetComplete(PasswordResetCompleteView):
-    template_name = 'password_reset_complete.html' # Default: registration/password_reset_complete.html
+    template_name = 'auth/password_reset_complete.html' # Default: registration/password_reset_complete.html
     title = _('Password reset complete')
 
 
