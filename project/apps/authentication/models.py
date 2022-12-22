@@ -4,7 +4,7 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from common.choices import *
+from common.choices import DEGREE_CHOICES, MARITAL_STATUS_CHOICES
 from common.models import BaseModel
 
 

@@ -10,7 +10,8 @@ urlpatterns = [
 urlpatterns += [
     path('', include('core.urls')),
     path('ts/', include('ts.urls')),
-    path('auth/', include('authentication.urls')),
+    path('auth/', include('authentication.routes.urls')),
+    path('auth_v1/', include('authentication.routes.user_management_v1')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
