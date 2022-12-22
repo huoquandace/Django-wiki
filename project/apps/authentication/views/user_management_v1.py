@@ -3,11 +3,12 @@ from csv import reader
 
 from django.conf import settings
 from django.shortcuts import redirect
-from django.views.generic import TemplateView, FormView, View
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.files.storage import FileSystemStorage
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
+from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.http import JsonResponse, HttpResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView, FormView, View
+from django.core.files.storage import FileSystemStorage
 
 from common.forms import UploadFileForm
 
@@ -31,7 +32,7 @@ class ImportUser(LoginRequiredMixin, FormView):
         # uploaded_file_url = fs.url(filename) # If not set location in fs, Default to MEDIA_ROOT
         file_path = os.path.join(CSV_FILE_PATH, filename)
         try:
-            with open(file_path, 'r') as csv_file:
+            with open(file_path + 'ss', 'r') as csv_file:
                 csvf = reader(csv_file)
                 User = get_user_model()
                 data = []
@@ -42,7 +43,8 @@ class ImportUser(LoginRequiredMixin, FormView):
                 User.objects.bulk_create(data)
             csv_file.close()
         except Exception as e:
-            print(e)
+            messages.error(self.request, e)
+            return HttpResponseRedirect(self.request.path_info)
         return JsonResponse('Successful', safe=False)
 
 
@@ -58,5 +60,7 @@ class DowloadUserCsvTemplate(View):
                 return response
         except Exception as e:
             print(e)
-        return redirect('home')
+        return HttpResponseRedirect(request.path_info)
+
+
 
