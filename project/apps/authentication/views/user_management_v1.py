@@ -3,7 +3,7 @@ from csv import reader
 
 from django.conf import settings
 from django.shortcuts import redirect
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth import get_user_model
@@ -46,13 +46,17 @@ class ImportUser(LoginRequiredMixin, FormView):
         return JsonResponse('Successful', safe=False)
 
 
+class DowloadUserCsvTemplate(View):
 
-def download(request):
-    # file_path = os.path.join(settings.MEDIA_ROOT, path)
-    file_path = os.path.join(settings.BASE_DIR, USER_CSV_FILE_TEMPLALTE)
-    if os.path.exists(file_path):
-        with open(file_path, 'rb') as fh:
-            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
-            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
-            return response
-    return JsonResponse('Not Found', safe=False)
+    def get(self, request, *args, **kwargs):
+        file_path = os.path.join(settings.BASE_DIR, USER_CSV_FILE_TEMPLALTE)
+        try:
+            # check os.path.exists(file_path)
+            with open(file_path, 'rb') as fh:
+                response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+                response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+                return response
+        except Exception as e:
+            print(e)
+        return redirect('home')
+
