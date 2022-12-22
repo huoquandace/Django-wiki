@@ -72,14 +72,12 @@ class Register(FormView):
 
     def form_valid(self, form):
         data = form.cleaned_data
-        from pprint import pprint; pprint(data) # DEBUG
         new_user = get_user_model().objects.create_user(
             username = data['username'],
             password = data['password1'],
             email = data['email'],
         )
         url = f"{reverse('register_done')}?username={new_user.username}"
-        from pprint import pprint; pprint(url) # DEBUG
         return redirect(url)
 
 class RegisterDone(TemplateView):
