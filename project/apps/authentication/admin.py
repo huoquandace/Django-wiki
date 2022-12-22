@@ -16,7 +16,7 @@ class UserAdmin(UserAdmin):
             'fields': ('user_permissions', 'is_active', 'is_superuser', )
         }),
     )
-    list_display = ('username', 'email', )
+    list_display = ('username', 'email', 'date_joined')
     list_filter = ('is_staff', 'is_active', )
     search_fields = ('last_name__startswith', )
 
