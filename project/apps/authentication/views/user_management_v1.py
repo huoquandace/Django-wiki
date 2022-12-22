@@ -32,7 +32,7 @@ class ImportUser(LoginRequiredMixin, FormView):
         # uploaded_file_url = fs.url(filename) # If not set location in fs, Default to MEDIA_ROOT
         file_path = os.path.join(CSV_FILE_PATH, filename)
         try:
-            with open(file_path + 'ss', 'r') as csv_file:
+            with open(file_path, 'r') as csv_file:
                 csvf = reader(csv_file)
                 User = get_user_model()
                 data = []
