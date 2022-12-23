@@ -16,14 +16,17 @@
     /* max-height: calc(100vh - 50px); */
   }
   .sidebar {
-    padding: 0;
-    left: 0;
+    left: 0; z-index: 1;
+    
     background-color: #fff;
     width: 200px;
-    overflow: scroll;
     height: calc(100vh - 100px);
+    
+    padding: 0;
     border-right: solid 1px #999;
     border-top: solid 1px #999;
+    
+    overflow: scroll;
     transition: all 0.2s ease;
   }
   .sidebar::-webkit-scrollbar {
