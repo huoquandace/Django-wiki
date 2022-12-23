@@ -83,7 +83,7 @@
       <ul>
         <li><i class="fa-regular fa-message"></i><span>Push Notification</span></li>
       </ul>
-      <div class="toggle_btn" onclick="closeNav()">
+      <div class="toggle_btn" onclick="toggle()">
         <i class="fa-regular fa-square-caret-left"></i>
         <i class="fa-regular fa-square-caret-right d-none"></i>
         Close Button
@@ -98,7 +98,16 @@
 
 
 <script>
+  function toggle() {
+    sts = localStorage.getItem('sts') || '0'
+    if (sts == '0') {
+      closeNav()
+    } else {
+      openNav()
+    }
+  }
   function closeNav() {
+    localStorage.setItem('sts', '1')
     spans = document.querySelectorAll(".sidebar li > span")
     spans.forEach(element => {
       element.style.display = "none"
@@ -108,7 +117,18 @@
     toggle_btn = document.querySelector(".toggle_btn")
     toggle_btn.style.width = "50px"
     toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-right\"></i>"
-    
+  }
+  function openNav() {
+    localStorage.setItem('sts', '0')
+    spans = document.querySelectorAll(".sidebar li > span")
+    spans.forEach(element => {
+      element.style.display = "inline-block"
+    });
+    sidebar = document.querySelector(".sidebar")
+    sidebar.style.width = "200px"
+    toggle_btn = document.querySelector(".toggle_btn")
+    toggle_btn.style.width = "200px"
+    toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-left\"></i>Close Button"
   }
 </script>
 {% endblock content %}
