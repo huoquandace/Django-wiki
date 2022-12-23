@@ -20,11 +20,12 @@
   .sidebar {
     padding: 0;
     left: 0;
-    /* background-color: #999; */
+    background-color: #fff;
     width: 200px;
     overflow: scroll;
     height: calc(100vh - 100px);
     border-right: solid 1px #999;
+    border-top: solid 1px #999;
     transition: all 0.2s ease;
   }
   .sidebar::-webkit-scrollbar {
@@ -35,7 +36,7 @@
     left: 0;
     bottom: 0;
     height: 50px;
-    /* background-color: #666; */
+    background-color: #fff;
     z-index: 1;
     width: 200px;
     cursor: pointer;
@@ -168,6 +169,7 @@
     toggle_btn = document.querySelector(".toggle_btn")
     toggle_btn.style.width = "200px"
     toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-left\"></i><span>Close Button</span>"
+    document.querySelector(".toggle_btn > span").style.display = "inline-block"
     overlay = document.querySelector('.overlay')
     overlay.style.opacity = '0.1'
   }
