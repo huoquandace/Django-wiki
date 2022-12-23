@@ -4,7 +4,8 @@
 
 <style>
   :root {
-    --sidebar-width: 200px;
+    --sidebar-width_open: 200px;
+    --sidebar-width_collapse: 50px;
   }
 
   .header {
@@ -26,7 +27,7 @@
     border-top: solid 1px #999;
     
     background-color: #fff;
-    width: var(--sidebar-width);
+    width: var(--sidebar-width_open);
     height: calc(100vh - 100px);
 
     padding: 0;
@@ -44,7 +45,7 @@
     height: 50px;
     background-color: #fff;
     z-index: 1;
-    width: var(--sidebar-width);
+    width: var(--sidebar-width_open);
     cursor: pointer;
     border-top: solid 1px #999;
     border-right: solid 1px #999;
@@ -55,7 +56,7 @@
     line-height: 50px;
     list-style-type: none;
     padding: 0;
-    width: var(--sidebar-width);
+    width: var(--sidebar-width_open);
   }
   .sidebar li {
     border-bottom: solid 1px #999;
@@ -113,6 +114,19 @@
     }
   }
 
+
+  .hide {
+    display: none !important;
+  }
+  .show {
+    display: inline-block !important;
+  }
+  .close {
+    width: var(--sidebar-width_collapse) !important;
+  }
+  .open {
+    width: var(--sidebar-width_open) !important;
+  }
 </style>
 
 <div class="container-fluid">
@@ -122,15 +136,15 @@
     </div>
   </div>
   <div class="main row">
-    <div class="sidebar col-2">
+    <div class="sidebar col-2 open">
       <ul>
-        <li><i class="fa-regular fa-message"></i><span>Push Notification</span></li>
-        <li><i class="fa-regular fa-message"></i><span>Push Notification</span></li>
+        <li><i class="fa-regular fa-message"></i><span class="show">Push Notification</span></li>
+        <li><i class="fa-regular fa-message"></i><span class="show">Push Notification</span></li>
       </ul>
-      <div class="toggle_btn" onclick="toggle()">
-        <i class="fa-regular fa-square-caret-left"></i>
-        <i class="fa-regular fa-square-caret-right d-none"></i>
-        <span>Close Button</span>
+      <div class="toggle_btn open" onclick="toggle()">
+        <i class="fa-regular fa-square-caret-left show"></i>
+        <i class="fa-regular fa-square-caret-right hide"></i>
+        <span class="show">Close Button</span>
       </div>
     </div>
     
@@ -143,35 +157,55 @@
 
 
 <script>
-  if (screen.width > 1199) nav_status = 1; else nav_status = 0;
+  // if (screen.width > 1199) nav_status = 1; else nav_status = 0;
   if (window.innerWidth > 1199) nav_status = 1; else nav_status = 0;
+  if (nav_status == 0) closeNav();
   toggle = () => { if (nav_status == 1) closeNav(); else openNav(); }
   function closeNav() {
     nav_status = 0
-    spans = document.querySelectorAll(".sidebar li > span")
-    spans.forEach(element => {
-      element.style.display = "none"
+    document.querySelectorAll(" \
+      .toggle_btn > span, \
+      .toggle_btn > .fa-square-caret-left, \
+      .sidebar li > span \
+    ").forEach(element => {
+      element.classList.replace('show', 'hide');
     });
-    document.querySelector(".sidebar").style.width = "50px"
-    toggle_btn = document.querySelector(".toggle_btn")
-    toggle_btn.style.width = "50px"
-    toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-right\"></i>"
-    overlay = document.querySelector('.overlay')
-    overlay.style.opacity = '0'
+    document.querySelectorAll(" \
+    .toggle_btn > .fa-square-caret-right, \
+    .overlay \
+    ").forEach(element => {
+      element.classList.replace('hide', 'show');
+    });
+    document.querySelectorAll(" \
+    .sidebar, \
+    .toggle_btn \
+    ").forEach(element => {
+      element.classList.replace('open', 'close');
+    });
+    document.querySelector('.overlay').style.opacity = '0'
   }
+  
   function openNav() {
     nav_status = 1
-    spans = document.querySelectorAll(".sidebar li > span")
-    spans.forEach(element => {
-      element.style.display = "inline-block"
+    document.querySelectorAll(" \
+    .toggle_btn > .fa-square-caret-right \
+    ").forEach(element => {
+      element.classList.replace('show', 'hide');
     });
-    document.querySelector(".sidebar").style.width = "200px"
-    toggle_btn = document.querySelector(".toggle_btn")
-    toggle_btn.style.width = "200px"
-    toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-left\"></i><span>Close Button</span>"
-    document.querySelector(".toggle_btn > span").style.display = "inline-block"
-    overlay = document.querySelector('.overlay')
-    overlay.style.opacity = '0.1'
+    document.querySelectorAll(" \
+    .toggle_btn > span, \
+    .toggle_btn > .fa-square-caret-left, \
+    .sidebar li > span \
+    ").forEach(element => {
+      element.classList.replace('hide', 'show');
+    });
+    document.querySelectorAll(" \
+    .sidebar, \
+    .toggle_btn \
+    ").forEach(element => {
+      element.classList.replace('close', 'open');
+    });
+    document.querySelector('.overlay').style.opacity = '0.1'
   }
 </script>
 {% endblock content %}
