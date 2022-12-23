@@ -33,7 +33,7 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    line-height: 50px;
+    height: 50px;
     /* background-color: #666; */
     z-index: 1;
     width: 200px;
@@ -84,7 +84,9 @@
         <li><i class="fa-regular fa-message"></i><span>Push Notification</span></li>
       </ul>
       <div class="toggle_btn" onclick="closeNav()">
-        <span>Close Button</span>
+        <i class="fa-regular fa-square-caret-left"></i>
+        <i class="fa-regular fa-square-caret-right d-none"></i>
+        Close Button
       </div>
     </div>
     
@@ -105,6 +107,8 @@
     sidebar.style.width = "50px"
     toggle_btn = document.querySelector(".toggle_btn")
     toggle_btn.style.width = "50px"
+    toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-right\"></i>"
+    
   }
 </script>
 {% endblock content %}
