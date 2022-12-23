@@ -73,14 +73,15 @@
     display: none;
   }
   .overlay {
-    /* display: none; */
+    display: none;
     position: absolute;
-    background-color: #333;
-    opacity: 0.1;
+    background-color: #000;
+    opacity: 0;
     width: 100%;
     padding: 0;
     top: 0;
     bottom: 0;
+    transition: all 0.2s ease;
   }
   @media screen and (max-width: 1199px) {
     .sidebar {
@@ -99,6 +100,9 @@
       right: 0;
       position: absolute;
       z-index: 1;
+    }
+    .overlay {
+      display: block;
     }
   }
 
@@ -150,6 +154,8 @@
     toggle_btn = document.querySelector(".toggle_btn")
     toggle_btn.style.width = "50px"
     toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-right\"></i>"
+    overlay = document.querySelector('.overlay')
+    overlay.style.opacity = '0'
   }
   function openNav() {
     localStorage.setItem('sts', '0')
@@ -162,6 +168,8 @@
     toggle_btn = document.querySelector(".toggle_btn")
     toggle_btn.style.width = "200px"
     toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-left\"></i><span>Close Button</span>"
+    overlay = document.querySelector('.overlay')
+    overlay.style.opacity = '0.1'
   }
 </script>
 {% endblock content %}
