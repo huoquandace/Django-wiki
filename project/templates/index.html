@@ -9,7 +9,7 @@
     left: 0;
     right: 0;
     /* background-color: #ccc; */
-    z-index: 1;
+    z-index: 2;
     line-height: 50px;
     border-bottom: solid 1px #999;
   }
@@ -74,13 +74,21 @@
 
   @media screen and (max-width: 1199px) {
     .sidebar {
+      position: fixed;
       width: 50px;
+      z-index: 2;
     }
     .sidebar .toggle_btn {
       width: 50px;
     }
     .toggle_btn > span {
       display: none;
+    }
+    .content {
+      left: 50px;
+      right: 0;
+      position: absolute;
+      z-index: 1;
     }
   }
 
