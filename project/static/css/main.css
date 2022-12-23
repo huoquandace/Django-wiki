@@ -144,3 +144,8 @@ li {
 .open {
     width: var(--sidebar-width_open) !important;
 }
+
+.menu_sub_items .sub_item {
+    border-bottom: solid 1px #999;
+    width: var(--sidebar-width_open);
+}
