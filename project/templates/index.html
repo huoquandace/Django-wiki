@@ -3,24 +3,37 @@
 {% block content %}
 
 <style>
+  .header {
+    position: fixed;
+    right: 0;
+    left: 0;
+  }
+  .sidebar {
+    width: 20vh;
+  }
   .fixed__side::-webkit-scrollbar{
     display: none;
   }
   .fixed__side {
     height: calc(100vh - 100px);
     overflow-y: scroll;
-    /* max-width: 20vh; */
+    max-width: 20vh;
   }
   .nav__Toggle {
     line-height: 50px;
     display: block;
     width: 100%;
-    max-width: 20vh;
+    width: 20vh;
   }
 
 </style>
 
 <div class="container-fluid">
+  <div class="header row">
+    <div class="col-12">
+      <div class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ducimus earum asperiores. Vitae cum officiis similique quia, non nihil incidunt!</div class="">
+    </div>
+  </div>
   <div class="row">
     <div class="sidebar col-2 border-end vh-100">
       <div class="fixed__side row">
