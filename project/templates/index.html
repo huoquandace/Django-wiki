@@ -20,9 +20,33 @@
     left: 0;
     background-color: #999;
     width: 200px;
+    overflow: scroll;
+    max-height: calc(100vh - 50px);
+  }
+  .sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar .toggle_btn {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    line-height: 50px;
+    background-color: #666;
+    z-index: 1;
+    width: 200px;
+    cursor: pointer;
+    color: #fff;
   }
   .content {
+    margin: auto;
     text-align: center;
+    border: solid 1px #999;
+    overflow: scroll;
+    max-height: calc(100vh - 50px);
+  }
+  .content::-webkit-scrollbar {
+    display: none;
   }
 
 </style>
@@ -38,6 +62,7 @@
       <ul>
         <li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li><li>1234567890</li>
       </ul>
+      <div class="toggle_btn">close button</div>
     </div>
     
     <div class="content col-10">
