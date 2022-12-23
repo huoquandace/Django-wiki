@@ -146,10 +146,12 @@ li {
 }
 
 .menu_sub_items .sub_item {
-    border-bottom: solid 1px #999;
+    border-bottom: solid 1px #bbb;
     width: var(--sidebar-width_open);
+    font-size: small;
+    padding-left: 50px;
 }
 .menu_sub_items .sub_item a{
     text-decoration: none;
-    color: #000;
+    color: #666;
 }
