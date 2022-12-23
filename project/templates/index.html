@@ -83,7 +83,9 @@
       <ul>
         <li><i class="fa-regular fa-message"></i><span>Push Notification</span></li>
       </ul>
-      <div class="toggle_btn" onclick="closeNav()">close button</div>
+      <div class="toggle_btn" onclick="closeNav()">
+        <span>Close Button</span>
+      </div>
     </div>
     
     <div class="content col-10">
@@ -101,6 +103,8 @@
     });
     sidebar = document.querySelector(".sidebar")
     sidebar.style.width = "50px"
+    toggle_btn = document.querySelector(".toggle_btn")
+    toggle_btn.style.width = "50px"
   }
 </script>
 {% endblock content %}
