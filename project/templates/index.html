@@ -61,6 +61,7 @@
     margin: 0 10px;
   }
   .content {
+    padding: 0;
     margin: auto;
     text-align: center;
     border-right: solid 1px #999;
@@ -71,7 +72,16 @@
   .content::-webkit-scrollbar {
     display: none;
   }
-
+  .overlay {
+    /* display: none; */
+    position: absolute;
+    background-color: #333;
+    opacity: 0.1;
+    width: 100%;
+    padding: 0;
+    top: 0;
+    bottom: 0;
+  }
   @media screen and (max-width: 1199px) {
     .sidebar {
       position: fixed;
@@ -113,6 +123,7 @@
     </div>
     
     <div class="content col-10">
+      <div class="overlay"></div>
       <div>X</div>
     </div>
   </div>
