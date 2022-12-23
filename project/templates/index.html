@@ -3,6 +3,10 @@
 {% block content %}
 
 <style>
+  :root {
+    --sidebar-width: 200px;
+  }
+
   .header {
     position: fixed;
     top: 0; left: 0; right: 0; z-index: 2;
@@ -19,9 +23,9 @@
     left: 0; z-index: 1;
     
     background-color: #fff;
-    width: 200px;
+    width: var(--sidebar-width);
     height: calc(100vh - 100px);
-    
+
     padding: 0;
     border-right: solid 1px #999;
     border-top: solid 1px #999;
@@ -39,7 +43,7 @@
     height: 50px;
     background-color: #fff;
     z-index: 1;
-    width: 200px;
+    width: var(--sidebar-width);
     cursor: pointer;
     border-top: solid 1px #999;
     border-right: solid 1px #999;
@@ -50,7 +54,7 @@
     line-height: 50px;
     list-style-type: none;
     padding: 0;
-    width: 200px;
+    width: var(--sidebar-width);
   }
   .sidebar li {
     border-bottom: solid 1px #999;
