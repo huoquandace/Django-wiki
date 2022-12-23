@@ -149,3 +149,7 @@ li {
     border-bottom: solid 1px #999;
     width: var(--sidebar-width_open);
 }
+.menu_sub_items .sub_item a{
+    text-decoration: none;
+    color: #000;
+}
