@@ -72,6 +72,18 @@
     display: none;
   }
 
+  @media screen and (max-width: 1199px) {
+    .sidebar {
+      width: 50px;
+    }
+    .sidebar .toggle_btn {
+      width: 50px;
+    }
+    .toggle_btn > span {
+      display: none;
+    }
+  }
+
 </style>
 
 <div class="container-fluid">
@@ -88,7 +100,7 @@
       <div class="toggle_btn" onclick="toggle()">
         <i class="fa-regular fa-square-caret-left"></i>
         <i class="fa-regular fa-square-caret-right d-none"></i>
-        Close Button
+        <span>Close Button</span>
       </div>
     </div>
     
@@ -130,7 +142,7 @@
     sidebar.style.width = "200px"
     toggle_btn = document.querySelector(".toggle_btn")
     toggle_btn.style.width = "200px"
-    toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-left\"></i>Close Button"
+    toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-left\"></i><span>Close Button</span>"
   }
 </script>
 {% endblock content %}
