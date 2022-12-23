@@ -18,6 +18,7 @@
     /* max-height: calc(100vh - 50px); */
   }
   .sidebar {
+    padding: 0;
     left: 0;
     /* background-color: #999; */
     width: 200px;
@@ -28,7 +29,6 @@
   .sidebar::-webkit-scrollbar {
     display: none;
   }
-
   .sidebar .toggle_btn {
     position: fixed;
     left: 0;
@@ -40,7 +40,19 @@
     cursor: pointer;
     border-top: solid 1px #999;
     border-right: solid 1px #999;
-    text-align: center;
+    /* text-align: center; */
+  }
+  .sidebar ul, li {
+    line-height: 50px;
+    list-style-type: none;
+    padding: 0;
+    width: 200px;
+  }
+  .sidebar li {
+    border-bottom: solid 1px #999;
+  }
+  .sidebar i {
+    margin: 0 10px;
   }
   .content {
     margin: auto;
@@ -65,7 +77,7 @@
   <div class="main row">
     <div class="sidebar col-2">
       <ul>
-        <li>Push Notification</li>
+        <li><i class="fa-regular fa-message"></i>Push Notification</li>
       </ul>
       <div class="toggle_btn">close button</div>
     </div>
