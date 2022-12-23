@@ -138,9 +138,7 @@
 <script>
   if (screen.width > 1199) nav_status = 1; else nav_status = 0;
   console.log(nav_status);
-  function toggle() {
-    if (nav_status == 1) closeNav(); else openNav();
-  }
+  function toggle() { if (nav_status == 1) closeNav(); else openNav(); }
   function closeNav() {
     nav_status = 0
     spans = document.querySelectorAll(".sidebar li > span")
