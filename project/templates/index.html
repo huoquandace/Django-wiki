@@ -2,83 +2,8 @@
 {% block title %} index {% endblock title %}
 {% block content %}
 
-<div class="container-fluid">
-  <div class="header row">
-    <div class="col-12">
-      <div class="text-center">x</div>
-    </div>
-  </div>
-  <div class="main row">
-    <div class="sidebar col-2 open">
-      <ul>
-        <li><i class="fa-regular fa-message"></i><span class="show">Push Notification</span></li>
-        <li><i class="fa-regular fa-message"></i><span class="show">Push Notification</span></li>
-      </ul>
-      <div class="toggle_btn open" onclick="toggle()">
-        <i class="fa-regular fa-square-caret-left show"></i>
-        <i class="fa-regular fa-square-caret-right hide"></i>
-        <span class="show">Close Button</span>
-      </div>
-    </div>
-    
-    <div class="content col-10">
-      <div class="overlay"></div>
-      <div>X</div>
-    </div>
-  </div>
-</div>
+
+123123
 
 
-<script>
-  // if (screen.width > 1199) nav_status = 1; else nav_status = 0;
-  if (window.innerWidth > 1199) nav_status = 1; else nav_status = 0;
-  if (nav_status == 0) closeNav();
-  toggle = () => { if (nav_status == 1) closeNav(); else openNav(); }
-  function closeNav() {
-    nav_status = 0
-    document.querySelectorAll(" \
-      .toggle_btn > span, \
-      .toggle_btn > .fa-square-caret-left, \
-      .sidebar li > span \
-    ").forEach(element => {
-      element.classList.replace('show', 'hide');
-    });
-    document.querySelectorAll(" \
-    .toggle_btn > .fa-square-caret-right, \
-    .overlay \
-    ").forEach(element => {
-      element.classList.replace('hide', 'show');
-    });
-    document.querySelectorAll(" \
-    .sidebar, \
-    .toggle_btn \
-    ").forEach(element => {
-      element.classList.replace('open', 'close');
-    });
-    document.querySelector('.overlay').style.opacity = '0'
-  }
-  
-  function openNav() {
-    nav_status = 1
-    document.querySelectorAll(" \
-    .toggle_btn > .fa-square-caret-right \
-    ").forEach(element => {
-      element.classList.replace('show', 'hide');
-    });
-    document.querySelectorAll(" \
-    .toggle_btn > span, \
-    .toggle_btn > .fa-square-caret-left, \
-    .sidebar li > span \
-    ").forEach(element => {
-      element.classList.replace('hide', 'show');
-    });
-    document.querySelectorAll(" \
-    .sidebar, \
-    .toggle_btn \
-    ").forEach(element => {
-      element.classList.replace('close', 'open');
-    });
-    document.querySelector('.overlay').style.opacity = '0.1'
-  }
-</script>
 {% endblock content %}
