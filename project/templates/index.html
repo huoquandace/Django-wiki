@@ -50,8 +50,12 @@
   }
   .sidebar li {
     border-bottom: solid 1px #999;
+    line-height: 50px;
   }
   .sidebar i {
+    line-height: 50px;
+    text-align: center;
+    width: 30px;
     margin: 0 10px;
   }
   .content {
@@ -77,9 +81,9 @@
   <div class="main row">
     <div class="sidebar col-2">
       <ul>
-        <li><i class="fa-regular fa-message"></i>Push Notification</li>
+        <li><i class="fa-regular fa-message"></i><span>Push Notification</span></li>
       </ul>
-      <div class="toggle_btn">close button</div>
+      <div class="toggle_btn" onclick="closeNav()">close button</div>
     </div>
     
     <div class="content col-10">
@@ -88,4 +92,15 @@
   </div>
 </div>
 
+
+<script>
+  function closeNav() {
+    spans = document.querySelectorAll(".sidebar li > span")
+    spans.forEach(element => {
+      element.style.display = "none"
+    });
+    sidebar = document.querySelector(".sidebar")
+    sidebar.style.width = "50px"
+  }
+</script>
 {% endblock content %}
