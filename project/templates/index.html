@@ -145,8 +145,7 @@
     spans.forEach(element => {
       element.style.display = "none"
     });
-    sidebar = document.querySelector(".sidebar")
-    sidebar.style.width = "50px"
+    document.querySelector(".sidebar").style.width = "50px"
     toggle_btn = document.querySelector(".toggle_btn")
     toggle_btn.style.width = "50px"
     toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-right\"></i>"
@@ -159,8 +158,7 @@
     spans.forEach(element => {
       element.style.display = "inline-block"
     });
-    sidebar = document.querySelector(".sidebar")
-    sidebar.style.width = "200px"
+    document.querySelector(".sidebar").style.width = "200px"
     toggle_btn = document.querySelector(".toggle_btn")
     toggle_btn.style.width = "200px"
     toggle_btn.innerHTML = "<i class=\"fa-regular fa-square-caret-left\"></i><span>Close Button</span>"
