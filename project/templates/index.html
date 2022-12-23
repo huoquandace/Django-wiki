@@ -136,16 +136,13 @@
 
 
 <script>
+  if (screen.width > 1199) nav_status = 1; else nav_status = 0;
+  console.log(nav_status);
   function toggle() {
-    sts = localStorage.getItem('sts') || '0'
-    if (sts == '0') {
-      closeNav()
-    } else {
-      openNav()
-    }
+    if (nav_status == 1) closeNav(); else openNav();
   }
   function closeNav() {
-    localStorage.setItem('sts', '1')
+    nav_status = 0
     spans = document.querySelectorAll(".sidebar li > span")
     spans.forEach(element => {
       element.style.display = "none"
@@ -159,7 +156,7 @@
     overlay.style.opacity = '0'
   }
   function openNav() {
-    localStorage.setItem('sts', '0')
+    nav_status = 1
     spans = document.querySelectorAll(".sidebar li > span")
     spans.forEach(element => {
       element.style.display = "inline-block"
