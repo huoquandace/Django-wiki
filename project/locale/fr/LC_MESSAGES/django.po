@@ -1,0 +1,211 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-24 15:55+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: .\apps\authentication\forms.py:25
+#, python-format
+msgid ""
+"Please enter a correct %(username)s and password. Note that both fields may "
+"be case-sensitive."
+msgstr ""
+
+#: .\apps\authentication\forms.py:28
+msgid "UR CUSTOM MESSAGE"
+msgstr ""
+
+#: .\apps\authentication\forms.py:35
+msgid "This account is inactive."
+msgstr ""
+
+#: .\apps\authentication\forms.py:40
+msgid "Sorry, accounts starting with 'b' aren't welcome here."
+msgstr ""
+
+#: .\apps\authentication\models.py:12
+msgid "username"
+msgstr ""
+
+#: .\apps\authentication\models.py:12
+msgid "A user with that username already exists."
+msgstr ""
+
+#: .\apps\authentication\models.py:13
+msgid "email address"
+msgstr ""
+
+#: .\apps\authentication\models.py:14
+msgid "staff status"
+msgstr ""
+
+#: .\apps\authentication\models.py:15
+msgid "active"
+msgstr ""
+
+#: .\apps\authentication\models.py:16
+msgid "date joined"
+msgstr ""
+
+#: .\apps\authentication\models.py:25
+msgid "user"
+msgstr ""
+
+#: .\apps\authentication\models.py:26
+msgid "users"
+msgstr ""
+
+#: .\apps\authentication\models.py:40
+msgid "Male"
+msgstr ""
+
+#: .\apps\authentication\models.py:41
+msgid "Female"
+msgstr ""
+
+#: .\apps\authentication\models.py:42
+msgid "Unknown"
+msgstr ""
+
+#: .\apps\authentication\models.py:46
+msgid "gender"
+msgstr ""
+
+#: .\apps\authentication\models.py:47
+msgid "degree"
+msgstr ""
+
+#: .\apps\authentication\models.py:48
+msgid "marital_status"
+msgstr ""
+
+#: .\apps\authentication\models.py:50
+msgid "first name"
+msgstr ""
+
+#: .\apps\authentication\models.py:51
+msgid "last name"
+msgstr ""
+
+#: .\apps\authentication\models.py:52
+msgid "phone"
+msgstr ""
+
+#: .\apps\authentication\models.py:53
+msgid "birthday"
+msgstr ""
+
+#: .\apps\authentication\models.py:54
+msgid "age"
+msgstr ""
+
+#: .\apps\authentication\models.py:55
+msgid "address"
+msgstr ""
+
+#: .\apps\authentication\models.py:57
+msgid "citizen identification"
+msgstr ""
+
+#: .\apps\authentication\models.py:58
+msgid "tax code"
+msgstr ""
+
+#: .\apps\authentication\models.py:59
+msgid "certificate"
+msgstr ""
+
+#: .\apps\authentication\models.py:60
+msgid "license_plates"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_email.html:3
+msgid "Greetings"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_email.html:5
+#, python-format
+msgid ""
+"\n"
+"You are receiving this email because you (or someone pretending to be you)\n"
+"requested that your password be reset on the %(domain)s site. If you do not\n"
+"wish to reset your password, please ignore this message.\n"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_email.html:11
+msgid ""
+"\n"
+"To reset your password, please click the following link, or copy and paste "
+"it\n"
+"into your web browser:\n"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_email.html:20
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_email.html:23
+msgid "Best"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_email.html:24
+msgid "Management"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_subject.txt:2
+#, python-format
+msgid "Password reset on %(site_name)s"
+msgstr ""
+
+#: .\apps\authentication\views\base.py:37
+msgid "Password change"
+msgstr ""
+
+#: .\apps\authentication\views\base.py:42
+msgid "Password change successful"
+msgstr ""
+
+#: .\apps\authentication\views\base.py:48
+msgid "Password reset"
+msgstr ""
+
+#: .\apps\authentication\views\base.py:56
+msgid "Password reset sent"
+msgstr ""
+
+#: .\apps\authentication\views\base.py:61
+msgid "Enter new password"
+msgstr ""
+
+#: .\apps\authentication\views\base.py:66
+msgid "Password reset complete"
+msgstr ""
+
+#: .\settings\local_settings.py:60
+msgid "English"
+msgstr ""
+
+#: .\settings\local_settings.py:61
+msgid "French"
+msgstr ""
+
+#: .\settings\local_settings.py:62
+msgid "Spanish"
+msgstr ""
+
+#: .\templates\index.html:7
+msgid "test_text"
+msgstr "test_text_fr"
