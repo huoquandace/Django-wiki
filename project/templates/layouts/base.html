@@ -40,7 +40,7 @@
     <div class="main row">
       <div class="sidebar col-2 open">
         <ul>
-          <li data-bs-toggle="collapse" href="#cl1" role="button" aria-expanded="false" aria-controls="cl1" ><i class="fa-regular fa-message"></i><span class="show">Push Notification</span></li>
+          <li onclick="openNav()" data-bs-toggle="collapse" href="#cl1" role="button" aria-expanded="false" aria-controls="cl1" ><i class="fa-regular fa-message"></i><span class="show">Push Notification</span></li>
           <div class="menu_sub_items collapse multi-collapse" id="cl1">
             <div class="sub_item"><a href="#">Create New</a></div>
             <div class="sub_item"><a href="#">Replacement Push List</a></div>
@@ -55,7 +55,7 @@
       </div>
       
       <div class="content col-10">
-        <div class="overlay"></div>
+        <div class="overlay" onclick="closeNav()"></div>
         {% block content %}{% endblock content %}
       </div>
     </div>
@@ -73,7 +73,8 @@
       document.querySelectorAll(" \
         .toggle_btn > span, \
         .toggle_btn > .fa-square-caret-left, \
-        .sidebar li > span \
+        .sidebar li > span, \
+        .menu_sub_items \
       ").forEach(element => {
         element.classList.replace('show', 'hide');
       });
