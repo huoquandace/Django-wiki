@@ -13,11 +13,19 @@
 
     background-color: #fff;
     line-height: 50px;
+    
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 .main {
     padding-top: 50px;
     /* max-height: calc(100vh - 50px); */
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 .sidebar {
