@@ -1,7 +1,7 @@
 import os, sys
 from pathlib import Path
 from django.utils.translation import gettext_lazy as _
-from settings.base import INSTALLED_APPS, TEMPLATES, BASE_DIR, MIDDLEWARE
+from settings.base import INSTALLED_APPS, TEMPLATES, BASE_DIR
 
 SECRET_KEY = 'dovanthanh'
 
@@ -66,6 +66,13 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
 
-MIDDLEWARE += [
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
