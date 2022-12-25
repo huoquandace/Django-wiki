@@ -170,7 +170,12 @@ li {
 .logo {
     text-align: center;
     border-right: solid 1px #bbb;
+    z-index: -1;
 }
 .logo img {
     height: 50px;
 }
+
+/* .navbar .nav-item {
+    text-decoration: none;
+} */
