@@ -163,3 +163,9 @@ li {
     text-decoration: none;
     color: #666;
 }
+.logo {
+    text-align: center;
+}
+.logo > img {
+    height: 50px;
+}
