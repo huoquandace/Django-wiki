@@ -23,7 +23,7 @@ class Index(TemplateView):
 
 class ImportUser(LoginRequiredMixin, FormView):
     form_class = UploadFileForm
-    template_name = 'user_management_v1/import.html'
+    template_name = 'ver_1/import.html'
 
     def form_valid(self, form):
         file = form.cleaned_data['file']
