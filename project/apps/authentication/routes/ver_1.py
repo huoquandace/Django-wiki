@@ -1,7 +1,7 @@
 from django.urls import path
 
 
-from authentication.views.user_management_v1 import (
+from authentication.views.ver_1 import (
     Index,
     ImportUser,
     DowloadUserCsvTemplate
