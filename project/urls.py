@@ -11,7 +11,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns (
     path('', include('core.urls')),
     path('ts/', include('ts.urls')),
-    path('auth/', include('authentication.routes.urls')),
+    path('auth/', include('authentication.routes.base')),
     path('auth_v1/', include('authentication.routes.user_management_v1')),
     path('hr/', include('hr.urls')),
 
