@@ -15,7 +15,7 @@ urlpatterns += i18n_patterns (
     path('auth_v1/', include('authentication.routes.ver_1')),
     path('hr/', include('hr.urls')),
 
-    prefix_default_language=False
+    # prefix_default_language=False
 )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
