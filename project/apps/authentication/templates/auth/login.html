@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "LOGIN_TITLE" %} {% endblock title %}
+{% block content %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>
 
-<body>
-  <form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
-</body>
-
-</html>
+{% endblock content %}
