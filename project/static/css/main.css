@@ -173,9 +173,26 @@ li {
     z-index: -1;
 }
 .logo img {
-    height: 50px;
+    max-height: 45px;
 }
 
-/* .navbar .nav-item {
+.menubar {
+    padding: 0;
+}
+
+.menu-item {
+    display: block;
+    text-align: center;
+    width: 100px;
+    border-right: solid 1px #eee;
+}
+.menu-item:hover {
+    background-color: #eee;
+    opacity: 0.8;
+}
+
+.menu a{
+    font-weight: 600;
+    color: #000;
     text-decoration: none;
-} */
+}
