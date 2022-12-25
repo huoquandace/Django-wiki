@@ -13,6 +13,7 @@ urlpatterns += i18n_patterns (
     path('ts/', include('ts.urls')),
     path('auth/', include('authentication.routes.urls')),
     path('auth_v1/', include('authentication.routes.user_management_v1')),
+    path('hr/', include('hr.urls')),
 
     prefix_default_language=False
 )
