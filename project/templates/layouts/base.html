@@ -34,11 +34,11 @@
   <div class="container-fluid">
     <div class="header row">
       <div class="logo col-md-2">
-        <a href=""><img src="{% static 'img/logo.jpg' %}" alt="logo"></a>
+        <a href="{% url 'home' %}"><img src="{% static 'img/logo.jpg' %}" alt="logo"></a>
       </div>
       <div class="menubar col-md-8">
         <div class="menu">
-          <a href="" class="menu-item">Home</a>
+          <a href="{% url 'home' %}" class="menu-item">Home</a>
         </div>
       </div>
       <div class="col-md-2">
