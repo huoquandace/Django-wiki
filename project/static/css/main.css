@@ -181,7 +181,7 @@ li {
 }
 
 .menu-item {
-    display: block;
+    display: inline-block;
     text-align: center;
     width: 100px;
     border-right: solid 1px #eee;
