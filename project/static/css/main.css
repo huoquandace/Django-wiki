@@ -188,7 +188,7 @@ li {
 }
 .menu-item:hover {
     background-color: #eee;
-    opacity: 0.8;
+    /* opacity: 0.8; */
 }
 
 .menu a{
