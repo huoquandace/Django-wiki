@@ -175,6 +175,14 @@ li {
 .logo img {
     max-height: 45px;
 }
+.lang {
+    text-align: center;
+    border-right: solid 1px #bbb;
+    z-index: -1;
+}
+.lang img {
+    max-height: 45px;
+}
 
 .menubar {
     padding: 0;
