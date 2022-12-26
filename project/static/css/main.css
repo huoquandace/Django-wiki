@@ -176,7 +176,7 @@ li {
     max-height: 45px;
 }
 .lang {
-    text-align: center;
+    /* text-align: center; */
     border-right: solid 1px #bbb;
     z-index: -1;
 }
@@ -211,10 +211,14 @@ li {
 .lang-menu {
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 51px;
 }
 .lang-item{
-    background-color: #bbb;
+    width: 100px;
+    /* text-align: center; */
+    background-color: #eee;
+    border: solid 1px #bbb;
+    border-top: none;
 }
 .lang-item a{
     text-decoration: none;
