@@ -15,7 +15,8 @@
       <li>
         <a href="/{{ language.code }}/"
           {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
-          {{ language.name_local }}
+          {{ language.name_local }} ||
+          {{ language.code }}
         </a>
       </li>
     {% endfor %}
