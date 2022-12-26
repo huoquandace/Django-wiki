@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +52,12 @@
       </div>
       <div class="menubar col-md-1 lang">
         <!-- <a href=""><img src="{% static 'img/vn-icon.png' %}" alt="vn-icon" class=""></a> -->
-        <a data-bs-toggle="collapse" href="#lang" role="button" aria-expanded="false" aria-controls="lang"><img src="{% static 'img/en-icon.png' %}" alt="en-icon" class=""></a>
+        {% get_current_language as CURRENT_LANGUAGE %}
+        {% if CURRENT_LANGUAGE == 'en' %}
+          <a data-bs-toggle="collapse" href="#lang" role="button" aria-expanded="false" aria-controls="lang"><img src="{% static 'img/en-icon.png' %}" alt="en-icon" class=""></a>
+          {% else %}
+          <a data-bs-toggle="collapse" href="#lang" role="button" aria-expanded="false" aria-controls="lang"><img src="{% static 'img/vn-icon.png' %}" alt="en-icon" class=""></a>
+        {% endif %}
         <div class="lang-menu collapse multi-collapse" id="lang">
           <div class="lang-item"><a href="#"><img src="{% static 'img/en-icon.png' %}" alt="en-icon" class=""> <span class="ms-3">EN</span></a></div>
           <div class="lang-item"><a href="#"><img src="{% static 'img/vn-icon.png' %}" alt="en-icon" class=""> <span class="ms-3">VN</span></a></div>
