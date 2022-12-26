@@ -181,7 +181,8 @@ li {
     z-index: -1;
 }
 .lang img {
-    max-height: 45px;
+    height: 25px;
+    width: 40px;
 }
 
 .menubar {
