@@ -50,8 +50,12 @@
         </div>
       </div>
       <div class="menubar col-md-1 lang">
-        <img src="{% static 'img/en-icon.png' %}" alt="en-icon" class="">
-        <!-- <img src="{% static 'img/vn-icon.png' %}" alt="vn-icon" class=""> -->
+        <!-- <a href=""><img src="{% static 'img/vn-icon.png' %}" alt="vn-icon" class=""></a> -->
+        <a data-bs-toggle="collapse" href="#lang" role="button" aria-expanded="false" aria-controls="lang"><img src="{% static 'img/en-icon.png' %}" alt="en-icon" class=""></a>
+        <div class="lang-menu collapse multi-collapse" id="lang">
+          <div class="lang-item"><a href="#">EN <img src="{% static 'img/en-icon.png' %}" alt="en-icon" class=""></a></div>
+          <div class="lang-item"><a href="#">VN <img src="{% static 'img/vn-icon.png' %}" alt="en-icon" class=""></a></div>
+        </div>
       </div>
     </div>
     <div class="main row">

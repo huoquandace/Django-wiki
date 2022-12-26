@@ -187,6 +187,7 @@ li {
 }
 
 .menubar {
+    position: relative;
     padding: 0;
 }
 
@@ -205,4 +206,17 @@ li {
     font-weight: 600;
     color: #000;
     text-decoration: none;
+}
+
+.lang-menu {
+    position: absolute;
+    left: 0;
+    top: 50px;
+}
+.lang-item{
+    background-color: #bbb;
+}
+.lang-item a{
+    text-decoration: none;
+    color: #000;
 }
