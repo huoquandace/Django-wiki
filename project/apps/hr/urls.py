@@ -4,5 +4,5 @@ from hr.views import *
 
 
 urlpatterns = [
-    
+    path('list/', UserList.as_view(), name='user_list'),
 ]
