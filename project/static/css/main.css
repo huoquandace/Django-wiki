@@ -184,7 +184,8 @@ li {
     display: inline-block;
     text-align: center;
     width: 100px;
-    border-right: solid 1px #eee;
+    border-radius: 50%;
+    /* border-right: solid 1px #eee; */
 }
 .menu-item:hover {
     background-color: #eee;
