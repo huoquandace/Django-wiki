@@ -36,15 +36,23 @@
       <div class="logo col-md-2">
         <a href="{% url 'home' %}"><img src="{% static 'img/logo.jpg' %}" alt="logo"></a>
       </div>
-      <div class="menubar col-md-8">
+      <div class="menubar col-md-6">
         <div class="menu">
           <a href="{% url 'home' %}" class="menu-item">Home</a>
           <a href="{% url 'home' %}" class="menu-item">Hr</a>
           <a href="{% url 'home' %}" class="menu-item">PR</a>
         </div>
       </div>
-      <div class="col-md-2">
-        <div>1</div>
+      <div class="menubar col-md-3 text-end">
+        <div class="menu">
+          <a href="{% url 'home' %}" class="menu-item">Logout</a>
+          <a href="{% url 'home' %}" class="menu-item">Account</a>
+        </div>
+      </div>
+      <div class="menubar col-md-1">
+        <div class="menu">
+          <a href="{% url 'home' %}" class="menu-item">Language</a>
+        </div>
       </div>
     </div>
     <div class="main row">
