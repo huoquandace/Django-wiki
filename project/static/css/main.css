@@ -183,6 +183,7 @@ li {
 .lang img {
     height: 25px;
     width: 40px;
+    vertical-align: middle;
 }
 
 .menubar {
