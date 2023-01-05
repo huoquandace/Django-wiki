@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Python Guides</title>
+    <style>
+        @page {
+            size: letter landscape;
+            margin: 2cm;
+        }
+        h1 {
+          text-align: center;
+        }
+        td, th {
+          text-align: center;
+        }
+      </style>
+</head>
+<body>
+    
+      <h1>List of Employees</h1>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-left:1px solid #333; border-right:1px solid #333; padding-top:5px;" width="2.5%" height="32" align="center">ID</td>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" width="8%" align="center">Username</td>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" width="8%" align="center">Avatar</td>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" width="10%" align="center">Phone</td>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" width="8%" align="center">Gender</td>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" width="8%" align="center">Birthday</td>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" width="8%" align="center">Position</td>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" width="12%" align="center">Citizen Identification</td>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" width="8%" align="center">Tax Code</td>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" width="8%" align="center">License Plates</td>
+          <td style="font-family:Verdana, Geneva, sans-serif; font-weight:600; font-size:13px; border-top:1px solid #333; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;"  align="center">Address</td>
+          </tr>
+          {% for user in users %}
+          <tr>
+            <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; border-left:1px solid #333; padding-top:5px;" align="center">{{user.id}}</td>
+            <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" align="center"> {{user.username}} </td>
+            <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" align="center"> <img src="../{{user.profile.avatar.url}} "> </td>
+            <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" align="center"> {{user.profile.phone}} </td>
+            <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" align="center"> {{user.profile.gender}} </td>
+            <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" align="center"> {{user.profile.birthday|date:"d-m-Y"}} </td>
+            <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" align="center"> {{user.groups.all.0}} </td>
+            <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" align="center"> {{user.profile.citizen_identification}} </td>
+            <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" align="center"> {{user.profile.tax_code}} </td>
+            <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" align="center"> {{user.profile.license_plates}} </td>
+            <td style="font-family:Verdana, Geneva, sans-serif; font-weight:300; font-size:13px; border-bottom:1px solid #333; border-right:1px solid #333; padding-top:5px;" align="center"> {{user.profile.address}} </td>
+        </tr>
+        {% endfor %}
+      </table>
+
+</body>
+</html>
