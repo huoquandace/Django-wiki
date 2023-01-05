@@ -26,7 +26,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
                 yield from list_urls(l.url_patterns, acc + [str(l.pattern)])
             yield from list_urls(lis[1:], acc)
         url_list = []
-        for p in list_urls(urlconf.urlpatterns):
+        for p in list_urls(urlconf.urlpatterns, ['127.0.0.1:8000/']):
             url_list.append(''.join(p)) 
         context['url_list'] = url_list
 
