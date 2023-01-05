@@ -5,7 +5,7 @@ from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
 ]
 
 urlpatterns += i18n_patterns (
@@ -15,7 +15,7 @@ urlpatterns += i18n_patterns (
     path('auth_v1/', include('authentication.routes.ver_1')),
     path('hr/', include('hr.urls')),
 
-    # prefix_default_language=False
+    prefix_default_language=False
 )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

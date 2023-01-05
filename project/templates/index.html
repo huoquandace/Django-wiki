@@ -6,5 +6,10 @@
 
 {% trans "test_text" %}
 
+<div>-------- {% trans "URL_LIST" %} ---------</div>
+
+{% for url in url_list %}
+<div> --  {{ url }} </div>
+{% endfor %}
 
 {% endblock content %}

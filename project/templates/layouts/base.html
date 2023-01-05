@@ -63,7 +63,8 @@
         <div class="lang-menu collapse multi-collapse" id="lang">
         {% for language in languages %}
             {% if language.code == 'en' %}
-              <div class="lang-item"><a href="/{{ language.code }}/"><img src="{% static 'img/en-icon.png' %}" alt="en-icon" class=""> <span class="ms-3">{{ language.code }}</span></a></div>
+              <!-- <div class="lang-item"><a href="/{{ language.code }}/"><img src="{% static 'img/en-icon.png' %}" alt="en-icon" class=""> <span class="ms-3">{{ language.code }}</span></a></div> -->
+              <div class="lang-item"><a href="/"><img src="{% static 'img/en-icon.png' %}" alt="en-icon" class=""> <span class="ms-3">{{ language.code }}</span></a></div>
               <!-- {{ language.name_local }} -->
             {% else %}
               <div class="lang-item"><a href="/{{ language.code }}/"><img src="{% static 'img/vn-icon.png' %}" alt="en-icon" class=""> <span class="ms-3">{{ language.code }}</span></a></div>
