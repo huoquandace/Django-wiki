@@ -9,8 +9,10 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, FormView, View, ListView
 from django.core.files.storage import FileSystemStorage
+from django.template.loader import render_to_string
 
 from common.forms import UploadFileForm
+from common.utils import html_to_pdf
 from authentication.models import User
 
 
@@ -22,6 +24,17 @@ class UserList(ListView):
     template_name = 'index1.html'
     model = User
     context_object_name = 'objects'
+
+class UserListToPdf(View):
+    def get(self, request, *args, **kwargs):
+        data = User.objects.all()
+        open('templates/temp.html', "w").write(render_to_string('sample.html', {'data': data}))
+
+        # Converting the HTML template into a PDF file
+        pdf = html_to_pdf('temp.html')
+         
+         # rendering the template
+        return HttpResponse(pdf, content_type='application/pdf')
 
 class ImportUser(LoginRequiredMixin, FormView):
     form_class = UploadFileForm

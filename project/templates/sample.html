@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Python Guides</title>
+    <style>
+        h1 {
+          text-align: center;
+        }
+        td, th {
+          text-align: center;
+        }
+      </style>
+</head>
+<body>
+    
+      <h1>List of Employees</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Employee ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Department</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for person in data %}
+            <tr>
+              <td>{{ person.id }}</td>
+              <td>{{ person.username }}</td>
+              <td>{{ person.email }}</td>
+              <td>{{ person.profile.gender }}</td>
+            </tr>
+          {% endfor %}    
+        </tbody>
+      </table>
+</body>
+</html>
