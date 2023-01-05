@@ -28,10 +28,10 @@ class UserList(ListView):
 class UserListToPdf(View):
     def get(self, request, *args, **kwargs):
         users = User.objects.all()
-        open('templates/temp.html', "w").write(render_to_string('reports/staff.html', {'users': users}))
+        open('templates/reports/temp.html', "w").write(render_to_string('reports/staff.html', {'users': users}))
 
         # Converting the HTML template into a PDF file
-        pdf = html_to_pdf('temp.html')
+        pdf = html_to_pdf('reports/temp.html')
          
          # rendering the template
         return HttpResponse(pdf, content_type='application/pdf')
