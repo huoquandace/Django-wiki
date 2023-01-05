@@ -7,19 +7,21 @@ from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, FormView, View
+from django.views.generic import TemplateView, FormView, View, ListView
 from django.core.files.storage import FileSystemStorage
 
 from common.forms import UploadFileForm
+from authentication.models import User
 
 
 CSV_FILE_PATH = 'data/csv/'
 USER_CSV_FILE_TEMPLALTE = 'data/csv.csv'
 
 
-class Index(TemplateView):
-    template_name = 'index.html'
-
+class UserList(ListView):
+    template_name = 'index1.html'
+    model = User
+    context_object_name = 'objects'
 
 class ImportUser(LoginRequiredMixin, FormView):
     form_class = UploadFileForm
