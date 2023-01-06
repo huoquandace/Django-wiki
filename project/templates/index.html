@@ -9,7 +9,7 @@
 <div>-------- {% trans "URL_LIST" %} ---------</div>
 
 {% for url in url_list %}
-<div> --  {{ url }} </div>
+<div> --  <a href="{{ url }}" >{{ url }}</a> </div>
 {% endfor %}
 
 {% endblock content %}
