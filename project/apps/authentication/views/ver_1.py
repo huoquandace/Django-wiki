@@ -29,11 +29,7 @@ class UserListToPdf(View):
     def get(self, request, *args, **kwargs):
         users = User.objects.all()
         open('templates/reports/temp.html', "w").write(render_to_string('reports/staff.html', {'users': users}))
-
-        # Converting the HTML template into a PDF file
         pdf = html_to_pdf('reports/temp.html')
-         
-         # rendering the template
         return HttpResponse(pdf, content_type='application/pdf')
 
 class ImportUser(LoginRequiredMixin, FormView):
