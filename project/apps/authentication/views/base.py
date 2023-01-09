@@ -34,18 +34,18 @@ class Logout(LoginRequiredMixin, LogoutView):
 class PasswordChange(PasswordChangeView):
     template_name = 'auth/password_change_form.html' # Default: registration/password_change_form.html
     success_url = reverse_lazy('password_change_done')
-    title = _('Password change')
+    # title = _('Password change')
 
 
 class PasswordChangeDone(PasswordChangeDoneView):
     template_name = 'auth/password_change_done.html' # Default: registration/password_change_done.html
-    title = _('Password change successful')
+    # title = _('Password change successful')
 
 
 class PasswordReset(PasswordResetView):
     template_name = 'auth/password_reset_form.html' # Default: registration/password_reset_form.html
     success_url = reverse_lazy('password_reset_done')
-    title = _('Password reset')
+    # title = _('Password reset')
     from_email = 'system@sys.com'
     email_template_name = 'auth/password_reset_email.html' # Default: registration/password_reset_email.html
     subject_template_name = 'auth/password_reset_subject.txt' # Default: registration/password_reset_subject.txt
@@ -53,17 +53,17 @@ class PasswordReset(PasswordResetView):
 
 class PasswordResetDone(PasswordResetDoneView):
     template_name = 'auth/password_reset_done.html' # Default: registration/password_reset_done.html
-    title = _('Password reset sent')
+    # title = _('Password reset sent')
 
 
 class PasswordResetConfirm(PasswordResetConfirmView):
     template_name = 'auth/password_reset_confirm.html' # Default: registration/password_reset_confirm.html
-    title = _('Enter new password')
+    # title = _('Enter new password')
     success_url = reverse_lazy('password_reset_complete')
 
 class PasswordResetComplete(PasswordResetCompleteView):
     template_name = 'auth/password_reset_complete.html' # Default: registration/password_reset_complete.html
-    title = _('Password reset complete')
+    # title = _('Password reset complete')
 
 
 class Register(FormView):
