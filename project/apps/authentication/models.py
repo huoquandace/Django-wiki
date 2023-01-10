@@ -50,8 +50,8 @@ class Profile(BaseModel):
     avatar = models.ImageField(default='images/avatar_default1.jpg', upload_to='images')
 
     age = models.IntegerField(_("age"), blank=True, null=True)
-    
     birthday = models.DateField(_("birthday"), max_length=10, blank=True, null=True)
+    certificate = models.TextField(_("certificate"), blank=True, null=True)
 
     first_name = models.CharField(_("first name"), max_length=100, blank=True)
     last_name = models.CharField(_("last name"), max_length=100, blank=True)    # Surname
@@ -60,9 +60,6 @@ class Profile(BaseModel):
     citizen_identification = models.CharField(_("citizen identification"), max_length=100, blank=True, null=True)
     tax_code = models.CharField(_("tax code"), max_length=100, blank=True, null=True)
     license_plates = models.CharField(_("license_plates"), max_length=100, blank=True, null=True,)
-
-    certificate = models.TextField(_("certificate"), blank=True, null=True)
-
 
     def __str__(self):
         return f"Profile of {self.user.username}"
