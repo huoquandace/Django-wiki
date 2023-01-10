@@ -38,7 +38,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         return context
 
     def form_valid(self, form):
-        profile = form.save(commit=False)
+        profile = form.save(commit=False) # commit=false => Create model object to add extra data before save it
         user = profile.user
         user.email = form.cleaned_data['email']
         user.save()
