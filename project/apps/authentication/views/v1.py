@@ -21,7 +21,7 @@ USER_CSV_FILE_TEMPLALTE = 'data/csv.csv'
 
 
 class Profile(LoginRequiredMixin, TemplateView):
-    template_name = 'ver_1/profile.html'
+    template_name = 'v1/profile.html'
 
 class UserList(ListView):
     template_name = 'index1.html'
@@ -37,7 +37,7 @@ class UserListToPdf(View):
 
 class ImportUser(LoginRequiredMixin, FormView):
     form_class = UploadFileForm
-    template_name = 'ver_1/import.html'
+    template_name = 'v1/import.html'
 
     def form_valid(self, form):
         file = form.cleaned_data['file']
