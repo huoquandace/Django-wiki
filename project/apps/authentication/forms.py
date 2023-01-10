@@ -4,6 +4,9 @@ from django.contrib.auth.forms import UserCreationForm, UsernameField, Authentic
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+from authentication.models import Profile
+
+
 class RegisterForm(UserCreationForm):
 
     class Meta:
@@ -40,3 +43,12 @@ class AuthForm(AuthenticationForm):
                 _("Sorry, accounts starting with 'b' aren't welcome here."),
                 code='no_b_users',
             )
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    email = forms.CharField(max_length=100)
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
+        
