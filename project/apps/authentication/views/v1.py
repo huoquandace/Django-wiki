@@ -47,7 +47,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         # return HttpResponseRedirect(reverse('profile:user-profile', kwargs={'pk': self.get_object().id}))
 
 class UserList(ListView):
-    template_name = 'index1.html'
+    template_name = 'v1/user_list.html'
     model = User
     context_object_name = 'objects'
 
