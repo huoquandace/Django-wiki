@@ -25,14 +25,14 @@ USER_CSV_FILE_TEMPLALTE = 'data/csv.csv'
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'v1/profile.html'
 
-class UserSettings(LoginRequiredMixin, UpdateView):
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'v1/profile_update.html'
     context_object_name = 'user'
     queryset = Profile.objects.all()
     form_class = ProfileUpdateForm
 
     def get_context_data(self, **kwargs):
-        context = super(UserSettings, self).get_context_data(**kwargs)
+        context = super(ProfileUpdateView, self).get_context_data(**kwargs)
         user = self.request.user
         context['profile_form'] = ProfileUpdateForm(instance=self.request.user.profile, initial={'email': user.email})
         return context
