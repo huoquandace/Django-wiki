@@ -67,7 +67,7 @@ class PasswordResetComplete(PasswordResetCompleteView):
 
 
 class Register(FormView):
-    template_name = 'register.html'
+    template_name = 'auth/register.html'
     form_class = RegisterForm
 
     def form_valid(self, form):
@@ -81,7 +81,7 @@ class Register(FormView):
         return redirect(url)
 
 class RegisterDone(TemplateView):
-    template_name = 'register_done.html'
+    template_name = 'auth/register_done.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -89,4 +89,4 @@ class RegisterDone(TemplateView):
         return context
 
 class Profile(LoginRequiredMixin, TemplateView):
-    template_name = 'profile.html'
+    template_name = 'auth/profile.html'
