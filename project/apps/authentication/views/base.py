@@ -31,13 +31,13 @@ class Logout(LoginRequiredMixin, LogoutView):
     # template_name = 'auth/logged_out.html' # Default: registration/logged_out.html
 
 
-class PasswordChange(PasswordChangeView):
+class PasswordChange(LoginRequiredMixin, PasswordChangeView):
     template_name = 'auth/password_change_form.html' # Default: registration/password_change_form.html
     success_url = reverse_lazy('password_change_done')
     # title = _('Password change')
 
 
-class PasswordChangeDone(PasswordChangeDoneView):
+class PasswordChangeDone(LoginRequiredMixin, PasswordChangeDoneView):
     template_name = 'auth/password_change_done.html' # Default: registration/password_change_done.html
     # title = _('Password change successful')
 
