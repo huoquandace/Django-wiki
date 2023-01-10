@@ -87,6 +87,3 @@ class RegisterDone(TemplateView):
         context = super().get_context_data(**kwargs)
         context['username'] = self.request.GET.get('username')
         return context
-
-class Profile(LoginRequiredMixin, TemplateView):
-    template_name = 'auth/profile.html'

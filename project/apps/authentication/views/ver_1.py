@@ -20,6 +20,9 @@ CSV_FILE_PATH = 'data/csv/'
 USER_CSV_FILE_TEMPLALTE = 'data/csv.csv'
 
 
+class Profile(LoginRequiredMixin, TemplateView):
+    template_name = 'ver_1/profile.html'
+
 class UserList(ListView):
     template_name = 'index1.html'
     model = User
