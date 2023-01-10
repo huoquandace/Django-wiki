@@ -58,7 +58,7 @@ class UserListToPdf(View):
         pdf = html_to_pdf('reports/temp.html')
         return HttpResponse(pdf, content_type='application/pdf')
 
-class ImportUser(LoginRequiredMixin, FormView):
+class UserAddCsv(LoginRequiredMixin, FormView):
     form_class = UploadFileForm
     template_name = 'v1/import.html'
 
