@@ -22,7 +22,7 @@ class Login(LoginView):
     authentication_form = AuthForm # Defauts to AuthenticationForm (django.contrib.auth.forms)
     template_name = 'auth/login.html' # Default: registration/login.html
     login_url = '/auth/login/' # Defaults to LOGIN_URL
-    next_page = '/auth/profile/' # Defaults to LOGIN_REDIRECT_URL
+    next_page = '/auth/v1/profile/' # Defaults to LOGIN_REDIRECT_URL
     redirect_authenticated_user = True # If it is false, authenticated_user is still access to login
 
 
