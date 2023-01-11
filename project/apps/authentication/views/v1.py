@@ -23,10 +23,10 @@ USER_CSV_FILE_TEMPLALTE = 'data/csv.csv'
 
 
 class ProfileView(LoginRequiredMixin, TemplateView):
-    template_name = 'v1/profile.html'
+    template_name = 'extra/profile.html'
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
-    template_name = 'v1/profile_update.html'
+    template_name = 'extra/profile_update.html'
     context_object_name = 'user'
     queryset = Profile.objects.all()
     form_class = ProfileUpdateForm
@@ -47,7 +47,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         # return HttpResponseRedirect(reverse('profile:user-profile', kwargs={'pk': self.get_object().id}))
 
 class UserList(ListView):
-    template_name = 'v1/user_list.html'
+    template_name = 'extra/user_list.html'
     model = User
     context_object_name = 'objects'
 
@@ -60,7 +60,7 @@ class UserListToPdf(View):
 
 class UserAddCsv(LoginRequiredMixin, FormView):
     form_class = UploadFileForm
-    template_name = 'v1/user_add_csv.html'
+    template_name = 'extra/user_add_csv.html'
 
     def form_valid(self, form):
         file = form.cleaned_data['file']
