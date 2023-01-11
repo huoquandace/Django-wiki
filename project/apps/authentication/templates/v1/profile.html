@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h3>Profile</h3>
-  <div>Username: {{ user.username }}</div>
-  <div>Email: {{ user.email }}</div>
-  <div>Date Joined: {{ user.date_joined | date:'d-m-Y' }}</div>
-  <button><a href="{% url 'logout' %}">Logout</a></button>
-  <button><a href="{% url 'password_change' %}">password_change</a></button>
-</body>
-</html>
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "PROFILE_TITLE" %} {% endblock title %}
+{% block content %}
+
+<h3>{% trans "PROFILE" %}</h3>
+<div>{% trans "USERNAME" %}: {{ user.username }}</div>
+<div>{% trans "EMAIL" %}: {{ user.email }}</div>
+<div>{% trans "DATE_JOINED" %}: {{ user.date_joined | date:'d-m-Y' }}</div>
+<button><a href="{% url 'logout' %}">{% trans "LOGOUT" %}</a></button>
+<button><a href="{% url 'profile_update' user.id %}">{% trans "PROFILE_UPDATE" %}</a></button>
+<button><a href="{% url 'password_change' %}">{% trans "PASSWORD_CHANGE" %}</a></button>
+
+{% endblock content %}
