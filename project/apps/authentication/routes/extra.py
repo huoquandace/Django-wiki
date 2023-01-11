@@ -1,7 +1,7 @@
 from django.urls import path
 
 
-from authentication.views.v1 import (
+from authentication.views.extra import (
     ProfileView,
     ProfileUpdateView,
     UserList,

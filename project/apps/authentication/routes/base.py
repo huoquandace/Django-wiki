@@ -26,6 +26,6 @@ urlpatterns = [
     path('register/', Register.as_view(), name='register'),
     path('register/done/', RegisterDone.as_view(), name='register_done'),
 
-    path('v1/', include('authentication.routes.v1')),
+    path('extra/', include('authentication.routes.extra')),
 
 ]
