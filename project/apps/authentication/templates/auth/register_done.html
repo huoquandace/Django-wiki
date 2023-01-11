@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h3>Register Done</h3>
-  <div>{{ username}}</div>
-</body>
-</html>
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "REGISTER_DONE_TITLE" %} {% endblock title %}
+{% block content %}
+
+{% trans "REGISTER_DONE" %}
+<div>{{ username}}</div>
+
+{% endblock content %}
