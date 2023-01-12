@@ -66,7 +66,7 @@ class UserAdd(LoginRequiredMixin, View):
         return render(request, 'extra/user_add.html', context)
     
     def post(self, request):
-        form = UserProfileForm()
+        form = UserProfileForm(request.POST)
         acc_form = UserAddForm(request.POST)
         try:
             if request.POST['custom_acc'] and acc_form.is_valid():
