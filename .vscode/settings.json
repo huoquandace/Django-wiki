@@ -30,4 +30,8 @@
         "editor.insertSpaces": true,
         "editor.tabSize": 4
     },
+
+    "material-icon-theme.folders.associations": {
+        "migrations": "Cluster"
+    }
 }
