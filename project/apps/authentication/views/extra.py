@@ -82,8 +82,19 @@ class UserAdd(LoginRequiredMixin, View):
                 u_id = form.cleaned_data['u_id']
                 first_name = form.cleaned_data['first_name']
                 last_name = form.cleaned_data['last_name']
-                username = 'a'
+                username = last_name
+                fn_arr = first_name.strip().split(' ')
+                for c in fn_arr:
+                    username += c[0].upper()
+                username += str(u_id)
                 print(username)
+                birthday = form.cleaned_data['birthday']
+                password = str(birthday).replace('-', '')
+                print(password)
+                user = User(username=username)
+                user.set_password(password)
+                user.save()
+                print(user)
             else:
                 return redirect('user_add')
         except Exception as e:
