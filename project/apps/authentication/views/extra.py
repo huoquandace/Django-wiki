@@ -2,7 +2,7 @@ import os
 from csv import reader
 
 from django.conf import settings
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib import messages
@@ -30,6 +30,9 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     context_object_name = 'user'
     queryset = Profile.objects.all()
     form_class = ProfileUpdateForm
+
+    def get_object(self):
+        return get_object_or_404(User, id=self.request.user.id)
 
     def get_context_data(self, **kwargs):
         context = super(ProfileUpdateView, self).get_context_data(**kwargs)

@@ -13,7 +13,7 @@ from authentication.views.extra import (
 
 urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
-    path('profile/update/<int:pk>/', ProfileUpdateView.as_view(), name='profile_update'),
+    path('profile/update/', ProfileUpdateView.as_view(), name='profile_update'),
     path('user/<int:pk>/', UserDetail.as_view(), name='profile_detail'),
     path('user/list/', UserList.as_view(), name='user_list'),
     path('user/list/to_pdf/', UserListToPdf.as_view(), name='user_list_to_pdf'), 
