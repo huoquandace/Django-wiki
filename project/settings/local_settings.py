@@ -7,7 +7,7 @@ from settings.base import INSTALLED_APPS, TEMPLATES, BASE_DIR, MIDDLEWARE
 SECRET_KEY = 'dovanthanh'
 
 # DEBUG = False
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0', ]
 
 ROOT_URLCONF = 'urls'
 
