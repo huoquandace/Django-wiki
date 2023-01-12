@@ -49,6 +49,8 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         return redirect('profile')
         # return HttpResponseRedirect(reverse('profile:user-profile', kwargs={'pk': self.get_object().id}))
 
+class UserAdd(LoginRequiredMixin, FormView):
+    pass
 
 class UserDetail(DetailView):
     model = User
