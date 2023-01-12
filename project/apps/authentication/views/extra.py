@@ -25,11 +25,6 @@ USER_CSV_FILE_TEMPLALTE = 'data/csv.csv'
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'extra/profile.html'
 
-class ProfileDetailView(DetailView):
-    model = User
-    template_name = 'extra/profile_detail.html'
-    context_object_name = 'user'
-
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'extra/profile_update.html'
     context_object_name = 'user'
@@ -50,6 +45,12 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         profile.save()
         return redirect('profile')
         # return HttpResponseRedirect(reverse('profile:user-profile', kwargs={'pk': self.get_object().id}))
+
+
+class UserDetail(DetailView):
+    model = User
+    template_name = 'extra/user_detail.html'
+    context_object_name = 'user'
 
 class UserList(ListView):
     template_name = 'extra/user_list.html'
