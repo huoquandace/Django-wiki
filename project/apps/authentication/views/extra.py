@@ -67,11 +67,7 @@ class UserAdd(LoginRequiredMixin, View):
     
     def post(self, request):
         form = UserProfileForm()
-        acc_form = UserAddForm(request.POST or None)
-        context = {
-            'form': form,
-            'acc_form': acc_form,
-        }
+        acc_form = UserAddForm(request.POST)
         try:
             if request.POST['custom_acc'] and acc_form.is_valid():
                 user = User(username=acc_form.cleaned_data['username'])
@@ -81,9 +77,13 @@ class UserAdd(LoginRequiredMixin, View):
             else:
                 messages.error(request, acc_form.errors)
         except MultiValueDictKeyError:
-            pass
+            acc_form = UserAddForm()
         except Exception as e:
             print(e)
+        context = {
+            'form': form,
+            'acc_form': acc_form,
+        }
         return render(request, 'extra/user_add.html', context)
     
 
