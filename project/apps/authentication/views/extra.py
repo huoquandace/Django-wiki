@@ -78,6 +78,14 @@ class UserAdd(LoginRequiredMixin, View):
                 messages.error(request, acc_form.errors)
         except MultiValueDictKeyError:
             acc_form = UserAddForm()
+            if form.is_valid():
+                u_id = form.cleaned_data['u_id']
+                first_name = form.cleaned_data['first_name']
+                last_name = form.cleaned_data['last_name']
+                username = 'a'
+                print(username)
+            else:
+                return redirect('user_add')
         except Exception as e:
             print(e)
         context = {

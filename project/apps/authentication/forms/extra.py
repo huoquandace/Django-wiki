@@ -12,12 +12,12 @@ class ProfileUpdateForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('first_name', 'last_name')
+        fields = ('u_id', 'first_name', 'last_name', 'birthday')
 
 
 class UserAddForm(forms.Form):
-    username = forms.CharField(max_length=100)
-    password = forms.CharField(max_length=100)
+    username = forms.CharField(max_length=100, required = False)
+    password = forms.CharField(max_length=100, required = False)
     
     def clean_username(self):
         username = self.cleaned_data['username']
