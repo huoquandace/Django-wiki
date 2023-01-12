@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-24 15:55+0700\n"
+"POT-Creation-Date: 2023-01-12 09:19+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: .\apps\authentication\forms.py:25
+
+#: .\apps\authentication\forms.py:28
 #, python-format
 msgid ""
 "Please enter a correct %(username)s and password. Note that both fields may "
 "be case-sensitive."
 msgstr ""
 
-#: .\apps\authentication\forms.py:28
+#: .\apps\authentication\forms.py:31
 msgid "UR CUSTOM MESSAGE"
 msgstr ""
 
-#: .\apps\authentication\forms.py:35
+#: .\apps\authentication\forms.py:38
 msgid "This account is inactive."
 msgstr ""
 
-#: .\apps\authentication\forms.py:40
+#: .\apps\authentication\forms.py:43
 msgid "Sorry, accounts starting with 'b' aren't welcome here."
 msgstr ""
 
@@ -92,16 +93,8 @@ msgstr ""
 msgid "marital_status"
 msgstr ""
 
-#: .\apps\authentication\models.py:50
-msgid "first name"
-msgstr ""
-
-#: .\apps\authentication\models.py:51
-msgid "last name"
-msgstr ""
-
 #: .\apps\authentication\models.py:52
-msgid "phone"
+msgid "age"
 msgstr ""
 
 #: .\apps\authentication\models.py:53
@@ -109,27 +102,92 @@ msgid "birthday"
 msgstr ""
 
 #: .\apps\authentication\models.py:54
-msgid "age"
-msgstr ""
-
-#: .\apps\authentication\models.py:55
-msgid "address"
-msgstr ""
-
-#: .\apps\authentication\models.py:57
-msgid "citizen identification"
-msgstr ""
-
-#: .\apps\authentication\models.py:58
-msgid "tax code"
-msgstr ""
-
-#: .\apps\authentication\models.py:59
 msgid "certificate"
 msgstr ""
 
+#: .\apps\authentication\models.py:56
+msgid "first name"
+msgstr ""
+
+#: .\apps\authentication\models.py:57
+msgid "last name"
+msgstr ""
+
+#: .\apps\authentication\models.py:58
+msgid "phone"
+msgstr ""
+
+#: .\apps\authentication\models.py:59
+msgid "address"
+msgstr ""
+
 #: .\apps\authentication\models.py:60
+msgid "citizen identification"
+msgstr ""
+
+#: .\apps\authentication\models.py:61
+msgid "tax code"
+msgstr ""
+
+#: .\apps\authentication\models.py:62
 msgid "license_plates"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\logged_out.html:3
+msgid "LOGGED_OUT_TITLE"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\logged_out.html:6
+msgid "LOGGED_OUT"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\login.html:3
+msgid "LOGIN_TITLE"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\login.html:9
+msgid "LOGIN"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_change_done.html:3
+msgid "PASSWORD_CHANGE_DONE_TITLE"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_change_done.html:6
+msgid "PASSWORD_CHANGE_DONE"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_change_form.html:3
+msgid "PASSWORD_CHANGE_FORM_TITLE"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_change_form.html:9
+msgid "CHANGE"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_complete.html:3
+msgid "PASSWORD_RESET_COMPLETE_TITLE"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_complete.html:6
+msgid "PASSWORD_RESET_COMPLETE"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_confirm.html:3
+msgid "PASSWORD_RESET_CONFIRM_TITLE"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_confirm.html:9
+#: .\apps\authentication\templates\auth\password_reset_form.html:9
+msgid "RESET"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_done.html:3
+msgid "PASSWORD_RESET_DONE_TITLE"
+msgstr ""
+
+#: .\apps\authentication\templates\auth\password_reset_done.html:6
+msgid "CHECK_EMAIL_PLEASE"
 msgstr ""
 
 #: .\apps\authentication\templates\auth\password_reset_email.html:3
@@ -165,47 +223,111 @@ msgstr ""
 msgid "Management"
 msgstr ""
 
+#: .\apps\authentication\templates\auth\password_reset_form.html:3
+msgid "PASSWORD_RESET_FORM_TITLE"
+msgstr ""
+
 #: .\apps\authentication\templates\auth\password_reset_subject.txt:2
 #, python-format
 msgid "Password reset on %(site_name)s"
 msgstr ""
 
-#: .\apps\authentication\views\base.py:37
-msgid "Password change"
+#: .\apps\authentication\templates\auth\register.html:3
+msgid "REGISTER_TITLE"
 msgstr ""
 
-#: .\apps\authentication\views\base.py:42
-msgid "Password change successful"
+#: .\apps\authentication\templates\auth\register.html:9
+msgid "REGISTER"
 msgstr ""
 
-#: .\apps\authentication\views\base.py:48
-msgid "Password reset"
+#: .\apps\authentication\templates\auth\register_done.html:3
+msgid "REGISTER_DONE_TITLE"
 msgstr ""
 
-#: .\apps\authentication\views\base.py:56
-msgid "Password reset sent"
+#: .\apps\authentication\templates\auth\register_done.html:6
+msgid "REGISTER_DONE"
 msgstr ""
 
-#: .\apps\authentication\views\base.py:61
-msgid "Enter new password"
+#: .\apps\authentication\templates\extra\profile.html:3
+msgid "PROFILE_TITLE"
 msgstr ""
 
-#: .\apps\authentication\views\base.py:66
-msgid "Password reset complete"
+#: .\apps\authentication\templates\extra\profile.html:6
+#: .\apps\authentication\templates\extra\profile_detail.html:6
+msgid "PROFILE"
 msgstr ""
 
-#: .\settings\local_settings.py:60
+#: .\apps\authentication\templates\extra\profile.html:7
+#: .\apps\authentication\templates\extra\profile_detail.html:7
+msgid "USERNAME"
+msgstr ""
+
+#: .\apps\authentication\templates\extra\profile.html:8
+#: .\apps\authentication\templates\extra\profile_detail.html:8
+msgid "EMAIL"
+msgstr ""
+
+#: .\apps\authentication\templates\extra\profile.html:9
+#: .\apps\authentication\templates\extra\profile_detail.html:9
+msgid "DATE_JOINED"
+msgstr ""
+
+#: .\apps\authentication\templates\extra\profile.html:10
+msgid "LOGOUT"
+msgstr ""
+
+#: .\apps\authentication\templates\extra\profile.html:11
+#: .\apps\authentication\templates\extra\profile_detail.html:10
+msgid "PROFILE_UPDATE"
+msgstr ""
+
+#: .\apps\authentication\templates\extra\profile.html:12
+#: .\apps\authentication\templates\extra\profile_detail.html:11
+msgid "PASSWORD_CHANGE"
+msgstr ""
+
+#: .\apps\authentication\templates\extra\profile_detail.html:3
+msgid "PROFILE_DETAIL_TITLE"
+msgstr ""
+
+#: .\apps\authentication\templates\extra\profile_update.html:3
+msgid "PROFILE_UPDATE_TITLE"
+msgstr ""
+
+#: .\apps\authentication\templates\extra\profile_update.html:9
+#: .\apps\authentication\templates\extra\user_add.html:9
+#: .\apps\authentication\templates\extra\user_add_csv.html:9
+msgid "SUBMIT"
+msgstr ""
+
+#: .\apps\authentication\templates\extra\user_add.html:3
+msgid "USER_ADD_TITLE"
+msgstr ""
+
+#: .\apps\authentication\templates\extra\user_add_csv.html:3
+msgid "USER_ADD_CSV_TITLE"
+msgstr ""
+
+#: .\apps\authentication\templates\extra\user_list.html:3
+msgid "USER_LIST_TITLE"
+msgstr ""
+
+#: .\settings\local_settings.py:56
 msgid "English"
 msgstr ""
 
-#: .\settings\local_settings.py:61
+#: .\settings\local_settings.py:57
 msgid "French"
 msgstr ""
 
-#: .\settings\local_settings.py:62
+#: .\settings\local_settings.py:58
 msgid "Spanish"
 msgstr ""
 
 #: .\templates\index.html:7
 msgid "test_text"
 msgstr "test_text_default"
+
+#: .\templates\index.html:9
+msgid "URL_LIST"
+msgstr ""
