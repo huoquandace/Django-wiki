@@ -3,7 +3,9 @@ from pathlib import Path
 from django.utils.translation import gettext_lazy as _
 from settings.base import INSTALLED_APPS, TEMPLATES, BASE_DIR, MIDDLEWARE
 
-SECRET_KEY = 'dovanthanh'
+env = os.environ.get
+
+SECRET_KEY = env('SECRET_KEY', 'secret_key')
 
 ROOT_URLCONF = 'urls'
 
