@@ -7,11 +7,11 @@
   <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
-  {% if messages %}
+  <!-- {% if messages %}
     {% for msg in messages %}
       {{ msg.level_tag }}: {{ msg }}
     {% endfor %}
-  {% endif %}
+  {% endif %} -->
   {% block content %}{% endblock content %}
 </body>
 </html>
