@@ -32,7 +32,8 @@
     },
 
     "material-icon-theme.folders.associations": {
+        "forms": "Class",
         "migrations": "Cluster",
-        "hr": "Vercel"
+        "hr": "Vercel",
     }
 }
