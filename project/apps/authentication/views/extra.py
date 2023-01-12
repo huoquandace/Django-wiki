@@ -20,7 +20,7 @@ from django.views.generic import (
 from common.forms import UploadFileForm
 from common.utils import html_to_pdf
 from authentication.models import User, Profile
-from authentication.forms import ProfileUpdateForm, UserAddForm, UserProfileForm
+from authentication.forms.extra import ProfileUpdateForm, UserAddForm, UserProfileForm
 
 
 CSV_FILE_PATH = 'data/csv/'
