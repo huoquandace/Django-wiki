@@ -16,7 +16,6 @@
   <input type="checkbox" onclick="toggle()" id="acc_cb" name="custom_acc" value="True" {% if request.POST.custom_acc == 'True' %} checked {% endif %}>
   <label for="custom_acc"> Custom acc </label><br>
   <div id="content" style="display: none;">
-    <p>Lorem ipsum dolor sit amet,</p>
     {{ acc_form.as_p }}
   </div>
   <button type="submit"> {% trans "SUBMIT" %} </button>
