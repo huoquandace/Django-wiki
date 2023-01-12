@@ -3,12 +3,6 @@
 {% block title %} {% trans "USER_ADD_TITLE" %} {% endblock title %}
 {% block content %}
 
-{% if messages %}
-  {% for msg in messages %}
-    {{ msg.level_tag }}-{{ msg }}
-  {% endfor %}
-{% endif %}
-
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   
