@@ -3,6 +3,7 @@ from django.urls import path
 
 from authentication.views.extra import (
     ProfileView,
+    ProfileDetailView,
     ProfileUpdateView,
     UserList,
     UserAddCsv,
@@ -12,6 +13,7 @@ from authentication.views.extra import (
 
 urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
+    path('profile/<int:pk>/', ProfileDetailView.as_view(), name='profile_detail'),
     path('profile/update/<int:pk>/', ProfileUpdateView.as_view(), name='profile_update'),
     path('user_list/', UserList.as_view(), name='user_list'),
     path('user_list/to_pdf/', UserListToPdf.as_view(), name='user_list_to_pdf'), 

@@ -8,7 +8,7 @@ from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, FormView, View, ListView, UpdateView
+from django.views.generic import TemplateView, FormView, View, ListView, UpdateView, DetailView
 from django.core.files.storage import FileSystemStorage
 from django.template.loader import render_to_string
 
@@ -24,6 +24,11 @@ USER_CSV_FILE_TEMPLALTE = 'data/csv.csv'
 
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'extra/profile.html'
+
+class ProfileDetailView(DetailView):
+    model = User
+    template_name = 'extra/profile_detail.html'
+    context_object_name = 'user'
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'extra/profile_update.html'
