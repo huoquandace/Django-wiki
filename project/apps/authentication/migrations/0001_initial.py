@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
                 ('age', models.IntegerField(blank=True, null=True, verbose_name='age')),
                 ('birthday', models.DateField(blank=True, max_length=10, null=True, verbose_name='birthday')),
                 ('certificate', models.TextField(blank=True, null=True, verbose_name='certificate')),
-                ('u_id', models.CharField(blank=True, max_length=100, verbose_name='u_id')),
+                ('u_id', models.CharField(blank=True, max_length=100, null=True, verbose_name='u_id')),
                 ('first_name', models.CharField(blank=True, max_length=100, verbose_name='first name')),
                 ('last_name', models.CharField(blank=True, max_length=100, verbose_name='last name')),
                 ('phone', models.CharField(blank=True, max_length=100, null=True, verbose_name='phone')),
