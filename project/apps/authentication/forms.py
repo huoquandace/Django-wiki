@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, UsernameField, Authentic
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-from authentication.models import Profile
+from authentication.models import Profile, User
 
 
 class RegisterForm(UserCreationForm):
@@ -51,4 +51,21 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = '__all__'
 
-        
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('gender', 'age', )
+
+
+class UserAddForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(max_length=100)
+    
+    def clean_username(self):
+        username = self.cleaned_data['username']
+
+        try:
+            user = User.objects.get(username=username)
+        except user.DoesNotExist:
+            return username
+        raise forms.ValidationError(u'Username "%s" is already in use.' % username)

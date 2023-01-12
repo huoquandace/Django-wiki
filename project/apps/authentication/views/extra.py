@@ -2,20 +2,25 @@ import os
 from csv import reader
 
 from django.conf import settings
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, FormView, View, ListView, UpdateView, DetailView
 from django.core.files.storage import FileSystemStorage
 from django.template.loader import render_to_string
+from django.utils.datastructures import MultiValueDictKeyError
+from django.views.generic import (
+    View,
+    TemplateView, FormView,
+    ListView, UpdateView, DetailView
+)
 
 from common.forms import UploadFileForm
 from common.utils import html_to_pdf
 from authentication.models import User, Profile
-from authentication.forms import ProfileUpdateForm
+from authentication.forms import ProfileUpdateForm, UserAddForm, UserProfileForm
 
 
 CSV_FILE_PATH = 'data/csv/'
@@ -49,8 +54,38 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         return redirect('profile')
         # return HttpResponseRedirect(reverse('profile:user-profile', kwargs={'pk': self.get_object().id}))
 
-class UserAdd(LoginRequiredMixin, FormView):
-    pass
+class UserAdd(LoginRequiredMixin, View):
+    
+    def get(self, request):
+        form = UserProfileForm()
+        acc_form = UserAddForm()
+        context = {
+            'form': form,
+            'acc_form': acc_form,
+        }
+        return render(request, 'extra/user_add.html', context)
+    
+    def post(self, request):
+        form = UserProfileForm()
+        acc_form = UserAddForm(request.POST or None)
+        context = {
+            'form': form,
+            'acc_form': acc_form,
+        }
+        try:
+            if request.POST['custom_acc'] and acc_form.is_valid():
+                user = User(username=acc_form.cleaned_data['username'])
+                user.set_password(acc_form.cleaned_data['password'])
+                user.save(commit=False)
+                print(user)
+            else:
+                messages.error(request, acc_form.errors)
+        except MultiValueDictKeyError:
+            pass
+        except Exception as e:
+            print(e)
+        return render(request, 'extra/user_add.html', context)
+    
 
 class UserDetail(DetailView):
     model = User
