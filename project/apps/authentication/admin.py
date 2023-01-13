@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin
 
-from authentication.models import User, Profile
+from authentication.models.base import User
+from authentication.models.extra import Profile
 
 
 class UserAdmin(UserAdmin):

@@ -7,11 +7,11 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "**/__pycache__": true,
-        "**/__init__.py": true
+        // "**/__init__.py": true
     },
     "hide-files.files": [
         "**/__pycache__",
-        "**/__init__.py"
+        // "**/__init__.py"
     ],
     "python.analysis.diagnosticSeverityOverrides": {
         "reportMissingModuleSource": "none",
@@ -32,7 +32,7 @@
     },
 
     "material-icon-theme.folders.associations": {
-        "forms": "Class",
+        "forms": "Shader",
         "migrations": "Cluster",
         "hr": "Vercel",
     }
