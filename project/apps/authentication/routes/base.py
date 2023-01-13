@@ -1,16 +1,9 @@
 from django.urls import path, include
 
 from authentication.views.base import (
-    Login,
-    Logout,
-    PasswordChange,
-    PasswordChangeDone,
-    PasswordReset,
-    PasswordResetDone,
-    PasswordResetConfirm,
-    PasswordResetComplete,
-    Register,
-    RegisterDone,
+    Login, Logout, Register, RegisterDone,
+    PasswordChange, PasswordChangeDone,
+    PasswordReset, PasswordResetDone, PasswordResetConfirm, PasswordResetComplete,
 )
 
 
