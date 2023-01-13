@@ -2,13 +2,9 @@ from django.urls import path
 
 
 from authentication.views.extra import (
-    ProfileView,
-    ProfileUpdateView,
-    UserDetail,
-    UserList,
-    UserAdd,
-    UserAddCsv,
-    DowloadUserCsvTemplate,
+    ProfileView, ProfileUpdateView,
+    UserDetail, UserList, UserAdd,
+    UserAddCsv, DowloadUserCsvTemplate,
     UserListToPdf,
 )
 
