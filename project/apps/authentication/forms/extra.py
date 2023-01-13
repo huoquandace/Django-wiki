@@ -8,7 +8,8 @@ class ProfileUpdateForm(forms.ModelForm):
     email = forms.CharField(max_length=100)
     class Meta:
         model = Profile
-        fields = '__all__'
+        # fields = '__all__'
+        fields = ('u_id', 'first_name', 'last_name', 'birthday')
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
