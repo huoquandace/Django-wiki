@@ -79,7 +79,8 @@ class ProfileUpdateView2(LoginRequiredMixin, View):
         return render(request, 'extra/profile_update2.html', context)
     
     def post(self, request):
-        pass
+        profile_form = self.ProfileForm(request.POST, request.FILE)
+        user_form = self.UserForm(request.POST)
 
 
 class UserAdd(LoginRequiredMixin, View):
