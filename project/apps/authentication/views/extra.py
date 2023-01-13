@@ -55,6 +55,31 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         return redirect('profile')
         # return HttpResponseRedirect(reverse('profile:user-profile', kwargs={'pk': self.get_object().id}))
 
+class ProfileUpdateView2(LoginRequiredMixin, View):
+    
+    from django import forms
+    class ProfileForm(forms.ModelForm):
+        class Meta:
+            model = Profile
+            fields = '__all__'
+
+    class UserForm(forms.ModelForm):
+        class Meta:
+            model = User
+            # fields = '__all__'
+            fields = ('username', 'email')
+
+    def get(self, request):
+        profile_form = self.ProfileForm(instance=request.user.profile)
+        user_form = self.UserForm(instance=request.user)
+        context = {
+            'profile_form': profile_form,
+            'user_form': user_form,
+        }
+        return render(request, 'extra/profile_update2.html', context)
+    
+
+
 class UserAdd(LoginRequiredMixin, View):
     
     def get(self, request):
