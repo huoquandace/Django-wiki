@@ -78,6 +78,8 @@ class ProfileUpdateView2(LoginRequiredMixin, View):
         }
         return render(request, 'extra/profile_update2.html', context)
     
+    def post(self, request):
+        pass
 
 
 class UserAdd(LoginRequiredMixin, View):
