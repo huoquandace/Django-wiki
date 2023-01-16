@@ -19,7 +19,6 @@ INSTALLED_APPS += [
     'core.apps.CoreConfig',
     'authentication.apps.AuthenticationConfig',
     'ts.apps.TsConfig',
-    'hr.apps.HrConfig',
 ]
 
 AUTH_USER_MODEL = 'authentication.User'

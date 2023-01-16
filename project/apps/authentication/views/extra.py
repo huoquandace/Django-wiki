@@ -28,6 +28,32 @@ CSV_FILE_PATH = 'data/csv/'
 USER_CSV_FILE_TEMPLALTE = 'data/csv.csv'
 
 
+class AuthExtra(TemplateView):
+    template_name = 'auth_extra.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        from django.urls import URLPattern, URLResolver
+        urlconf = __import__('apps.authentication.routes.extra', {}, {}, [''])
+        def list_urls(lis, acc=None):
+            if acc is None:
+                acc = []
+            if not lis:
+                return
+            l = lis[0]
+            if isinstance(l, URLPattern):
+                yield acc + [str(l.pattern)]
+            elif isinstance(l, URLResolver):
+                yield from list_urls(l.url_patterns, acc + [str(l.pattern)])
+            yield from list_urls(lis[1:], acc)
+        url_list = []
+        for p in list_urls(urlconf.urlpatterns, ['']):
+            url_list.append(''.join(p)) 
+        context['url_list'] = url_list
+
+        return context
+
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'extra/profile.html'
 

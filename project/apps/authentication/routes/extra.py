@@ -2,6 +2,7 @@ from django.urls import path
 
 
 from authentication.views.extra import (
+    AuthExtra,
     ProfileView, ProfileUpdateView, ProfileUpdateView2,
     UserDetail, UserList, UserAdd,
     UserAddCsv, DowloadUserCsvTemplate,
@@ -9,6 +10,7 @@ from authentication.views.extra import (
 )
 
 urlpatterns = [
+    path('', AuthExtra.as_view() ,name='auth_extra'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('profile/update/', ProfileUpdateView.as_view(), name='profile_update'),
     path('profile/update2/', ProfileUpdateView2.as_view(), name='profile_update2'),
