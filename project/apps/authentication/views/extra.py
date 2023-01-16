@@ -54,34 +54,12 @@ class AuthExtra(TemplateView):
 
         return context
 
+
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'extra/profile.html'
 
-class ProfileUpdateView(LoginRequiredMixin, UpdateView):
-    template_name = 'extra/profile_update.html'
-    context_object_name = 'user'
-    queryset = Profile.objects.all()
-    form_class = ProfileUpdateForm
 
-    def get_object(self):
-        return get_object_or_404(User, id=self.request.user.id)
-
-    def get_context_data(self, **kwargs):
-        context = super(ProfileUpdateView, self).get_context_data(**kwargs)
-        user = self.request.user
-        context['profile_form'] = ProfileUpdateForm(instance=self.request.user.profile, initial={'email': user.email})
-        return context
-
-    def form_valid(self, form):
-        profile = form.save(commit=False) # commit=false => Create model object to add extra data before save it
-        user = profile.user
-        user.email = form.cleaned_data['email']
-        user.save()
-        profile.save()
-        return redirect('profile')
-        # return HttpResponseRedirect(reverse('profile:user-profile', kwargs={'pk': self.get_object().id}))
-
-class ProfileUpdateView2(LoginRequiredMixin, View):
+class ProfileUpdateView(LoginRequiredMixin, View):
     
     from django import forms
     class ProfileForm(forms.ModelForm):
@@ -116,6 +94,31 @@ class ProfileUpdateView2(LoginRequiredMixin, View):
         else:
             messages.error(request, 'errors')
             return redirect('profile_update2')
+
+
+class ProfileUpdateView2(LoginRequiredMixin, UpdateView):
+    template_name = 'extra/profile_update.html'
+    context_object_name = 'user'
+    queryset = Profile.objects.all()
+    form_class = ProfileUpdateForm
+
+    def get_object(self):
+        return get_object_or_404(User, id=self.request.user.id)
+
+    def get_context_data(self, **kwargs):
+        context = super(ProfileUpdateView, self).get_context_data(**kwargs)
+        user = self.request.user
+        context['profile_form'] = ProfileUpdateForm(instance=self.request.user.profile, initial={'email': user.email})
+        return context
+
+    def form_valid(self, form):
+        profile = form.save(commit=False) # commit=false => Create model object to add extra data before save it
+        user = profile.user
+        user.email = form.cleaned_data['email']
+        user.save()
+        profile.save()
+        return redirect('profile')
+        # return HttpResponseRedirect(reverse('profile:user-profile', kwargs={'pk': self.get_object().id}))
 
 
 class UserAdd(LoginRequiredMixin, View):
