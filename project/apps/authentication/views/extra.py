@@ -87,7 +87,8 @@ class ProfileUpdateView2(LoginRequiredMixin, View):
     class ProfileForm(forms.ModelForm):
         class Meta:
             model = Profile
-            fields = '__all__'
+            # fields = '__all__'
+            fields = ('u_id', 'first_name', 'last_name', 'birthday')
 
     class UserForm(forms.ModelForm):
         class Meta:
@@ -105,8 +106,16 @@ class ProfileUpdateView2(LoginRequiredMixin, View):
         return render(request, 'extra/profile_update2.html', context)
     
     def post(self, request):
-        profile_form = self.ProfileForm(request.POST, request.FILE)
-        user_form = self.UserForm(request.POST)
+        user_form = self.UserForm(request.POST, instance=request.user)
+        profile_form = self.ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect('profile')
+        else:
+            messages.error(request, 'errors')
+            return redirect('profile_update2')
 
 
 class UserAdd(LoginRequiredMixin, View):
