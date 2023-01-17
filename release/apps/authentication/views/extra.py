@@ -95,35 +95,37 @@ class UserAdd(View):
     def post(self, request):
         form = self.UserProfileForm(request.POST)
         acc_form = self.UserAddForm(request.POST)
-        try:
-            if request.POST['custom_acc'] and acc_form.is_valid():
-                user = get_user_model()(username=acc_form.cleaned_data['username'])
-                user.set_password(acc_form.cleaned_data['password'])
-                user.save(commit=False)
-                print(user)
-            else:
-                messages.error(request, acc_form.errors)
-        except MultiValueDictKeyError:
-            acc_form = self.UserAddForm()
-            if form.is_valid():
-                first_name = acc_form.cleaned_data['first_name']
-                last_name = acc_form.cleaned_data['last_name']
-                username = last_name
-                fn_arr = first_name.strip().split(' ')
-                for c in fn_arr:
-                    username += c[0].upper()
-                birthday = form.cleaned_data['birthday']
-                password = str(birthday).replace('-', '')
-                password = str(birthday).replace('/', '')
-                user = get_user_model()(username=username)
-                user.set_password(password)
-                # user.save()
-                return redirect('/auth/extra/user/' + str(user.id))
-            else:
-                messages.error(request, form.errors)
-                return redirect('user_add')
-        except Exception as e:
-            print(e)
+        result = request.POST.get('custom_acc', 0)
+        print(result)
+        # try:
+        #     if request.POST['custom_acc'] and acc_form.is_valid():
+        #         user = get_user_model()(username=acc_form.cleaned_data['username'])
+        #         user.set_password(acc_form.cleaned_data['password'])
+        #         # user.save(commit=False)
+        #         print('ok')
+        #     else:
+        #         messages.error(request, acc_form.errors)
+        # except MultiValueDictKeyError:
+        #     acc_form = self.UserAddForm()
+        #     if form.is_valid():
+        #         first_name = acc_form.cleaned_data['first_name']
+        #         last_name = acc_form.cleaned_data['last_name']
+        #         username = last_name
+        #         fn_arr = first_name.strip().split(' ')
+        #         for c in fn_arr:
+        #             username += c[0].upper()
+        #         birthday = form.cleaned_data['birthday']
+        #         password = str(birthday).replace('-', '')
+        #         password = str(birthday).replace('/', '')
+        #         user = get_user_model()(username=username)
+        #         user.set_password(password)
+        #         # user.save()
+        #         return redirect('/auth/extra/user/' + str(user.id))
+        #     else:
+        #         messages.error(request, form.errors)
+        #         return redirect('user_add')
+        # except Exception as e:
+        #     print(e)
         context = {
             'form': form,
             'acc_form': acc_form,
