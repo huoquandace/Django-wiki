@@ -19,8 +19,7 @@ from django.views.generic import (
 
 from common.forms import UploadFileForm
 from common.utils import html_to_pdf
-from authentication.models.base import User
-from authentication.models.extra import Profile
+from authentication.models.base import User, Profile
 from authentication.forms.extra import ProfileUpdateForm, UserAddForm, UserProfileForm
 
 
@@ -66,7 +65,7 @@ class ProfileUpdateView(LoginRequiredMixin, View):
         class Meta:
             model = Profile
             # fields = '__all__'
-            fields = ('u_id', 'first_name', 'last_name', 'birthday')
+            fields = ('birthday', )
 
     class UserForm(forms.ModelForm):
         class Meta:

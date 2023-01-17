@@ -9,7 +9,7 @@ class UserAdmin(UserAdmin):
     fieldsets = (
         (None, {
             # 'fields': ('username', 'password', 'email', 'first_name', 'last_name', 'is_active', 'is_superuser', 'is_staff', 'user_permissions', 'groups', )
-            'fields': ('username', 'password', 'email', 'is_staff', 'groups')
+            'fields': ('username', 'password', 'first_name', 'last_name', 'email', 'is_staff', 'groups')
         }),
         ('Advanced options', {
             'classes': ('collapse',),

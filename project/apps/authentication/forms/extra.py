@@ -1,7 +1,6 @@
 from django import forms
 
-from authentication.models.base import User
-from authentication.models.extra import Profile
+from authentication.models.base import User, Profile
 
 
 class ProfileUpdateForm(forms.ModelForm):
@@ -9,12 +8,12 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         # fields = '__all__'
-        fields = ('u_id', 'first_name', 'last_name', 'birthday')
+        fields = ('birthday',)
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('u_id', 'first_name', 'last_name', 'birthday')
+        fields = ('birthday', )
 
 
 class UserAddForm(forms.Form):
