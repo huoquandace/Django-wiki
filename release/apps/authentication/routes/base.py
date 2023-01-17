@@ -1,4 +1,5 @@
-from django.urls import path, include
+from django.urls import path, include, reverse_lazy
+from django.contrib.auth import views
 
 from authentication.views.base import *
 
@@ -6,7 +7,7 @@ from authentication.views.base import *
 urlpatterns = [
     path('', AuthIndex.as_view() ,name='auth_index'),
     path('login/', Login.as_view(), name='login'),
-    path('logout/', Logout.as_view(), name='logout'),
+    path('logout/', views.LogoutView.as_view(next_page=reverse_lazy('login')), name='logout'),
     path('password_change/', PasswordChange.as_view(), name='password_change'),
     path('password_change/done/', PasswordChangeDone.as_view(), name='password_change_done'),
     path('password_reset/', PasswordReset.as_view(), name='password_reset'),

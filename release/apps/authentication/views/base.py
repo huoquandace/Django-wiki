@@ -66,11 +66,6 @@ class Login(LoginView):
     next_page = '/auth/profile/'
     redirect_authenticated_user = True # If it is false, authenticated_user is still access to login
 
-
-class Logout(LoginRequiredMixin, LogoutView):
-    next_page = '/auth/login/' # if not default render to template_name
-
-
 class PasswordChange(LoginRequiredMixin, PasswordChangeView):
     template_name = 'auth/password_change_form.html'
     success_url = reverse_lazy('password_change_done')
