@@ -3,16 +3,18 @@ from csv import reader
 
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.files.storage import FileSystemStorage
 from django.template.loader import render_to_string
 from django.utils.datastructures import MultiValueDictKeyError
 from django.views.generic import *
 from django.urls import URLPattern, URLResolver
+from django.utils.translation import gettext_lazy as _
 
 # from common.forms import UploadFileForm
 # from common.utils import html_to_pdf
@@ -114,13 +116,11 @@ class UserList(ListView):
     context_object_name = 'users'
 
 
-class UserDelete(DeleteView):
+class UserDelete(SuccessMessageMixin, DeleteView):
     model = get_user_model()
-    success_url = '/'
+    success_url = reverse_lazy('user_list')
     template_name = 'extra/user_delete.html'
-    
-
-
+    success_message = _("User was deleted successfully.")
 
 
 
