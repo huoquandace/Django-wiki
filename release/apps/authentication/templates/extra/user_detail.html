@@ -7,7 +7,7 @@
 <div>{% trans "USERNAME" %}: {{ user.username }}</div>
 <div>{% trans "EMAIL" %}: {{ user.email }}</div>
 <div>{% trans "DATE_JOINED" %}: {{ user.date_joined | date:'d-m-Y' }}</div>
-<button><a href="{% url 'profile_update' user.id %}">{% trans "PROFILE_UPDATE" %}</a></button>
-<button><a href="{% url 'password_change' %}">{% trans "PASSWORD_CHANGE" %}</a></button>
+<button><a href="#">{% trans "PROFILE_UPDATE" %}</a></button>
+<button><a href="#">{% trans "RESET_PASSWORD" %}</a></button>
 
 {% endblock content %}

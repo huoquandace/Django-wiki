@@ -16,14 +16,16 @@
     </tr>
   </thead>
   <tbody>
-    {% for user in objects %}
+    {% for user in users %}
     <tr>
       <th> {{ forloop.counter }} </th>
       <td> {{ user.id }} </td>
-      <td> {{ user.username }} </td>
+      <td><a href="{% url 'user_detail' user.id %}">{{ user.username }}</a></td>
       <td><img src="{{ user.profile.avatar.url }}"]></td>
       <td>
         <a href="#"><button> {% trans "RESET_PASSWORD" %} </button></a>
+        <a href="{% url 'user_delete' user.id %}"><button> {% trans "DELETE" %} </button></a>
+        <!-- <button onclick="(function(){confirm('ok')?(window.location.href='{% url 'user_delete' user.id %}'):''})()"> {% trans "DELETE" %} </button> -->
       </td>
     </tr>
     {% endfor %}

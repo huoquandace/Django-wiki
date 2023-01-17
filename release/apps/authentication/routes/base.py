@@ -18,6 +18,6 @@ urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
     path('profile/update/', ProfileUpdateView.as_view(), name='profile_update'),
     
-    # path('extra/', include('authentication.routes.extra')),
+    path('extra/', include('authentication.routes.extra')),
 
 ]
