@@ -140,7 +140,7 @@ class RegisterDone(TemplateView):
 
 
 class ProfileView(LoginRequiredMixin, TemplateView):
-    template_name = 'extra/profile.html'
+    template_name = 'auth/profile.html'
 
 
 class ProfileUpdateView(LoginRequiredMixin, View):
@@ -162,7 +162,7 @@ class ProfileUpdateView(LoginRequiredMixin, View):
             'profile_form': profile_form,
             'user_form': user_form,
         }
-        return render(request, 'extra/profile_update2.html', context)
+        return render(request, 'auth/profile_update.html', context)
     
     def post(self, request):
         user_form = self.UserForm(request.POST, instance=request.user)
