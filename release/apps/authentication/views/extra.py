@@ -1,6 +1,8 @@
-import os
+import os, re
 from csv import reader
 
+from django.template.defaultfilters import slugify
+from django import forms
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
@@ -18,7 +20,7 @@ from django.utils.translation import gettext_lazy as _
 
 # from common.forms import UploadFileForm
 # from common.utils import html_to_pdf
-# from authentication.models.base import User, Profile
+from authentication.models.base import Profile
 # from authentication.forms.extra import ProfileUpdateForm, UserAddForm, UserProfileForm
 
 
@@ -59,44 +61,63 @@ class UserDetail(DetailView):
 
 
 class UserAdd(View):
-    
+
+    class UserProfileForm(forms.Form):
+        first_name = forms.CharField(max_length=100, required = False)
+        last_name = forms.CharField(max_length=100, required = False)
+        birthday = forms.CharField(max_length=100, required = False)
+
+    class UserAddForm(forms.Form):
+        username = forms.CharField(max_length=100, required = False)
+        password = forms.CharField(max_length=100, required = False)
+        
+        def clean_username(self):
+            username = self.cleaned_data['username']
+            try:
+                user = get_user_model().objects.get(username=username)
+            except user.DoesNotExist:
+                return username
+            raise forms.ValidationError(u'Username "%s" is already in use.' % username)
+
     def get(self, request):
-        form = UserProfileForm()
-        acc_form = UserAddForm()
+        form = self.UserProfileForm()
+        acc_form = self.UserAddForm()
         context = {
             'form': form,
             'acc_form': acc_form,
         }
+        
+        # string = slugify(u"những-viên-kẹo")
+        # string = re.sub('[^A-Za-z0-9]+', '', string)
+
         return render(request, 'extra/user_add.html', context)
     
     def post(self, request):
-        form = UserProfileForm(request.POST)
-        acc_form = UserAddForm(request.POST)
+        form = self.UserProfileForm(request.POST)
+        acc_form = self.UserAddForm(request.POST)
         try:
             if request.POST['custom_acc'] and acc_form.is_valid():
-                user = User(username=acc_form.cleaned_data['username'])
+                user = get_user_model()(username=acc_form.cleaned_data['username'])
                 user.set_password(acc_form.cleaned_data['password'])
                 user.save(commit=False)
                 print(user)
             else:
                 messages.error(request, acc_form.errors)
         except MultiValueDictKeyError:
-            acc_form = UserAddForm()
+            acc_form = self.UserAddForm()
             if form.is_valid():
-                u_id = form.cleaned_data['u_id']
-                first_name = form.cleaned_data['first_name']
-                last_name = form.cleaned_data['last_name']
+                first_name = acc_form.cleaned_data['first_name']
+                last_name = acc_form.cleaned_data['last_name']
                 username = last_name
                 fn_arr = first_name.strip().split(' ')
                 for c in fn_arr:
                     username += c[0].upper()
-                username += str(u_id)
                 birthday = form.cleaned_data['birthday']
                 password = str(birthday).replace('-', '')
                 password = str(birthday).replace('/', '')
-                user = User(username=username)
+                user = get_user_model()(username=username)
                 user.set_password(password)
-                user.save()
+                # user.save()
                 return redirect('/auth/extra/user/' + str(user.id))
             else:
                 messages.error(request, form.errors)
