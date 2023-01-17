@@ -1,0 +1,33 @@
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "USER_LIST_TITLE" %} {% endblock title %}
+{% block content %}
+
+<style> table, th, td { border: solid 1px #333; border-collapse: collapse; } </style>
+
+<table>
+  <thead>
+    <tr>
+      <th> # </th>
+      <th> ID </th>
+      <th> Username </th>
+      <th> Avatar </th>
+      <th> - </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in objects %}
+    <tr>
+      <th> {{ forloop.counter }} </th>
+      <td> {{ user.id }} </td>
+      <td> {{ user.username }} </td>
+      <td><img src="{{ user.profile.avatar.url }}"]></td>
+      <td>
+        <a href="#"><button> {% trans "RESET_PASSWORD" %} </button></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

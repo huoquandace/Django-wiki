@@ -1,0 +1,12 @@
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "AUTH_INDEX_TITLE" %} {% endblock title %}
+{% block content %}
+
+<div>-------- {% trans "URL_LIST" %} ---------</div>
+
+{% for url in url_list %}
+<div> --  <a href="{{ url }}" >{{ url }}</a> </div>
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "PROFILE_UPDATE_TITLE" %} {% endblock title %}
+{% block content %}
+
+<form method="post">
+  {% csrf_token %}
+  {{ profile_form.as_p }}
+  <button type="submit"> {% trans "SUBMIT" %} </button>
+</form>
+
+{% endblock content %}
