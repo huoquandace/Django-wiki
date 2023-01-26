@@ -34,3 +34,5 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 django-admin makemessages --all --ignore=env
 django-admin compilemessages --ignore=env
 ```
+
+
