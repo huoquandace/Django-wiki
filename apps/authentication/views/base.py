@@ -151,10 +151,9 @@ class UserList(ListView):
 
 class UserAdd(LoginRequiredMixin, View):
     
-    class UserProfileForm(forms.ModelForm):
-        class Meta:
-            model = Profile
-            fields = ('birthday', )
+    class UserProfileForm(forms.Form):
+        first_name = forms.CharField(max_length=100, required = False)
+        last_name = forms.CharField(max_length=100, required = False)
 
 
     class UserAddForm(forms.Form):
@@ -163,10 +162,9 @@ class UserAdd(LoginRequiredMixin, View):
         
         def clean_username(self):
             username = self.cleaned_data['username']
-
             try:
-                user = get_user_model().objects.get(username=username)
-            except user.DoesNotExist:
+                get_user_model().objects.get(username=username)
+            except get_user_model().DoesNotExist:
                 return username
             raise forms.ValidationError(u'Username "%s" is already in use.' % username)
 
@@ -182,40 +180,38 @@ class UserAdd(LoginRequiredMixin, View):
     def post(self, request):
         form = self.UserProfileForm(request.POST)
         acc_form = self.UserAddForm(request.POST)
-        try:
-            if request.POST['custom_acc'] and acc_form.is_valid():
+        if request.POST.get('custom_acc', 0) != 0:
+            if acc_form.is_valid():
                 user = get_user_model()(username=acc_form.cleaned_data['username'])
                 user.set_password(acc_form.cleaned_data['password'])
-                user.save(commit=False)
+                # user.save(commit=False)
                 print(user)
             else:
                 messages.error(request, acc_form.errors)
-        except MultiValueDictKeyError:
+        else:
             acc_form = self.UserAddForm()
             if form.is_valid():
-                u_id = form.cleaned_data['u_id']
                 first_name = form.cleaned_data['first_name']
                 last_name = form.cleaned_data['last_name']
                 username = last_name
                 fn_arr = first_name.strip().split(' ')
                 for c in fn_arr:
-                    username += c[0].upper()
-                username += str(u_id)
-                birthday = form.cleaned_data['birthday']
-                password = str(birthday).replace('-', '')
-                password = str(birthday).replace('/', '')
+                    username += c[0]
                 user = get_user_model()(username=username)
-                user.set_password(password)
-                user.save()
-                return redirect('/auth/extra/user/' + str(user.id))
+                user.set_password("123")
+                # user.save()
+                print(username.lower())
+                return redirect('/auth/' + str(user.id))
             else:
                 messages.error(request, form.errors)
                 return redirect('user_add')
-        except Exception as e:
-            print(e)
+       
         context = {
             'form': form,
             'acc_form': acc_form,
         }
         return render(request, 'extra/user_add.html', context)
+        
 
+
+        
