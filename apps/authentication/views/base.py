@@ -149,6 +149,12 @@ class UserList(ListView):
     context_object_name = 'users'
 
 
+class UserAdd(CreateView):
+    model = get_user_model()
+    fields = ['username', 'password']
+    template_name = 'extra/user_add.html'
+
+
 class UserAddByInfo(LoginRequiredMixin, View):
     
     class UserProfileForm(forms.ModelForm):
@@ -179,7 +185,7 @@ class UserAddByInfo(LoginRequiredMixin, View):
             'form': form,
             'acc_form': acc_form,
         }
-        return render(request, 'extra/user_add.html', context)
+        return render(request, 'extra/user_add_by_info.html', context)
     
     def post(self, request):
         form = self.UserProfileForm(request.POST)
@@ -220,7 +226,7 @@ class UserAddByInfo(LoginRequiredMixin, View):
             'form': form,
             'acc_form': acc_form,
         }
-        return render(request, 'extra/user_add.html', context)
+        return render(request, 'extra/user_add_by_info.html', context)
         
 
 
