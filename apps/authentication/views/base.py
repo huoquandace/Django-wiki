@@ -149,7 +149,7 @@ class UserList(ListView):
     context_object_name = 'users'
 
 
-class UserAdd(LoginRequiredMixin, View):
+class UserAddByInfo(LoginRequiredMixin, View):
     
     class UserProfileForm(forms.ModelForm):
         first_name = forms.CharField(max_length=100, required = False)
