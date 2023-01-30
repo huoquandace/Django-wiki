@@ -151,9 +151,13 @@ class UserList(ListView):
 
 class UserAdd(LoginRequiredMixin, View):
     
-    class UserProfileForm(forms.Form):
+    class UserProfileForm(forms.ModelForm):
         first_name = forms.CharField(max_length=100, required = False)
         last_name = forms.CharField(max_length=100, required = False)
+        
+        class Meta:
+            model = Profile
+            fields = ['first_name', 'last_name', 'gender', 'phone', 'age', 'birthday', 'avatar' ,'address',]
 
 
     class UserAddForm(forms.Form):
@@ -193,6 +197,12 @@ class UserAdd(LoginRequiredMixin, View):
             if form.is_valid():
                 first_name = form.cleaned_data['first_name']
                 last_name = form.cleaned_data['last_name']
+                if first_name is None or first_name == "":
+                    messages.error(request, "first_name is neccesary for create account")
+                    return redirect('user_add')
+                if last_name is None or last_name == "":
+                    messages.error(request, "last_name is neccesary for create account")
+                    return redirect('user_add')
                 username = last_name
                 fn_arr = first_name.strip().split(' ')
                 for c in fn_arr:
@@ -214,4 +224,3 @@ class UserAdd(LoginRequiredMixin, View):
         
 
 
-        
