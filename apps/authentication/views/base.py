@@ -138,7 +138,11 @@ class UserDetail(DetailView):
     template_name = 'extra/user_detail.html'
     context_object_name = 'user'
 
+
 class UserList(ListView):
     template_name = 'extra/user_list.html'
     model = get_user_model()
     context_object_name = 'users'
+
+
+
