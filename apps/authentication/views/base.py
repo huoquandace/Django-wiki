@@ -57,8 +57,8 @@ class Login(LoginView):
 
 
 class Logout(LoginRequiredMixin, LogoutView):
-    next_page = reverse_lazy('login') # if not default render to template
     # template_name = 'auth/logged_out.html'
+    next_page = reverse_lazy('login') # if not default render to template
 
 
 class PasswordChange(LoginRequiredMixin, PasswordChangeView):
