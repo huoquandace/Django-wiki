@@ -24,6 +24,7 @@
       <td><img src="{{ user.profile.avatar.url }}"]></td>
       <td>
         <a href="#"><button> {% trans "RESET_PASSWORD" %} </button></a>
+        <a href="{% url 'user_delete' user.id %}"><button> {% trans "DELETE" %} </button></a>
       </td>
     </tr>
     {% endfor %}

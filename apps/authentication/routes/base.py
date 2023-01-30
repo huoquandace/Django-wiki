@@ -23,4 +23,5 @@ urlpatterns = [
     path('user/add/', UserAdd.as_view(), name='user_add'),
     path('user/add/by_info/', UserAddByInfo.as_view(), name='user_add_by_info'),
     path('user/update/<int:pk>/', UserDetail.as_view(), name='user_update'), # not yet
+    path('user/delete/<int:pk>/', UserDelete.as_view(), name='user_delete'),
 ]
