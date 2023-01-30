@@ -161,6 +161,12 @@ class UserAdd(CreateView):
         return redirect(reverse_lazy('user_list'))
 
 
+class UserDelete(DeleteView):
+    model = get_user_model()
+    template_name = 'extra/user_delete.html'
+    success_url = reverse_lazy('user_list')
+
+
 class UserAddByInfo(LoginRequiredMixin, View):
     
     class UserProfileForm(forms.ModelForm):
