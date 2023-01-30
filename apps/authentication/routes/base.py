@@ -1,12 +1,6 @@
-from django.urls import path, include
+from django.urls import path
 
-from authentication.views.base import (
-    AuthIndex,
-    Login, Logout, Register, RegisterDone,
-    PasswordChange, PasswordChangeDone,
-    PasswordReset, PasswordResetDone, PasswordResetConfirm, PasswordResetComplete,
-    ProfileView,
-)
+from authentication.views.base import *
 
 
 urlpatterns = [

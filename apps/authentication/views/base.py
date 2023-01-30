@@ -86,6 +86,7 @@ class PasswordResetConfirm(PasswordResetConfirmView):
     template_name = 'auth/password_reset_confirm.html'
     success_url = reverse_lazy('password_reset_complete')
 
+
 class PasswordResetComplete(PasswordResetCompleteView):
     template_name = 'auth/password_reset_complete.html'
 
@@ -118,6 +119,7 @@ class Register(FormView):
         url = f"{reverse('register_done')}?username={new_user.username}"
         return redirect(url)
 
+
 class RegisterDone(TemplateView):
     template_name = 'auth/register_done.html'
 
@@ -126,5 +128,10 @@ class RegisterDone(TemplateView):
         context['username'] = self.request.GET.get('username')
         return context
 
+
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'auth/profile.html'
+
+
+
+    
