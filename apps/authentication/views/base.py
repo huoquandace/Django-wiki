@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy, reverse, URLPattern, URLResolver
 from django import forms
 from django.core import exceptions
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import *
@@ -153,6 +153,12 @@ class UserAdd(CreateView):
     model = get_user_model()
     fields = ['username', 'password']
     template_name = 'extra/user_add.html'
+
+    def form_valid(self, form):
+        user = form.save()
+        user.set_password(user.password)
+        user.save()
+        return redirect(reverse_lazy('user_list'))
 
 
 class UserAddByInfo(LoginRequiredMixin, View):
