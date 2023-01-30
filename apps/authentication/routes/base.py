@@ -19,6 +19,7 @@ urlpatterns = [
     path('profile/update/', ProfileView.as_view(), name='profile_update'), # not yet
 
     path('user/<int:pk>/', UserDetail.as_view(), name='user_detail'),
-    path('user/update/<int:pk>/', UserDetail.as_view(), name='user_update'), # not yet
     path('user/list/', UserList.as_view(), name='user_list'),
+    path('user/add/', UserAdd.as_view(), name='user_add'),
+    path('user/update/<int:pk>/', UserDetail.as_view(), name='user_update'), # not yet
 ]
