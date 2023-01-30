@@ -1,9 +1,4 @@
-"""
-    Defaut django.auth: registration/
-    Custom to: auth/
-"""
-
-from django import urls
+from django.urls import reverse_lazy, reverse, URLPattern, URLResolver
 from django import forms
 from django.shortcuts import redirect
 from django.contrib.auth import get_user_model
@@ -26,9 +21,9 @@ class AuthIndex(TemplateView):
             acc = [] if acc is None else acc
             if not lis: return None
             l = lis[0]
-            if isinstance(l, urls.URLPattern):
+            if isinstance(l, URLPattern):
                 yield acc + [str(l.pattern)]
-            elif isinstance(l, urls.URLResolver):
+            elif isinstance(l, URLResolver):
                 yield from list_urls(l.url_patterns, acc + [str(l.pattern)])
             yield from list_urls(lis[1:], acc)
         url_list = []
@@ -56,19 +51,19 @@ class Login(LoginView):
             
     authentication_form = AuthForm
     template_name = 'auth/login.html'
-    login_url = '/auth/login/'
-    next_page = '/auth/profile/'
+    login_url = reverse_lazy('login')
+    next_page = reverse_lazy('profile')
     redirect_authenticated_user = True # If it is false, authenticated_user is still access to login
 
 
 class Logout(LoginRequiredMixin, LogoutView):
-    next_page = '/auth/login/' # if not default render to template
+    next_page = reverse_lazy('login') # if not default render to template
     # template_name = 'auth/logged_out.html'
 
 
 class PasswordChange(LoginRequiredMixin, PasswordChangeView):
     template_name = 'auth/password_change_form.html'
-    success_url = urls.reverse_lazy('password_change_done')
+    success_url = reverse_lazy('password_change_done')
 
 
 class PasswordChangeDone(LoginRequiredMixin, PasswordChangeDoneView):
@@ -77,7 +72,7 @@ class PasswordChangeDone(LoginRequiredMixin, PasswordChangeDoneView):
 
 class PasswordReset(PasswordResetView):
     template_name = 'auth/password_reset_form.html'
-    success_url = urls.reverse_lazy('password_reset_done')
+    success_url = reverse_lazy('password_reset_done')
     from_email = 'system@sys.com'
     email_template_name = 'auth/password_reset_email.html'
     subject_template_name = 'auth/password_reset_subject.txt'
@@ -89,7 +84,7 @@ class PasswordResetDone(PasswordResetDoneView):
 
 class PasswordResetConfirm(PasswordResetConfirmView):
     template_name = 'auth/password_reset_confirm.html'
-    success_url = urls.reverse_lazy('password_reset_complete')
+    success_url = reverse_lazy('password_reset_complete')
 
 class PasswordResetComplete(PasswordResetCompleteView):
     template_name = 'auth/password_reset_complete.html'
@@ -120,7 +115,7 @@ class Register(FormView):
             password = data['password1'],
             email = data['email'],
         )
-        url = f"{urls.reverse('register_done')}?username={new_user.username}"
+        url = f"{reverse('register_done')}?username={new_user.username}"
         return redirect(url)
 
 class RegisterDone(TemplateView):
@@ -130,3 +125,6 @@ class RegisterDone(TemplateView):
         context = super().get_context_data(**kwargs)
         context['username'] = self.request.GET.get('username')
         return context
+
+class ProfileView(LoginRequiredMixin, TemplateView):
+    template_name = 'auth/profile.html'

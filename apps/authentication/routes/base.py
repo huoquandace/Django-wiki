@@ -5,6 +5,7 @@ from authentication.views.base import (
     Login, Logout, Register, RegisterDone,
     PasswordChange, PasswordChangeDone,
     PasswordReset, PasswordResetDone, PasswordResetConfirm, PasswordResetComplete,
+    ProfileView,
 )
 
 
@@ -20,4 +21,5 @@ urlpatterns = [
     path('reset/done/', PasswordResetComplete.as_view(), name='password_reset_complete'),
     path('register/', Register.as_view(), name='register'),
     path('register/done/', RegisterDone.as_view(), name='register_done'),
+    path('profile/', ProfileView.as_view(), name='profile'),
 ]
