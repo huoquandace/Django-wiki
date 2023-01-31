@@ -222,7 +222,7 @@ class UserAddByInfo(LoginRequiredMixin, View):
                 user = get_user_model()(username=username)
                 user.set_password("123")
                 user.save()
-                return redirect('/auth/' + str(user.id))
+                return redirect('user_list')
             else:
                 messages.error(request, form.errors)
                 return redirect('user_add_by_info')
