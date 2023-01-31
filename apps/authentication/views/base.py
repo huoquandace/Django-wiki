@@ -177,7 +177,6 @@ class UserAddByInfo(LoginRequiredMixin, View):
             model = Profile
             fields = ['first_name', 'last_name', 'gender', 'phone', 'age', 'birthday', 'avatar' ,'address',]
 
-
     class UserAddForm(forms.Form):
         username = forms.CharField(max_length=100, required = False)
         password = forms.CharField(max_length=100, required = False)
@@ -191,13 +190,10 @@ class UserAddByInfo(LoginRequiredMixin, View):
             raise forms.ValidationError(u'Username "%s" is already in use.' % username)
 
     def get(self, request):
-        form = self.UserProfileForm()
-        acc_form = self.UserAddForm()
-        context = {
-            'form': form,
-            'acc_form': acc_form,
-        }
-        return render(request, 'extra/user_add_by_info.html', context)
+        return render(request, 'extra/user_add_by_info.html', {
+            'form': self.UserProfileForm(),
+            'acc_form': self.UserAddForm(),
+        })
     
     def post(self, request):
         form = self.UserProfileForm(request.POST)
@@ -233,12 +229,10 @@ class UserAddByInfo(LoginRequiredMixin, View):
             else:
                 messages.error(request, form.errors)
                 return redirect('user_add')
-       
-        context = {
+        return render(request, 'extra/user_add_by_info.html', {
             'form': form,
             'acc_form': acc_form,
-        }
-        return render(request, 'extra/user_add_by_info.html', context)
+        })
         
 
 
