@@ -196,14 +196,16 @@ class UserAddByInfo(LoginRequiredMixin, View):
         })
     
     def post(self, request):
+        def isBlank(s): return not(s and s.strip())
+        def isNotBlank(s): return s and s.strip()
+
         form = self.UserProfileForm(request.POST)
         acc_form = self.UserAddForm(request.POST)
         if request.POST.get('custom_acc', 0) != 0:
             if acc_form.is_valid():
                 user = get_user_model()(username=acc_form.cleaned_data['username'])
                 user.set_password(acc_form.cleaned_data['password'])
-                # user.save(commit=False)
-                print(user)
+                user.save()
             else:
                 messages.error(request, acc_form.errors)
         else:
@@ -211,20 +213,15 @@ class UserAddByInfo(LoginRequiredMixin, View):
             if form.is_valid():
                 first_name = form.cleaned_data['first_name']
                 last_name = form.cleaned_data['last_name']
-                if first_name is None or first_name == "":
-                    messages.error(request, "first_name is neccesary for create account")
-                    return redirect('user_add')
-                if last_name is None or last_name == "":
-                    messages.error(request, "last_name is neccesary for create account")
+                if isBlank(first_name) or isBlank(last_name):
+                    messages.error(request, "name is neccesary for create account")
                     return redirect('user_add')
                 username = last_name
                 fn_arr = first_name.strip().split(' ')
-                for c in fn_arr:
-                    username += c[0]
+                for c in fn_arr: username += c[0]
                 user = get_user_model()(username=username)
                 user.set_password("123")
-                # user.save()
-                print(username.lower())
+                user.save()
                 return redirect('/auth/' + str(user.id))
             else:
                 messages.error(request, form.errors)
