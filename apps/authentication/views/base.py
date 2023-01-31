@@ -158,7 +158,7 @@ class UserAdd(CreateView):
         user = form.save()
         user.set_password(user.password)
         user.save()
-        return redirect(reverse_lazy('user_list'))
+        return redirect('user_list')
 
 
 class UserDelete(DeleteView):
