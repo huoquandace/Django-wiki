@@ -215,7 +215,7 @@ class UserAddByInfo(LoginRequiredMixin, View):
                 last_name = form.cleaned_data['last_name']
                 if isBlank(first_name) or isBlank(last_name):
                     messages.error(request, "name is neccesary for create account")
-                    return redirect('user_add')
+                    return redirect('user_add_by_info')
                 username = last_name
                 fn_arr = first_name.strip().split(' ')
                 for c in fn_arr: username += c[0]
@@ -225,7 +225,7 @@ class UserAddByInfo(LoginRequiredMixin, View):
                 return redirect('/auth/' + str(user.id))
             else:
                 messages.error(request, form.errors)
-                return redirect('user_add')
+                return redirect('user_add_by_info')
         return render(request, 'extra/user_add_by_info.html', {
             'form': form,
             'acc_form': acc_form,
