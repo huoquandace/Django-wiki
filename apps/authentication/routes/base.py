@@ -16,7 +16,7 @@ urlpatterns = [
     path('register/', Register.as_view(), name='register'),
     path('register/done/', RegisterDone.as_view(), name='register_done'),
     path('profile/', ProfileView.as_view(), name='profile'),
-    path('profile/update/', ProfileView.as_view(), name='profile_update'), # not yet
+    path('profile/update/', ProfileUpdateView.as_view(), name='profile_update'), # not yet
 
     path('user/<int:pk>/', UserDetail.as_view(), name='user_detail'),
     path('user/list/', UserList.as_view(), name='user_list'),

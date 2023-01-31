@@ -137,6 +137,41 @@ class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'auth/profile.html'
 
 
+class ProfileUpdateView(LoginRequiredMixin, View):
+    
+    class ProfileForm(forms.ModelForm):
+        class Meta:
+            model = Profile
+            fields = ['gender', 'phone', 'age', 'birthday', 'avatar' ,'address',]
+
+    class UserForm(forms.ModelForm):
+        username = forms.CharField(widget = forms.TextInput(attrs={'readonly':'readonly'}))
+        class Meta:
+            model = get_user_model()
+            fields = ('username', 'email', 'first_name', 'last_name')
+
+    def get(self, request):
+        profile_form = self.ProfileForm(instance=request.user.profile)
+        user_form = self.UserForm(instance=request.user)
+        context = {
+            'profile_form': profile_form,
+            'user_form': user_form,
+        }
+        return render(request, 'extra/profile_update2.html', context)
+    
+    def post(self, request):
+        user_form = self.UserForm(request.POST, instance=request.user)
+        profile_form = self.ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect('profile')
+        else:
+            messages.error(request, 'errors')
+            return redirect('profile_update2')
+
+
 class UserDetail(DetailView):
     model = get_user_model()
     template_name = 'extra/user_detail.html'
