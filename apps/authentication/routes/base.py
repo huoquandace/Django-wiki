@@ -20,6 +20,7 @@ urlpatterns = [
 
     path('user/<int:pk>/', UserDetail.as_view(), name='user_detail'),
     path('user/list/', UserList.as_view(), name='user_list'),
+    path('user/list/to_pdf/', UserListToPdf.as_view(), name='user_list_to_pdf'), 
     path('user/add/', UserAdd.as_view(), name='user_add'),
     path('user/add/by_info/', UserAddByInfo.as_view(), name='user_add_by_info'),
     path('user/update/<int:pk>/', UserDetail.as_view(), name='user_update'), # not yet

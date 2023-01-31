@@ -1,7 +1,8 @@
 from django.urls import reverse_lazy, reverse, URLPattern, URLResolver
 from django import forms
 from django.core import exceptions
-from django.shortcuts import redirect, render, HttpResponseRedirect
+from django.shortcuts import redirect, render, HttpResponse
+from django.template.loader import render_to_string
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import *
@@ -12,6 +13,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.datastructures import MultiValueDictKeyError
 
 from authentication.models.base import Profile
+from common.utils import html_to_pdf
 
 
 class AuthIndex(TemplateView):
@@ -268,4 +270,14 @@ class UserAddByInfo(LoginRequiredMixin, View):
         })
         
 
+class UserListToPdf(View):
+    
+    def get(self, request, *args, **kwargs):
+        import authentication, os
+        app_dir = os.path.dirname(authentication.__file__)
+        temp_dir = os.path.join(app_dir, "templates/reports/temp.html")
+        users = get_user_model().objects.all()
+        open(temp_dir, "w").write(render_to_string('reports/staff.html', {'users': users}))
+        pdf = html_to_pdf(temp_dir)
+        return HttpResponse(pdf, content_type='application/pdf')
 
