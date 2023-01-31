@@ -7,11 +7,10 @@
   {% csrf_token %}
   
   {{ form.as_p }}
+  <div id="content"></div>
+  <label for="custom_acc"> Custom acc </label>
   <input type="checkbox" onclick="toggle()" id="acc_cb" name="custom_acc" value="True" {% if request.POST.custom_acc == 'True' %} checked {% endif %}>
-  <label for="custom_acc"> Custom acc </label><br>
-  <div id="content" style="display: none;">
-    {{ acc_form.as_p }}
-  </div>
+  <br><br>
   <button type="submit"> {% trans "SUBMIT" %} </button>
 </form>
 
@@ -19,9 +18,9 @@
 toggle = () => {
   var cb = document.getElementById('acc_cb')
   if (cb.checked == false) {
-    document.getElementById('content').style.display = "none"
+    document.getElementById('content').innerHTML = ""
   } else {
-    document.getElementById('content').style.display = "block"
+    document.getElementById('content').innerHTML = `{{ acc_form.as_p }}`
 
   }
 }
