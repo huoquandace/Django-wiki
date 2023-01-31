@@ -157,7 +157,7 @@ class ProfileUpdateView(LoginRequiredMixin, View):
             'profile_form': profile_form,
             'user_form': user_form,
         }
-        return render(request, 'extra/profile_update2.html', context)
+        return render(request, 'auth/profile_update.html', context)
     
     def post(self, request):
         user_form = self.UserForm(request.POST, instance=request.user)
@@ -174,12 +174,12 @@ class ProfileUpdateView(LoginRequiredMixin, View):
 
 class UserDetail(DetailView):
     model = get_user_model()
-    template_name = 'extra/user_detail.html'
+    template_name = 'auth/user_detail.html'
     context_object_name = 'user'
 
 
 class UserList(ListView):
-    template_name = 'extra/user_list.html'
+    template_name = 'auth/user_list.html'
     model = get_user_model()
     context_object_name = 'users'
 
@@ -187,7 +187,7 @@ class UserList(ListView):
 class UserAdd(CreateView):
     model = get_user_model()
     fields = ['username', 'password']
-    template_name = 'extra/user_add.html'
+    template_name = 'auth/user_add.html'
 
     def form_valid(self, form):
         user = form.save()
@@ -198,7 +198,7 @@ class UserAdd(CreateView):
 
 class UserDelete(DeleteView):
     model = get_user_model()
-    template_name = 'extra/user_delete.html'
+    template_name = 'auth/user_delete.html'
     success_url = reverse_lazy('user_list')
 
 
@@ -225,7 +225,7 @@ class UserAddByInfo(LoginRequiredMixin, View):
             raise forms.ValidationError(u'Username "%s" is already in use.' % username)
 
     def get(self, request):
-        return render(request, 'extra/user_add_by_info.html', {
+        return render(request, 'auth/user_add_by_info.html', {
             'form': self.UserProfileForm(),
             'acc_form': self.UserAddForm(),
         })
@@ -241,6 +241,7 @@ class UserAddByInfo(LoginRequiredMixin, View):
                 user = get_user_model()(username=acc_form.cleaned_data['username'])
                 user.set_password(acc_form.cleaned_data['password'])
                 user.save()
+                return redirect('user_list')
             else:
                 messages.error(request, acc_form.errors)
         else:
@@ -261,7 +262,7 @@ class UserAddByInfo(LoginRequiredMixin, View):
             else:
                 messages.error(request, form.errors)
                 return redirect('user_add_by_info')
-        return render(request, 'extra/user_add_by_info.html', {
+        return render(request, 'auth/user_add_by_info.html', {
             'form': form,
             'acc_form': acc_form,
         })
