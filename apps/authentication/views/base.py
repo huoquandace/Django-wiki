@@ -231,6 +231,8 @@ class UserEdit(UpdateView):
             kwargs['user_form'] = self.form_class(instance=self.get_object())
         if 'profile_form' not in kwargs:
             kwargs['profile_form'] = self.profile_form(instance=self.get_object().profile)
+        if 'user' not in kwargs:
+            kwargs['user'] = self.get_object()
         return super(UserEdit, self).get_context_data(**kwargs)
 
     def post(self, request, *args, **kwargs):
