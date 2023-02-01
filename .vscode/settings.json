@@ -5,7 +5,12 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true
+        "**/Thumbs.db": true,
+        "**/__pycache__": true,
+        "**/__init__.py": true,
+        "**/manage.py": true,
+        "**/wsgi.py": true,
+        "**/.venv": true
     },
     "hide-files.files": [
         "**/__pycache__",
