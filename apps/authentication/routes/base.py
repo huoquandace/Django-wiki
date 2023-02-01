@@ -27,4 +27,5 @@ urlpatterns = [
     path('user/add/by_csv/download_template/', DowloadUserCsvTemplate.as_view(), name='user_template_csv_download'),
     path('user/update/<int:pk>/', UserDetail.as_view(), name='user_update'), # not yet
     path('user/delete/<int:pk>/', UserDelete.as_view(), name='user_delete'),
+    path('user/group/list/', UserGroupList.as_view(), name='user_group_list'),
 ]

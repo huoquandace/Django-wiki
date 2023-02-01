@@ -1,0 +1,36 @@
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "USER_GROUP_LIST_TITLE" %} {% endblock title %}
+{% block content %}
+
+<style> table, th, td { border: solid 1px #333; border-collapse: collapse; } </style>
+
+<table>
+  <thead>
+    <tr>
+      <th> # </th>
+      <th> Name </th>
+      <th> Permissions </th>
+      <th> - </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for group in groups %}
+    <tr>
+      <th> {{ forloop.counter }} </th>
+      <td> {{ group.name }} </td>
+      <td>
+        {% for permission in group.permissions.all %}
+          <div> {{permission}} </div>
+        {% endfor %}
+      </td>
+      <td>
+        <a href="#"><button> {% trans "EDIT" %} </button></a>
+        <a href="#"><button> {% trans "DELETE" %} </button></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

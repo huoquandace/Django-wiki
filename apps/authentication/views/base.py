@@ -20,13 +20,13 @@ from django.utils.datastructures import MultiValueDictKeyError
 from authentication.models.base import Profile
 from authentication.forms.base import UploadFileForm
 from authentication.utils.base import html_to_pdf
-
+from common.mixins import *
 
 CSV_FILE_PATH = 'data/csv/'
 USER_CSV_FILE_TEMPLALTE = 'data/csv.csv'
 
 
-class AuthIndex(TemplateView):
+class AuthIndex(StaffRequiredMixin, TemplateView):
     template_name = 'auth_index.html'
 
     def get_context_data(self, **kwargs):
@@ -333,4 +333,10 @@ class UserListToPdf(View):
         open(temp_dir, "w").write(render_to_string('reports/staff.html', {'users': users}))
         pdf = html_to_pdf(temp_dir)
         return HttpResponse(pdf, content_type='application/pdf')
+
+from django.contrib.auth.models import Group
+class UserGroupList(ListView):
+    template_name = 'auth/user_group_list.html'
+    model = Group
+    context_object_name = 'groups'
 
