@@ -12,7 +12,7 @@
         "**/wsgi.py": true,
         "**/authentication/models": true,
         "**/authentication/migrations": true,
-        "**/authentication/forms": true,
+        // "**/authentication/forms": true,
         "**/authentication/backend": true,
         "**/authentication/signals": true,
         "**/authentication/tests": true,
