@@ -280,7 +280,7 @@ class UserAddByInfo(LoginRequiredMixin, View):
         })
 
 
-class UserAddCsv(LoginRequiredMixin, FormView):
+class UserAddByCsv(LoginRequiredMixin, FormView):
     form_class = UploadFileForm
     template_name = 'auth/user_add_by_csv.html'
 
