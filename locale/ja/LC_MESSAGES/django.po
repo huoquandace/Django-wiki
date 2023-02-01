@@ -297,11 +297,11 @@ msgstr ""
 
 #: .\apps\authentication\templates\auth_index.html:6
 msgid "URL_LIST"
-msgstr ""
+msgstr "あ List"
 
 #: .\apps\authentication\views\base.py:57
 #, python-format
-msgid "あ List"
+msgid ""
 "Please enter a correct %(username)s and password. Note that both fields may "
 "be case-sensitive."
 msgstr ""

@@ -8,10 +8,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
+urlpatterns += [
+    path('i18n/', include('django.conf.urls.i18n')),
+]
+
 urlpatterns += i18n_patterns (
     path('auth/', include('authentication.routes.base')),
 
-    prefix_default_language=False
+    # prefix_default_language=False
 )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
