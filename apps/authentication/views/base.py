@@ -246,53 +246,6 @@ class UserEdit(LoginRequiredMixin, View):
             return redirect('user_edit')
 
 
-class UserEdit2(UpdateView):
-
-    class ProfileForm(forms.ModelForm):
-        class Meta:
-            model = Profile
-            fields = ['gender', 'phone', 'age', 'birthday', 'avatar' ,'address',]
-
-    class UserForm(forms.ModelForm):
-        class Meta:
-            model = get_user_model()
-            fields = ('email', 'first_name', 'last_name')
-    
-    model = get_user_model()
-    form_class = UserForm
-    profile_form = ProfileForm
-    template_name = 'auth/user_edit.html'
-
-    def get_context_data(self, **kwargs):
-        if 'user_form' not in kwargs:
-            kwargs['user_form'] = self.form_class(instance=self.get_object())
-        if 'profile_form' not in kwargs:
-            kwargs['profile_form'] = self.profile_form(instance=self.get_object().profile)
-        if 'user' not in kwargs:
-            kwargs['user'] = self.get_object()
-        return super(UserEdit, self).get_context_data(**kwargs)
-
-    def post(self, request, *args, **kwargs):
-        user_form = self.form_class(request.POST)
-        profile_form = self.profile_form(request.POST)
-
-        if user_form.is_valid() and profile_form.is_valid():
-            user = self.get_object()
-            for data in user_form.cleaned_data:
-                setattr(user, data, user_form.cleaned_data[data])
-            for data in profile_form.cleaned_data:
-                setattr(user.profile, data, profile_form.cleaned_data[data])
-            user.save()
-            user.profile.save()
-            messages.success(self.request, 'Edit successfully')
-            return HttpResponseRedirect(self.get_success_url())
-        else:
-            return self.render_to_response(self.get_context_data(user_form=user_form, profile_form=profile_form))
-
-    def get_success_url(self):
-        return reverse('user_edit', kwargs={'pk': self.get_object().id})
-
-
 class UserDelete(DeleteView):
     model = get_user_model()
     template_name = 'auth/user_delete.html'
