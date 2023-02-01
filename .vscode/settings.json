@@ -7,5 +7,35 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true
     },
-    "hide-files.files": []
+    "hide-files.files": [
+        "**/__pycache__",
+        "**/__init__.py",
+        "**/manage.py",
+        "**/wsgi.py",
+        "**/.venv"
+    ],
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none",
+        // "reportMissingImports": "none",
+    },
+    "html.validate.scripts": false,
+    // "python.analysis.extraPaths": [
+    //     "./demo/apps"
+    // ],
+
+    "[ruby][html]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[csharp][typescript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+
+    "material-icon-theme.folders.associations": {
+        "forms": "Shader",
+        "migrations": "Cluster",
+        "media": "Vercel",
+        "signals": "Vercel",
+    }
 }

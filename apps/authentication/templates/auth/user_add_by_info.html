@@ -1,0 +1,32 @@
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "USER_ADD_BY_INFO_TITLE" %} {% endblock title %}
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  {{ form.as_p }}
+  <div id="content"></div>
+  <label for="custom_acc"> Custom acc </label>
+  <input type="checkbox" onclick="toggle()" id="acc_cb" name="custom_acc" value="True" {% if request.POST.custom_acc == 'True' %} checked {% endif %}>
+  <br><br>
+  <button type="submit"> {% trans "SUBMIT" %} </button>
+</form>
+
+<script>
+toggle = () => {
+  var cb = document.getElementById('acc_cb')
+  if (cb.checked == false) {
+    document.getElementById('content').innerHTML = ""
+  } else {
+    document.getElementById('content').innerHTML = `{{ acc_form.as_p }}`
+
+  }
+}
+toggle()
+</script>
+
+
+
+{% endblock content %}
