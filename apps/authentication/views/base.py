@@ -340,3 +340,7 @@ class UserGroupList(ListView):
     model = Group
     context_object_name = 'groups'
 
+class UserGroupAdd(CreateView):
+    model = Group
+    fields = '__all__'
+    template_name = 'auth/user_group_add.html'
