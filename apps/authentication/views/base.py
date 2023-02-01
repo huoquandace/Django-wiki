@@ -209,7 +209,44 @@ class UserAdd(CreateView):
         return redirect('user_list')
 
 
-class UserEdit(UpdateView):
+class UserEdit(LoginRequiredMixin, View):
+    
+    class ProfileForm(forms.ModelForm):
+        class Meta:
+            model = Profile
+            fields = ['gender', 'phone', 'age', 'birthday', 'avatar' ,'address',]
+
+    class UserForm(forms.ModelForm):
+        username = forms.CharField(widget = forms.TextInput(attrs={'readonly':'readonly'}))
+        class Meta:
+            model = get_user_model()
+            fields = ('username', 'email', 'first_name', 'last_name')
+
+    def get(self, request, pk):
+        user = get_user_model().objects.get(id=pk)
+        profile_form = self.ProfileForm(instance=user.profile)
+        user_form = self.UserForm(instance=user)
+        context = {
+            'profile_form': profile_form,
+            'user_form': user_form,
+        }
+        return render(request, 'auth/user_edit.html', context)
+    
+    def post(self, request, pk):
+        user = get_user_model().objects.get(id=pk)
+        user_form = self.UserForm(request.POST, instance=user)
+        profile_form = self.ProfileForm(request.POST, request.FILES, instance=user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Edit successfully')
+            return redirect('user_edit', pk=user.id)
+        else:
+            messages.error(request, 'errors')
+            return redirect('user_edit')
+
+
+class UserEdit2(UpdateView):
 
     class ProfileForm(forms.ModelForm):
         class Meta:

@@ -3,8 +3,6 @@
 {% block title %} {% trans "USER_EDIT_TITLE" %} {% endblock title %}
 {% block content %}
 
-Username: <input type="text" value="{{ user.username }}" disabled>
-
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{ user_form.as_p }}
