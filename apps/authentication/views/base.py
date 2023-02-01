@@ -12,6 +12,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.views import *
 from django.contrib.auth.mixins import *
 from django.contrib.auth.forms import *
+from django.contrib.auth.models import Group
 from django.views.generic import *
 from django.utils.translation import gettext_lazy as _
 from django.core.files.storage import FileSystemStorage
@@ -322,7 +323,6 @@ class DowloadUserCsvTemplate(View):
         return HttpResponseRedirect(request.path_info)
 
 
-
 class UserListToPdf(View):
     
     def get(self, request, *args, **kwargs):
@@ -334,13 +334,19 @@ class UserListToPdf(View):
         pdf = html_to_pdf(temp_dir)
         return HttpResponse(pdf, content_type='application/pdf')
 
-from django.contrib.auth.models import Group
+
 class UserGroupList(ListView):
     template_name = 'auth/user_group_list.html'
     model = Group
     context_object_name = 'groups'
 
+
 class UserGroupAdd(CreateView):
     model = Group
     fields = '__all__'
     template_name = 'auth/user_group_add.html'
+
+
+
+
+
