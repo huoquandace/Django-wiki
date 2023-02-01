@@ -1,4 +1,5 @@
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 
 class GroupRequiredMixin(object):
@@ -18,3 +19,12 @@ class GroupRequiredMixin(object):
             if len(set(user_groups).intersection(self.group_required)) <= 0:
                 raise PermissionDenied
         return super(GroupRequiredMixin, self).dispatch(request, *args, **kwargs)
+
+
+class SuperuserRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_superuser
+
+class StaffRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_staff

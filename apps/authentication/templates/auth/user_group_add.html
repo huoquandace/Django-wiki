@@ -1,0 +1,12 @@
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "USER_GROUP_ADD_TITLE" %} {% endblock title %}
+{% block content %}
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit"> {% trans "SUBMIT" %} </button>
+</form>
+
+{% endblock content %}
