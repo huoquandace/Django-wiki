@@ -182,7 +182,7 @@ class ProfileUpdateView(LoginRequiredMixin, View):
             return redirect('profile')
         else:
             messages.error(request, 'errors')
-            return redirect('profile_update2')
+            return redirect('profile_update')
 
 
 class UserDetail(DetailView):
