@@ -22,7 +22,7 @@ class UserListCreateAPIView(APIView):
             fields = ('username', 'password', 'email', 'profile')
         def create(self, validated_data):   # TODO
             validated_data['password'] = make_password(validated_data['password'])
-            return super(self.UserSerializer, self).create(validated_data)
+            return super(UserSerializer, self).create(validated_data)
 
     def get(self, request, format=None):
         users = get_user_model().objects.all()
