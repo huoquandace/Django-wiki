@@ -8,11 +8,6 @@ from rest_framework.response import Response
 from authentication.models.base import Profile
 
 
-class UserRetrieveSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = get_user_model()
-        fields = '__all__'
-
 class UserListCreateAPIView(APIView):
     class UserSerializer(serializers.ModelSerializer):
         class ProfileSerializer(serializers.ModelSerializer):
@@ -35,3 +30,13 @@ class UserListCreateAPIView(APIView):
             serializer.save()
             return Response(serializer.data, status=HTTP_201_CREATED)
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+
+
+class UserRetrieveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = '__all__'
+
+
+
+        
