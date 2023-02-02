@@ -13,7 +13,7 @@ class UserListCreateAPIView(APIView):
         class ProfileSerializer(serializers.ModelSerializer):
             class Meta:
                 model = Profile
-                fields = '__all__'
+                fields = ('gender', 'phone', 'age', 'address', 'birthday', 'avatar')
         profile = ProfileSerializer(read_only=True,)
         password = serializers.CharField(write_only=True, required=True,)
         class Meta:
@@ -39,4 +39,4 @@ class UserRetrieveSerializer(serializers.ModelSerializer):
 
 
 
-        
+
