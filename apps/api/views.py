@@ -20,9 +20,10 @@ class UserListCreateAPIView(APIView):
                 model = Profile
                 fields = '__all__'
         profile = ProfileSerializer(read_only=True,)
+        password = serializers.CharField(write_only=True, required=True,)
         class Meta:
             model = get_user_model()
-            fields = ('username', 'email', 'profile')
+            fields = ('username', 'password', 'email', 'profile')
 
     def get(self, request, format=None):
         users = get_user_model().objects.all()
