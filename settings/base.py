@@ -88,3 +88,7 @@ LANGUAGES = (
     ('ja', _('Japanese')),
 )
 
+try:
+    from apps.api.settings import *
+except ImportError:
+    pass
