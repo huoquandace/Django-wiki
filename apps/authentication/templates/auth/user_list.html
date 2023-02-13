@@ -31,4 +31,10 @@
   </tbody>
 </table>
 
+{% if is_paginated %}
+  {% if page_obj.has_previous %} <a href="./?page={{ page_obj.previous_page_number }}"> {% trans "PREVIOUS" %} </a> {% endif %}
+  <span> {% trans "PAGE" %} {{ page_obj.number }}/{{ page_obj.paginator.num_pages }} </span>
+  {% if page_obj.has_next %} <a href="./?page={{ page_obj.next_page_number }}"> {% trans "NEXT" %} </a> {% endif %}
+{% endif %}
+
 {% endblock content %}
