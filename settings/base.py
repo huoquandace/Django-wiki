@@ -90,5 +90,6 @@ LANGUAGES = (
 
 try:
     from apps.api.settings import *
+    from apps.ts.settings import *
 except ImportError:
     pass
