@@ -1,3 +1,13 @@
+"""
+    Login, Logout, Register,
+    Password change, reset
+    Profile, Profile update
+    User list, add(normal, by_info, by_csv), edit, delete
+    Group list, add
+    To do: search, page, permission provider
+"""
+
+
 import os
 from csv import reader
 from django import forms
