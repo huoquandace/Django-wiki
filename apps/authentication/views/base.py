@@ -208,6 +208,12 @@ class UserList(ListView):
     context_object_name = 'users'
     paginate_by = 5
 
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return self.model.objects.filter(username__icontains=query)
+        return super().get_queryset()
+
 
 class UserAdd(CreateView):
     model = get_user_model()

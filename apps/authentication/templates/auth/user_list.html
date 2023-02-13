@@ -5,6 +5,11 @@
 
 <style> table, th, td { border: solid 1px #333; border-collapse: collapse; } </style>
 
+<form method='GET'>
+  <input type='text' name='q' value='{{ request.GET.q }}'>
+  <input class="button" type='submit' value="Search">
+</form>
+
 <table>
   <thead>
     <tr>
