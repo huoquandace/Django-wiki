@@ -4,7 +4,8 @@
     Profile, Profile update
     User list, add(normal, by_info, by_csv), edit, delete
     Group list, add
-    To do: search, page, permission provider
+    page
+    To do: search, permission provider
 """
 
 
