@@ -1,0 +1,28 @@
+{% if status is not None %}
+  {{ status }}
+{% endif %}
+--------------------
+
+<form method="post">
+  {% csrf_token %}
+  username : <input type="text" name="username">
+  <br>
+  password : <input type="text" name="password">
+  <br>
+  <button type="submit">Submit</button>
+</form>
+
+--------------------
+
+{% for user in data %}
+  {{ user.username }}
+  <br>
+  {{ user.email }}
+  <br>
+  <!-- {{ user.profile }} -->
+  {% for field, value in user.profile.items %}
+    - {{ field }}: {{ value }}
+    <br>
+  {% endfor %}
+  <hr>
+{% endfor %}

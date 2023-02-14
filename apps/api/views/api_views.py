@@ -1,5 +1,5 @@
+
 from django.contrib.auth import get_user_model
-from django.contrib.auth.hashers import make_password
 
 from rest_framework import serializers
 from rest_framework.views import APIView
@@ -37,6 +37,9 @@ class UserListCreateAPIView(APIView):
             serializer.save()
             return Response(serializer.data, status=HTTP_201_CREATED)
         return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+    
+
+
 
 class UserRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
