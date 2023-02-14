@@ -37,5 +37,5 @@ class HomepageTest(TestCase):
     def test_homepage_returns_post_list(self):
         response = self.client.get('/ts/')
 
-        self.assertContains(response, "Sample post 1")
-        self.assertContains(response, "Sample post 2")
+        self.assertContains(response, 'Sample post 1')
+        self.assertContains(response, 'Sample post 2')
