@@ -1,0 +1,8 @@
+{% for post in posts %}
+<article>
+  <h2>{{post.title}}</h2>
+  <p>{{post.created_at}} <a href="#">{{post.author}}</a> </p>
+  <p>{{post.body|truncatewords:30}}</p>
+  <hr />
+</article>
+{% endfor %}
