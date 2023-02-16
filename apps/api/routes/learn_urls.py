@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 from api.views.learn_views import *
@@ -12,4 +12,5 @@ urlpatterns = [
     path("jwt/verify/", TokenVerifyView.as_view(), name="token_verify"),
 
     path("home/", HomeView.as_view(), name="home"),
+    path("post/", include('post.urls'))
 ]
