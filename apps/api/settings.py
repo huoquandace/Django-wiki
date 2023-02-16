@@ -7,6 +7,7 @@ INSTALLED_APPS += [
     'rest_framework',
     'api',
     'drf_yasg',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 
