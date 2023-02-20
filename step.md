@@ -10,11 +10,20 @@ Enter this code into command line to create django project folder
 
 ### 1.2 Rebuild project structure layout
 
-- change name wiki->settings, settings->base
-- move urls asgi wsgi to root Directory and edit DJANGO_SETTINGS_MODULE to settings.base
-- config:   ROOT_URLCONF = 'urls'
-  WSGI_APPLICATION = 'wsgi.application'
-- create folder apps and add to settings: sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+- Rename folder `wiki` to `settings`, file `settings.py` to `base.py`
+
+- Move files `urls.py` `asgi.py` `wsgi.py` to root directory and change:
+```
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.base')
+```
+
+- Open `setings/base.py` and change:
+```
+ROOT_URLCONF = 'urls'
+WSGI_APPLICATION = 'wsgi.application'
+```
+
+### 1.3 Initial settings
 
 ## 2.
 
@@ -22,6 +31,7 @@ Enter this code into command line to create django project folder
 
 ## 4.
 
+- create folder apps and add to settings: sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 - create folder template and edit: settings -> TEMPLATES: 'DIRS': [os.path.join(BASE_DIR, 'templates'),],
 - create folder static and add to settings:     STATIC_URL = 'static/'
   STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
