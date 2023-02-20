@@ -7,16 +7,10 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "**/__pycache__": true,
-        "**/__init__.py": true,
-        "**/manage.py": true,
-        "**/wsgi.py": true,
         "**/.venv": true
     },
     "hide-files.files": [
         "**/__pycache__",
-        "**/__init__.py",
-        "**/manage.py",
-        "**/wsgi.py",
         "**/.venv"
     ],
     "python.analysis.diagnosticSeverityOverrides": {
@@ -24,15 +18,12 @@
         // "reportMissingImports": "none",
     },
     "html.validate.scripts": false,
-    // "python.analysis.extraPaths": [
-    //     "./demo/apps"
-    // ],
 
-    "[ruby][html]": {
+    "[html]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 2
     },
-    "[csharp][typescript]": {
+    "[javascript]": {
         "editor.insertSpaces": true,
         "editor.tabSize": 4
     },
