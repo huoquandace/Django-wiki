@@ -7,10 +7,18 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "**/__pycache__": true,
+        "**/__init__.py": true,
+        "**/manage.py": true,
+        "**/wsgi.py": true,
+        "**/asgi.py": true,
         "**/.venv": true
     },
     "hide-files.files": [
         "**/__pycache__",
+        "**/__init__.py",
+        "**/manage.py",
+        "**/wsgi.py",
+        "**/asgi.py",
         "**/.venv"
     ],
     "python.analysis.diagnosticSeverityOverrides": {
