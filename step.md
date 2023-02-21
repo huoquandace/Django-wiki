@@ -31,11 +31,11 @@ Enter this code into command line to create django project folder:
   <p>📝 Add code below, whenever you add an app to folder `apps` module `.settings` in new app will be added:</p>
 
   ```python
-  for file in os.listdir(BASE_DIR / 'apps'):
-  dir= os.path.join(BASE_DIR / 'apps', file)
-  if os.path.isdir(dir):
-    try: __import__(dir.split('\\')[-1] + '.settings', fromlist='__all__')
-    except ImportError: pass
+  try:
+    for file in os.listdir(BASE_DIR / 'apps'):
+      dir= os.path.join(BASE_DIR / 'apps', file)
+      if os.path.isdir(dir): __import__(dir.split('\\')[-1] + '.settings', fromlist='__all__')
+  except: pass
   ```
 
   </blockquote>
