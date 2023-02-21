@@ -28,6 +28,7 @@ Enter this code into command line to create django project folder:
 ### 1.3 Initial settings
 
 #### 1.3.1 Git settings
+
 - Create `.gitignore`:
   ```
   __pycache__
@@ -35,6 +36,7 @@ Enter this code into command line to create django project folder:
   ```
 
 #### 1.3.2 Create folder contains project apps
+
 - Create folder `apps` and add to `setings/base.py`:
   ```
   sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
@@ -51,6 +53,7 @@ Enter this code into command line to create django project folder:
   ]
   ```
 #### 1.3.4 Setting for static and media files
+
 - Create folder `static` and add to `setings/base.py`:
   ```
   STATIC_URL = 'static/'
@@ -71,6 +74,7 @@ Enter this code into command line to create django project folder:
   ```
 
 #### 1.3.5 Multiple languages settings
+
 - Create folders `locale/[lang_code]/LC_MESSAGES` and add to `settings/base.py`:
   ```
   from django.utils.translation import gettext_lazy as _
@@ -116,11 +120,34 @@ Enter this code into command line to create django project folder:
   ```
   *.mo
   ```
+
+#### 1.3.5 Email settings
+
+- For development, can receive email by console or files:
+  - With console, just add to `settings/base.py`:
+    ```
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    ```
+  - If you want to store emails, create folder `email` and add to `settings/base.py`:
+    ```
+    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    EMAIL_FILE_PATH = BASE_DIR / 'emails'
+    ```
+
+#### 1.3.5 Timezone settings
+
+- Cusomize timezone with the format below:
+  ```
+  USE_TZ = True
+  USE_L10N = True
+  TIME_ZONE = 'UTC'
+  ```
+
+
 ## 2.
 
 ## 3.
 
 ## 4.
 
-- create .gitignore
 
