@@ -6,22 +6,21 @@
 
 Enter this code into command line to create django project folder
 
-&nbsp;&nbsp; `django-admin startproject wiki`
+&nbsp;&nbsp;&nbsp;&nbsp; `django-admin startproject wiki`
 
 ### 1.2 Rebuild project structure layout
 
 - Rename folder `wiki` to `settings`, file `settings.py` to `base.py`
 
 - Move files `urls.py` `asgi.py` `wsgi.py` to root directory and change:
-```
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.base')
-```
+
+&nbsp;&nbsp; `os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.base')`
 
 - Open `setings/base.py` and change:
-```
-ROOT_URLCONF = 'urls'
-WSGI_APPLICATION = 'wsgi.application'
-```
+
+&nbsp;&nbsp;&nbsp;&nbsp; `ROOT_URLCONF = 'urls'`
+&nbsp;&nbsp;&nbsp;&nbsp; `WSGI_APPLICATION = 'wsgi.application'`
+
 
 ### 1.3 Initial settings
 
