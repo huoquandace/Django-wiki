@@ -14,6 +14,8 @@ Enter this code into command line to create django project folder:
 - Rename folder `wiki` to `settings`, file `settings.py` to `base.py`
 - Move files `urls.py` `asgi.py` `wsgi.py` to root directory and change:
   ```
+  import os, sys
+  ...
   os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.base')
   ```
 
@@ -49,34 +51,45 @@ Enter this code into command line to create django project folder:
   MEDIA_URL = '/media/'
   MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
   ```
-- add to urls:  from django.conf import settings
+- Customize `urls.py`:  
+  ```
+  from django.conf import settings
   from django.conf.urls.static import static
   ...
   urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+  ```
+
+### 1.4 Multiple languages settings
+- Create folders `locale/[lang_code]/LC_MESSAGES` and add to `settings/base.py`:
+  ```
+  from django.utils.translation import gettext_lazy as _
+  ...
+  USE_I18N = True
+  LANGUAGE_CODE = 'en'
+  LOCALE_PATHS = [BASE_DIR / 'locale/',]
+  MIDDLEWARE += ['django.middleware.locale.LocaleMiddleware',]
+  LANGUAGES = (
+    ('en', _('English')),
+    ('vi', _('Vietnamese')),
+    ('ja', _('Japanese')),
+  )
+  ```
+- Customize `urls.py`:
+  ```
+  from django.urls import path, include
+  from django.conf.urls.i18n import i18n_patterns
+  ...
+  urlpatterns += i18n_patterns (
+
+    # prefix_default_language=False
+  )
+  ```
 ## 2.
 
 ## 3.
 
 ## 4.
 
-- create folder locale/[lang_code]/LC_MESSAGES and add to settings:     USE_I18N = True
-  LANGUAGE_CODE = 'en'
-  LOCALE_PATHS = [BASE_DIR / 'locale/',]
-  MIDDLEWARE += ['django.middleware.locale.LocaleMiddleware',]
-  LANGUAGES = (
-  ('en', _('English')),
-  ('vi', _('Vietnamese')),
-  ('ja', _('Japanese')),
-  )
-- add to urls:  from django.urls import path, include
-  from django.conf.urls.i18n import i18n_patterns
-  ...
-  urlpatterns += i18n_patterns (
-  path('auth/', include('authentication.routes.base')),
-  
-  # prefix_default_language=False
-  
-  )
 - create .gitignore
 
