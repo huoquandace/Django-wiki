@@ -128,7 +128,7 @@ Enter this code into command line to create django project folder:
     ```
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     ```
-  - If you want to store emails, create folder `email` and add to `settings/base.py`:
+  - If you want to store emails, create folder `emails` and add to `settings/base.py`:
     ```
     EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
     EMAIL_FILE_PATH = BASE_DIR / 'emails'
