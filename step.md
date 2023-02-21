@@ -25,7 +25,7 @@ Enter this code into command line to create django project folder:
   WSGI_APPLICATION = 'wsgi.application'
   ```
 
-- 📝 Add code below, whenever you add an app to folder `apps` module `.settings` in new app will be added:
+📝 Add code below, whenever you add an app to folder `apps` module `.settings` in new app will be added:
   ```
   for file in os.listdir(BASE_DIR / 'apps'):
       dir= os.path.join(BASE_DIR / 'apps', file)
