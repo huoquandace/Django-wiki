@@ -6,7 +6,7 @@
 
 Enter this code into command line to create django project folder
 
-&nbsp;&nbsp;&nbsp;&nbsp; `django-admin startproject wiki`
+&nbsp;&nbsp; `django-admin startproject wiki`
 
 ### 1.2 Rebuild project structure layout
 
@@ -18,9 +18,10 @@ Enter this code into command line to create django project folder
 
 - Open `setings/base.py` and change:
 
-&nbsp;&nbsp;&nbsp;&nbsp; `ROOT_URLCONF = 'urls'`
-&nbsp;&nbsp;&nbsp;&nbsp; `WSGI_APPLICATION = 'wsgi.application'`
-
+```
+ROOT_URLCONF = 'urls'
+WSGI_APPLICATION = 'wsgi.application'
+```
 
 ### 1.3 Initial settings
 
