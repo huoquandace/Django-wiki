@@ -26,17 +26,22 @@ Enter this code into command line to create django project folder:
   ```
 
 ### 1.3 Initial settings
+- Create `.gitignore`:
+  ```
+  __pycache__
+  db.sqlite3
+  ```
 
 - Create folder `apps` and add to `setings/base.py`:
   ```
   sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
   ```
-- Create folder `template` and edit `setings/base.py`:
+- Create folder `templates` and edit `setings/base.py`:
   ```
   TEMPLATES = [
     {
       ...
-      'DIRS': [os.path.join(BASE_DIR, 'templates'),],
+      'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
       ...
     },
   ]
@@ -68,13 +73,23 @@ Enter this code into command line to create django project folder:
   USE_I18N = True
   LANGUAGE_CODE = 'en'
   LOCALE_PATHS = [BASE_DIR / 'locale/',]
-  MIDDLEWARE += ['django.middleware.locale.LocaleMiddleware',]
   LANGUAGES = (
     ('en', _('English')),
     ('vi', _('Vietnamese')),
     ('ja', _('Japanese')),
   )
   ```
+- Add middleware bettween session and common:
+  ```
+  MIDDLEWARE = [
+    ...
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    ...
+  ]
+  ```
+
 - Customize `urls.py`:
   ```
   from django.urls import path, include
@@ -84,6 +99,17 @@ Enter this code into command line to create django project folder:
 
     # prefix_default_language=False
   )
+  ```
+
+- Make file .po and compile to .mo by code:
+  ```
+  django-admin makemessages --all --ignore=env
+  django-admin compilemessages --ignore=env
+  ```
+
+- Ignore files `.mo` by add to `.gitignore` :
+  ```
+  *.mo
   ```
 ## 2.
 
