@@ -158,8 +158,21 @@ Enter this code into command line to create django project folder:
   TIME_ZONE = 'UTC'
   ```
 
+## 2. User apps
 
-## 2.
+### 2.1 Create app
+- 
+  **NOTE:** 
+  <blockquote>
+  <p>📝 If auth models are defined in apps's subfolder, must create init file. </p>
+
+  ```python
+  # __init__.py
+  from .base import User
+  ```
+
+  </blockquote>
+
 
 ## 3.
 
