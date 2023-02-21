@@ -26,16 +26,20 @@ Enter this code into command line to create django project folder:
   ```
 
 ### 1.3 Initial settings
+
+#### 1.3.1 Git settings
 - Create `.gitignore`:
   ```
   __pycache__
   db.sqlite3
   ```
 
+#### 1.3.2 Create folder contains project apps
 - Create folder `apps` and add to `setings/base.py`:
   ```
   sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
   ```
+#### 1.3.3 Create folder contains templates
 - Create folder `templates` and edit `setings/base.py`:
   ```
   TEMPLATES = [
@@ -46,6 +50,7 @@ Enter this code into command line to create django project folder:
     },
   ]
   ```
+#### 1.3.4 Setting for static and media files
 - Create folder `static` and add to `setings/base.py`:
   ```
   STATIC_URL = 'static/'
@@ -65,7 +70,7 @@ Enter this code into command line to create django project folder:
   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
   ```
 
-### 1.4 Multiple languages settings
+#### 1.3.5 Multiple languages settings
 - Create folders `locale/[lang_code]/LC_MESSAGES` and add to `settings/base.py`:
   ```
   from django.utils.translation import gettext_lazy as _
