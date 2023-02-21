@@ -13,33 +13,39 @@ Enter this code into command line to create django project folder:
 
 - Rename folder `wiki` to `settings`, file `settings.py` to `base.py`
 - Move files `urls.py` `asgi.py` `wsgi.py` to root directory and change:
-  ```
+  ```python
   import os, sys
   ...
   os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.base')
   ```
 
 - Open `setings/base.py` and change:
-  ```
+  ```python
   ROOT_URLCONF = 'urls'
   WSGI_APPLICATION = 'wsgi.application'
   ```
 
-📝 Add code below, whenever you add an app to folder `apps` module `.settings` in new app will be added:
-  ```
+- 
+  **NOTE:** 
+  <blockquote>
+  <p>📝 Add code below, whenever you add an app to folder `apps` module `.settings` in new app will be added:</p>
+
+  ```python
   for file in os.listdir(BASE_DIR / 'apps'):
-      dir= os.path.join(BASE_DIR / 'apps', file)
-      if os.path.isdir(dir):
-          try: __import__(dir.split('\\')[-1] + '.settings', fromlist='__all__')
-          except ImportError: pass
+  dir= os.path.join(BASE_DIR / 'apps', file)
+  if os.path.isdir(dir):
+    try: __import__(dir.split('\\')[-1] + '.settings', fromlist='__all__')
+    except ImportError: pass
   ```
+
+  </blockquote>
 
 ### 1.3 Initial settings
 
 #### 1.3.1 Git settings
 
 - Create `.gitignore`:
-  ```
+  ```git
   __pycache__
   db.sqlite3
   ```
@@ -47,12 +53,12 @@ Enter this code into command line to create django project folder:
 #### 1.3.2 Create folder contains project apps
 
 - Create folder `apps` and add to `setings/base.py`:
-  ```
+  ```python
   sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
   ```
 #### 1.3.3 Create folder contains templates
 - Create folder `templates` and edit `setings/base.py`:
-  ```
+  ```python
   TEMPLATES = [
     {
       ...
@@ -64,17 +70,17 @@ Enter this code into command line to create django project folder:
 #### 1.3.4 Setting for static and media files
 
 - Create folder `static` and add to `setings/base.py`:
-  ```
+  ```python
   STATIC_URL = 'static/'
   STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
   ```
 - Create folder `media` and add to `setings/base.py`:
-  ```
+  ```python
   MEDIA_URL = '/media/'
   MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
   ```
 - Customize `urls.py`:  
-  ```
+  ```python
   from django.conf import settings
   from django.conf.urls.static import static
   ...
@@ -85,7 +91,7 @@ Enter this code into command line to create django project folder:
 #### 1.3.5 Multiple languages settings
 
 - Create folders `locale/[lang_code]/LC_MESSAGES` and add to `settings/base.py`:
-  ```
+  ```python
   from django.utils.translation import gettext_lazy as _
   ...
   USE_I18N = True
@@ -98,7 +104,7 @@ Enter this code into command line to create django project folder:
   )
   ```
 - Add middleware bettween session and common:
-  ```
+  ```python
   MIDDLEWARE = [
     ...
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -109,7 +115,7 @@ Enter this code into command line to create django project folder:
   ```
 
 - Customize `urls.py`:
-  ```
+  ```python
   from django.urls import path, include
   from django.conf.urls.i18n import i18n_patterns
   ...
@@ -126,7 +132,7 @@ Enter this code into command line to create django project folder:
   ```
 
 - Ignore files `.mo` by add to `.gitignore` :
-  ```
+  ```git
   *.mo
   ```
 
@@ -134,11 +140,11 @@ Enter this code into command line to create django project folder:
 
 - For development, can receive email by console or files:
   - With console, just add to `settings/base.py`:
-    ```
+    ```python
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     ```
   - If you want to store emails, create folder `emails` and add to `settings/base.py`:
-    ```
+    ```python
     EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
     EMAIL_FILE_PATH = BASE_DIR / 'emails'
     ```
@@ -146,7 +152,7 @@ Enter this code into command line to create django project folder:
 #### 1.3.5 Timezone settings
 
 - Cusomize timezone with the format below:
-  ```
+  ```python
   USE_TZ = True
   USE_L10N = True
   TIME_ZONE = 'UTC'
