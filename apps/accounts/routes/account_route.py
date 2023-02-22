@@ -1,6 +1,6 @@
 from django.urls import path
 
-from accounts.views.base import *
+from accounts.views.account_view import *
 
 
 urlpatterns = [
