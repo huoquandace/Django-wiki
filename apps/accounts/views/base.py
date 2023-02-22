@@ -5,7 +5,7 @@ from django.views.generic import TemplateView
 from common.mixins import StaffRequiredMixin
 
 
-class AuthIndex(StaffRequiredMixin, TemplateView):
+class AuthIndex(TemplateView):
     template_name = 'auth_index.html'
 
     def get_context_data(self, **kwargs):
