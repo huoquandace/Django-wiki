@@ -38,7 +38,7 @@ class AuthIndex(StaffRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        urlconf = __import__('apps.accounts.routes.base', {}, {}, [''])
+        urlconf = __import__('apps.accounts.urls', {}, {}, [''])
         def list_urls(lis, acc=None):
             acc = [] if acc is None else acc
             if not lis: return None
@@ -74,13 +74,12 @@ class Login(LoginView):
     accounts_form = AuthForm
     template_name = 'auth/login.html'
     login_url = reverse_lazy('login')
-    next_page = reverse_lazy('profile')
+    next_page = reverse_lazy('auth_index')
     redirect_authenticated_user = True # If it is false, authenticated_user is still access to login
 
 
 class Logout(LoginRequiredMixin, LogoutView):
-    # template_name = 'auth/logged_out.html'
-    next_page = reverse_lazy('login') # if not default render to template
+    next_page = reverse_lazy('login')
 
 
 class PasswordChange(LoginRequiredMixin, PasswordChangeView):

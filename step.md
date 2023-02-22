@@ -235,6 +235,9 @@ django-admin startproject wiki
 
 ### 2.2 Code views and desgin routes
 
+
+**Note** Login logout url, redirect
+
 ## 3.
 
 ## 4.

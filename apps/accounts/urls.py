@@ -5,5 +5,7 @@ from accounts.views.base import *
 
 urlpatterns = [
     path('', AuthIndex.as_view() ,name='auth_index'),
-    path('', include('accounts.routes.base')),
+    path('auth/', include('accounts.routes.auth')),
+    path('account/', include('accounts.routes.account')),
+    path('user_manager/', include('accounts.routes.user_manager')),
 ]
