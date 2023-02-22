@@ -1,0 +1,12 @@
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "USER_DELETE_CONFIRM_TITLE" %} {% endblock title %}
+{% block content %}
+
+<form method="post">
+  {% csrf_token %}
+  <p> {% trans "DELETE" %} "{{ object }}"? </p>
+  <button type="submit"> {% trans "SUBMIT" %} </button>
+</form>
+
+{% endblock content %}

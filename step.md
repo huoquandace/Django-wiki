@@ -26,20 +26,6 @@ django-admin startproject wiki
   ROOT_URLCONF = 'urls'
   WSGI_APPLICATION = 'wsgi.application'
   ```
-- **NOTE:**
-  
-  <blockquote>
-  <p>📝 Add code below, whenever you add an app to folder `apps` module `.settings` in new app will be added:</p>
-  
-  ```python
-  try:
-    for file in os.listdir(BASE_DIR / 'apps'):
-      dir= os.path.join(BASE_DIR / 'apps', file)
-      if os.path.isdir(dir): __import__(dir.split('\\')[-1] + '.apps', fromlist='__all__')
-  except: pass
-  ```
-  
-  </blockquote>
 
 ### 1.3 Initial settings
 
@@ -126,7 +112,8 @@ django-admin startproject wiki
   from django.conf.urls.i18n import i18n_patterns
   ...
   urlpatterns += i18n_patterns (
-  
+    path('i18n/', include('django.conf.urls.i18n')),
+    
     # prefix_default_language=False
   )
   ```
@@ -177,6 +164,15 @@ django-admin startproject wiki
 
 ### 2.2 App settings
 
+- Register app in project settings:
+  ```python
+  # settings.base
+  INSTALLED_APPS = [
+    ...
+    'accounts',
+  ]
+  ```
+
 - Design app structure
   ```
   └───📁 accounts/
@@ -202,11 +198,39 @@ django-admin startproject wiki
   <p>📝 If auth models are defined in apps's subfolder, must create init file. </p>
   
   ```python
-  # __init__.py
-  from .base import User
+  # models/__init__.py
+  from .user_model import *
   ```
   
   </blockquote>
+
+  <blockquote>
+  <p>📝 If default admin manager files of django are defined in apps's subfolder, must create init file. </p>
+  
+  ```python
+  # admin/__init__.py
+  from .user_admin import *
+  from .profile_admin import *
+  ```
+  
+  </blockquote>
+
+### 2.2 Code models
+  - Code: ...
+  - **NOTE:**
+  
+    <blockquote>
+    <p>📝 Replace default User models by new one. </p>
+    
+    ```python
+    # settings/base.py
+    AUTH_USER_MODEL = 'accounts.User'
+    ```
+    
+    </blockquote>
+  - Register models in admin site
+  - Create signals and import to function `ready` at `apps.py`
+
 
 ## 3.
 

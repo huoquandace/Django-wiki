@@ -1,0 +1,13 @@
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "USER_DETAIL_TITLE" %} {% endblock title %}
+{% block content %}
+
+<h3>{% trans "USER_DETAIL" %}</h3>
+<div>{% trans "USERNAME" %}: {{ user.username }}</div>
+<div>{% trans "EMAIL" %}: {{ user.email }}</div>
+<div>{% trans "DATE_JOINED" %}: {{ user.date_joined | date:'d-m-Y' }}</div>
+<button><a href="{% url 'user_update' user.id %}">{% trans "PROFILE_UPDATE" %}</a></button>
+<button><a href="{% url 'password_change' %}">{% trans "PASSWORD_CHANGE" %}</a></button>
+
+{% endblock content %}

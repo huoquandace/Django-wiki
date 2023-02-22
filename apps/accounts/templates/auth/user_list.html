@@ -1,0 +1,45 @@
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "USER_LIST_TITLE" %} {% endblock title %}
+{% block content %}
+
+<style> table, th, td { border: solid 1px #333; border-collapse: collapse; } </style>
+
+<form method='GET'>
+  <input type='text' name='q' value='{{ request.GET.q }}'>
+  <input class="button" type='submit' value="Search">
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th> # </th>
+      <th> ID </th>
+      <th> Username </th>
+      <th> Avatar </th>
+      <th> - </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+      <th> {{ forloop.counter }} </th>
+      <td> {{ user.id }} </td>
+      <td> {{ user.username }} </td>
+      <td><img src="{{ user.profile.avatar.url }}"]></td>
+      <td>
+        <a href="#"><button> {% trans "RESET_PASSWORD" %} </button></a>
+        <a href="{% url 'user_delete' user.id %}"><button> {% trans "DELETE" %} </button></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if is_paginated %}
+  {% if page_obj.has_previous %} <a href="./?page={{ page_obj.previous_page_number }}"> {% trans "PREVIOUS" %} </a> {% endif %}
+  <span> {% trans "PAGE" %} {{ page_obj.number }}/{{ page_obj.paginator.num_pages }} </span>
+  {% if page_obj.has_next %} <a href="./?page={{ page_obj.next_page_number }}"> {% trans "NEXT" %} </a> {% endif %}
+{% endif %}
+
+{% endblock content %}

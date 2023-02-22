@@ -1,0 +1,9 @@
+{% extends "auth_base.html" %}
+{% load i18n %}
+{% block title %} {% trans "REGISTER_DONE_TITLE" %} {% endblock title %}
+{% block content %}
+
+{% trans "REGISTER_DONE" %}
+<div>{{ username}}</div>
+
+{% endblock content %}
