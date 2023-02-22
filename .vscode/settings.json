@@ -37,6 +37,7 @@
     },
 
     "material-icon-theme.folders.associations": {
+        "accounts": "Secure",
         "forms": "Shader",
         "migrations": "Cluster",
         "media": "Vercel",

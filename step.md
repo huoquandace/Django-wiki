@@ -5,31 +5,32 @@
 ### 1.1 Start project
 
 Enter this code into command line to create django project folder:
-  ```
-  django-admin startproject wiki
-  ```
+
+```
+django-admin startproject wiki
+```
 
 ### 1.2 Rebuild project structure layout
 
 - Rename folder `wiki` to `settings`, file `settings.py` to `base.py`
 - Move files `urls.py` `asgi.py` `wsgi.py` to root directory and change:
+  
   ```python
   import os, sys
   ...
   os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings.base')
   ```
-
 - Open `setings/base.py` and change:
+  
   ```python
   ROOT_URLCONF = 'urls'
   WSGI_APPLICATION = 'wsgi.application'
   ```
-
-- 
-  **NOTE:** 
+- **NOTE:**
+  
   <blockquote>
   <p>📝 Add code below, whenever you add an app to folder `apps` module `.settings` in new app will be added:</p>
-
+  
   ```python
   try:
     for file in os.listdir(BASE_DIR / 'apps'):
@@ -37,7 +38,7 @@ Enter this code into command line to create django project folder:
       if os.path.isdir(dir): __import__(dir.split('\\')[-1] + '.settings', fromlist='__all__')
   except: pass
   ```
-
+  
   </blockquote>
 
 ### 1.3 Initial settings
@@ -56,7 +57,9 @@ Enter this code into command line to create django project folder:
   ```python
   sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
   ```
+
 #### 1.3.3 Create folder contains templates
+
 - Create folder `templates` and edit `setings/base.py`:
   ```python
   TEMPLATES = [
@@ -67,6 +70,7 @@ Enter this code into command line to create django project folder:
     },
   ]
   ```
+
 #### 1.3.4 Setting for static and media files
 
 - Create folder `static` and add to `setings/base.py`:
@@ -79,7 +83,7 @@ Enter this code into command line to create django project folder:
   MEDIA_URL = '/media/'
   MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
   ```
-- Customize `urls.py`:  
+- Customize `urls.py`:
   ```python
   from django.conf import settings
   from django.conf.urls.static import static
@@ -91,6 +95,7 @@ Enter this code into command line to create django project folder:
 #### 1.3.5 Multiple languages settings
 
 - Create folders `locale/[lang_code]/LC_MESSAGES` and add to `settings/base.py`:
+  
   ```python
   from django.utils.translation import gettext_lazy as _
   ...
@@ -104,6 +109,7 @@ Enter this code into command line to create django project folder:
   )
   ```
 - Add middleware bettween session and common:
+  
   ```python
   MIDDLEWARE = [
     ...
@@ -113,25 +119,25 @@ Enter this code into command line to create django project folder:
     ...
   ]
   ```
-
 - Customize `urls.py`:
+  
   ```python
   from django.urls import path, include
   from django.conf.urls.i18n import i18n_patterns
   ...
   urlpatterns += i18n_patterns (
-
+  
     # prefix_default_language=False
   )
   ```
-
 - Make file .po and compile to .mo by code:
+  
   ```
   django-admin makemessages --all --ignore=env
   django-admin compilemessages --ignore=env
   ```
-
 - Ignore files `.mo` by add to `.gitignore` :
+  
   ```git
   *.mo
   ```
@@ -158,24 +164,34 @@ Enter this code into command line to create django project folder:
   TIME_ZONE = 'UTC'
   ```
 
-## 2. User apps
+## 2. Accounts apps
 
 ### 2.1 Create app
-- 
-  **NOTE:** 
+
+- Create new app with commend line:
+  
+  ```
+  python manage.py startapp accounts
+  ```
+- Move folder `accounts` to `apps`
+
+### 2.2 App settings
+
+- Design app structure
+
+- **NOTE:**
+  
   <blockquote>
   <p>📝 If auth models are defined in apps's subfolder, must create init file. </p>
-
+  
   ```python
   # __init__.py
   from .base import User
   ```
-
+  
   </blockquote>
-
 
 ## 3.
 
 ## 4.
-
 
