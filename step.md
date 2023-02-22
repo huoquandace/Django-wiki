@@ -35,7 +35,7 @@ django-admin startproject wiki
   try:
     for file in os.listdir(BASE_DIR / 'apps'):
       dir= os.path.join(BASE_DIR / 'apps', file)
-      if os.path.isdir(dir): __import__(dir.split('\\')[-1] + '.settings', fromlist='__all__')
+      if os.path.isdir(dir): __import__(dir.split('\\')[-1] + '.apps', fromlist='__all__')
   except: pass
   ```
   
@@ -178,6 +178,23 @@ django-admin startproject wiki
 ### 2.2 App settings
 
 - Design app structure
+  ```
+  └───📁 accounts/
+      ├───📁 forms/
+      ├───📁 migrations/
+      ├───📁 models/
+      │   ├───📄 __init__.py  # IMPORTAINT
+      │   ├───📄 profile.py
+      │   └───📄 user.py
+      ├───📁 routes/
+      ├───📁 signals/
+      ├───📁 templates/
+      ├───📁 tests/
+      ├───📁 utils/
+      ├───📁 views/
+      ├───📄 admin.py
+      └───📄 apps.py
+  ```
 
 - **NOTE:**
   

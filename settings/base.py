@@ -90,5 +90,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 try:
     for file in os.listdir(BASE_DIR / 'apps'):
         dir= os.path.join(BASE_DIR / 'apps', file)
-        if os.path.isdir(dir): __import__(dir.split('\\')[-1] + '.settings', fromlist='__all__')
+        if os.path.isdir(dir): __import__(dir.split('\\')[-1] + '.apps', fromlist='__all__')
 except: pass
