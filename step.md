@@ -175,21 +175,23 @@ django-admin startproject wiki
 
 - Design app structure
   ```
-  └───📁 accounts/
-      ├───📁 forms/
-      ├───📁 migrations/
-      ├───📁 models/
-      │   ├───📄 __init__.py  # IMPORTAINT
-      │   ├───📄 profile.py
-      │   └───📄 user.py
-      ├───📁 routes/
-      ├───📁 signals/
-      ├───📁 templates/
-      ├───📁 tests/
-      ├───📁 utils/
-      ├───📁 views/
-      ├───📄 admin.py
-      └───📄 apps.py
+  ├───📁 accounts/
+  │   ├───📁 admin/
+  │   │   ├───📄 __init__.py  # IMPORTAINT
+  │   ├───📁 backend/
+  │   ├───📁 forms/
+  │   ├───📁 migrations/
+  │   ├───📁 models/
+  │   │   ├───📄 __init__.py  # IMPORTAINT
+  │   ├───📁 routes/
+  │   ├───📁 signals/
+  │   ├───📁 templates/
+  │   ├───📁 tests/
+  │   ├───📁 utils/
+  │   ├───📁 views/
+  │   ├───📄 apps.py
+  │   └───📄 urls.py
+  └───📁 common/
   ```
 
 - **NOTE:**
@@ -231,6 +233,7 @@ django-admin startproject wiki
   - Register models in admin site
   - Create signals and import to function `ready` at `apps.py`
 
+### 2.2 Code views and desgin routes
 
 ## 3.
 
