@@ -2,7 +2,7 @@
 from django.urls import URLPattern, URLResolver
 from django.views.generic import TemplateView
 
-from common.mixins import StaffRequiredMixin
+from accounts.mixins.mixins import StaffRequiredMixin
 
 
 class AuthIndex(TemplateView):
